@@ -58,12 +58,14 @@ class ResultStore {
         switch (this._sortState) {
             case 'asc':
                 let carsASC = [...this._cars].sort((a, b) => a.price - b.price)
+                    .filter(item => item.price >= FilterStore.CarPrice[0] && item.price <= FilterStore.CarPrice[1])
                 return carsASC
             case 'desc':
                 let carsDESC = [...this._cars].sort((a, b) => b.price - a.price)
+                    .filter(item => item.price >= FilterStore.CarPrice[0] && item.price <= FilterStore.CarPrice[1])
                 return carsDESC
             default:
-                return this._cars
+                return this._cars.filter(item => item.price >= FilterStore.CarPrice[0] && item.price <= FilterStore.CarPrice[1])
         }
     }
 

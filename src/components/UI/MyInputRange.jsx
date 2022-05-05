@@ -1,12 +1,12 @@
 import * as React from 'react';
+import {useState} from 'react';
 import PropTypes from 'prop-types';
 import Slider from '@mui/material/Slider';
 import {styled} from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
 import Box from '@mui/material/Box';
-import {debounce, PRIME_COLOR} from "../../const";
+import {PRIME_COLOR} from "../../const";
 import FilterStore from "../../store/filterStore";
-import {useState} from "react";
 import s from "../sideBarBlock/SideBarBlock.module.scss";
 import MyInputText from "./MyInputText";
 import {observer} from "mobx-react-lite";
@@ -78,7 +78,7 @@ const RangeSlider = observer (() => {
 
     function handleChange(event, newValue) {
         setValue(newValue)
-        FilterStore.setPrice(newValue)
+        FilterStore.setPriceCar(newValue)
     };
     return (
         <Box sx={{width: '100%', padding: '0 10px', boxSizing: 'border-box'}}>

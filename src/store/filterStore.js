@@ -4,6 +4,7 @@ import {axiosGetStartedFilter} from "../http/requests";
 class FilterStore {
     _startedFilters = [];
     _competeSet = [];
+    _carPrice = []
     _filtersData = {
         amount: 15000,
         body: [],
@@ -16,9 +17,8 @@ class FilterStore {
         state: [],
         transmission: [],
         year: [],
-        price:[],
+        price: [],
     };
-
 
     constructor() {
         makeAutoObservable(this)
@@ -27,13 +27,17 @@ class FilterStore {
     getStartedFilters() {
         axiosGetStartedFilter(this._filtersData).then(data => {
                 this._startedFilters = data.data.data
+
+                let priceData = data.data.data.filter(item => item.id === 'price')[0].options
+                this._carPrice = [Number(priceData.min), Number(priceData.max)]
+
             }
         )
 
     }
 
     setFiltersData(data) {
-        this._filtersData = {...this._filtersData,...data}
+        this._filtersData = {...this._filtersData, ...data}
     }
 
 
@@ -41,45 +45,57 @@ class FilterStore {
         return this._filtersData
     }
 
-    setPrice(data){
-        this._filtersData = {...this._filtersData,price:data}
-    }
 
-    setCompleteSet(data){
+    setCompleteSet(data) {
         this._competeSet = data
     }
-    get CompleteSet(){
+
+    get CompleteSet() {
         return this._competeSet
     }
 
+    get CarPrice(){
+        return this._carPrice
+    }
+    setPriceCar(data){
+        this._carPrice = data
+    }
 
     //------------parse data------------//
-    get modelFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'model')
+    get modelFilter() {
+        return this._startedFilters.filter((item) => item.id === 'model')
     }
-    get yearFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'year')
+
+    get yearFilter() {
+        return this._startedFilters.filter((item) => item.id === 'year')
     }
-    get engineFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'engine')
+
+    get engineFilter() {
+        return this._startedFilters.filter((item) => item.id === 'engine')
     }
-    get transmissionFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'transmission')
+
+    get transmissionFilter() {
+        return this._startedFilters.filter((item) => item.id === 'transmission')
     }
-    get driveFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'drive')
+
+    get driveFilter() {
+        return this._startedFilters.filter((item) => item.id === 'drive')
     }
-    get bodyFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'body')
+
+    get bodyFilter() {
+        return this._startedFilters.filter((item) => item.id === 'body')
     }
-    get locationsFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'location')
+
+    get locationsFilter() {
+        return this._startedFilters.filter((item) => item.id === 'location')
     }
-    get colorFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'color')
+
+    get colorFilter() {
+        return this._startedFilters.filter((item) => item.id === 'color')
     }
-    get priceFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'price')
+
+    get priceFilter() {
+        return this._startedFilters.filter((item) => item.id === 'price')
     }
 
 }

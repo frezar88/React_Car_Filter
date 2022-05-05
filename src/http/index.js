@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 const $host = axios.create({
-    baseURL:''
+    baseURL:'http://stock.mitsubishi/'
 })
 
 

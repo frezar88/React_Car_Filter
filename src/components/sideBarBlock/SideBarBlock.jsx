@@ -10,6 +10,7 @@ import FilterStore from '../../store/filterStore'
 import {observer} from "mobx-react-lite";
 import ResultStore from "../../store/resultStore";
 import {debounce} from "../../const";
+import RangeSlider from "../UI/MyInputRange";
 
 
 const SideBarBlock = observer(() => {
@@ -94,7 +95,6 @@ const SideBarBlock = observer(() => {
             })
         }
     }
-
     const addLocation = (event) => {
         let inputState = event.target.checked
         let array = []
@@ -112,7 +112,6 @@ const SideBarBlock = observer(() => {
             })
         }
     }
-
     const addColor = (event) => {
         let inputState = event.target.checked
         let array = []
@@ -130,7 +129,6 @@ const SideBarBlock = observer(() => {
             })
         }
     }
-
     const addEngine = (event) => {
         let inputState = event.target.checked
         let engine = event.target.parentNode.attributes['data-name'].value
@@ -156,7 +154,6 @@ const SideBarBlock = observer(() => {
             }
         }
     }
-
     const addCompleteSet = (event) => {
         let inputState = event.target.checked
         let completeSet = event.target.parentNode.attributes['data-name'].value
@@ -167,19 +164,16 @@ const SideBarBlock = observer(() => {
             let tempObj = {...FilterStore.FiltersData.model}
             tempObj[carModel].push(completeValue)
             FilterStore.setFiltersData({...FilterStore.FiltersData, model: {...tempObj}})
-            console.log(tempObj[carModel])
         } else {
             let tempObj = {...FilterStore.FiltersData.model}
             tempObj[carModel] = tempObj[carModel].filter(item => item !== completeValue)
             FilterStore.setFiltersData({...FilterStore.FiltersData, model: {...tempObj}})
         }
     }
-
     const changeForm = () => {
         FilterStore.getStartedFilters()
         ResultStore.getStartedCars()
     }
-
     let debounceOnChangeForm = debounce(changeForm, 500);
 
     return (
@@ -230,15 +224,14 @@ const SideBarBlock = observer(() => {
                             :
                             false
                     }
-                    {/*{*/}
-                    {/*    FilterStore.priceFilter.length*/}
-                    {/*        ? <AccordionBlock open={true} name={FilterStore.priceFilter[0].name} id={FilterStore.priceFilter[0].id}>*/}
-
-                    {/*            <RangeSlider/>*/}
-                    {/*        </AccordionBlock>*/}
-                    {/*        :*/}
-                    {/*        false*/}
-                    {/*}*/}
+                    {
+                        FilterStore.priceFilter.length
+                            ? <AccordionBlock open={true} name={FilterStore.priceFilter[0].name} id={FilterStore.priceFilter[0].id}>
+                                <RangeSlider/>
+                            </AccordionBlock>
+                            :
+                            false
+                    }
                     {
                         FilterStore.engineFilter.length
                             ? <AccordionBlock open={true} name={FilterStore.engineFilter[0].name}
