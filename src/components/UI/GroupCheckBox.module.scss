@@ -1,0 +1,18 @@
+.label{
+  font-family: Fonts !important;
+  font-size: 14px !important;
+  user-select: none;
+}
+
+.h2{
+  font-size: 14px !important;
+  color: var(--prime-black);
+  font-weight: bold;
+  margin: 10px 0;
+  font-family: Fonts;
+}
+
+.disabled{
+  color: var(--prime-light-gray) !important;
+  opacity: 0.6;
+}

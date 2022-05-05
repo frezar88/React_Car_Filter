@@ -1,0 +1,10 @@
+.carListItem{
+    cursor: pointer;
+    img{
+        width: 100%;
+    }
+    h6{
+        padding: 10px;
+        font-size: var(--headerCar-item-font-size);
+    }
+}

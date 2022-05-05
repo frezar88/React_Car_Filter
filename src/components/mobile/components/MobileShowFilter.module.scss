@@ -1,0 +1,21 @@
+.mobileShowFilter{
+  background: var(--prime-color);
+  color: var(--prime-white);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-family: Fonts;
+  cursor: pointer;
+  div{
+    &:nth-child(2){
+      position: relative;
+      display: flex;
+      align-items: center;
+      grid-gap: 20px;
+
+    }
+  }
+}
+

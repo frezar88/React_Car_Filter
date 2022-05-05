@@ -1,0 +1,16 @@
+html{
+  //overflow: hidden;
+}
+.mobileFilterMenu{
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--prime-white);
+  z-index: 1;
+  padding: 80px 10px 100px;
+  overflow: auto;
+}
+

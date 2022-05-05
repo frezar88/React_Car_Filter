@@ -1,0 +1,6 @@
+.carList{
+  padding: 30px 0;
+  display: grid;
+  grid-template-columns: var(--grid-template-header-car);
+  grid-gap: 10px;
+}

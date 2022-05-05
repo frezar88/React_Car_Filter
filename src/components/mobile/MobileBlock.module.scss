@@ -1,0 +1,10 @@
+.mobileBlock {
+  display: none ;
+}
+
+
+@media (max-width: 900px) {
+  .mobileBlock {
+    display: block;
+  }
+}
