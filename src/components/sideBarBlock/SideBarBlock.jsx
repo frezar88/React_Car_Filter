@@ -10,6 +10,7 @@ import FilterStore from '../../store/filterStore'
 import {observer} from "mobx-react-lite";
 import ResultStore from "../../store/resultStore";
 import {debounce} from "../../const";
+import RangeSlider from "../UI/MyInputRange";
 
 
 const SideBarBlock = observer(() => {
@@ -230,15 +231,15 @@ const SideBarBlock = observer(() => {
                             :
                             false
                     }
-                    {/*{*/}
-                    {/*    FilterStore.priceFilter.length*/}
-                    {/*        ? <AccordionBlock open={true} name={FilterStore.priceFilter[0].name} id={FilterStore.priceFilter[0].id}>*/}
+                    {
+                        FilterStore.priceFilter.length
+                            ? <AccordionBlock open={true} name={FilterStore.priceFilter[0].name} id={FilterStore.priceFilter[0].id}>
 
-                    {/*            <RangeSlider/>*/}
-                    {/*        </AccordionBlock>*/}
-                    {/*        :*/}
-                    {/*        false*/}
-                    {/*}*/}
+                                <RangeSlider/>
+                            </AccordionBlock>
+                            :
+                            false
+                    }
                     {
                         FilterStore.engineFilter.length
                             ? <AccordionBlock open={true} name={FilterStore.engineFilter[0].name}

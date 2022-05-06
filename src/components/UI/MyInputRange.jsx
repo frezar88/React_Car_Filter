@@ -10,6 +10,7 @@ import {useState} from "react";
 import s from "../sideBarBlock/SideBarBlock.module.scss";
 import MyInputText from "./MyInputText";
 import {observer} from "mobx-react-lite";
+import ResultStore from "../../store/resultStore";
 
 function ValueLabelComponent(props) {
     const {children, value} = props;
@@ -73,21 +74,21 @@ const Sliders = styled(Slider)(({theme}) => ({
 }));
 
 
-const RangeSlider = observer (() => {
+const RangeSlider = observer(() => {
     const [value, setValue] = useState([0, 0])
 
     function handleChange(event, newValue) {
         setValue(newValue)
-        FilterStore.setPrice(newValue)
+        ResultStore.setPriceFilter(newValue)
     };
     return (
         <Box sx={{width: '100%', padding: '0 10px', boxSizing: 'border-box'}}>
             <div className={s.priceContainer} style={{}}>
                 <MyInputText
-                    value={value[0] ? String(value[0]).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : FilterStore.priceFilter[0]['options'].min.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")}
+                    value={value[0] ? String(value[0]).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : FilterStore.priceFilter[0]['options'].min ? FilterStore.priceFilter[0]['options'].min.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : FilterStore.priceFilter[0]['options'].min}
                     name={'Минимальная цена'}/>
                 <MyInputText
-                    value={value[1] ? String(value[1]).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : FilterStore.priceFilter[0]['options'].max.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")}
+                    value={value[1] ? String(value[1]).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : FilterStore.priceFilter[0]['options'].max ? FilterStore.priceFilter[0]['options'].min.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : FilterStore.priceFilter[0]['options'].min}
                     name={'Максимальная цена'}/>
             </div>
             <Sliders
