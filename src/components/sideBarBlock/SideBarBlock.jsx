@@ -13,7 +13,7 @@ import {debounce} from "../../const";
 const SideBarBlock = observer(() => {
 
     const changeForm = () => {
-        FilterStore.getStartedFilters()
+        // FilterStore.getStartedFilters()
         ResultStore.getStartedCars()
         console.log(ResultStore.BrandCarList)
 
