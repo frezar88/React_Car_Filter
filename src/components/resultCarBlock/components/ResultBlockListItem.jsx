@@ -31,8 +31,8 @@ const ResultBlockListItem = ({
              data-transmission_type={transmission_type} data-price={price} data-location={location}
         >
             <div className={s.img}>
-                {/*<img src={'https://stock.mitsubishi.by/'+image} alt="car"/>*/}
-                <img src={image} alt="car"/>
+                <img src={'https://stock.mitsubishi.by/'+image} alt="car"/>
+                {/*<img src={image} alt="car"/>*/}
             </div>
             <div className={s.wrapper}>
                 <div className={s.carName}>

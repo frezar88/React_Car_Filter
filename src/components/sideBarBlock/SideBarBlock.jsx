@@ -173,6 +173,8 @@ const SideBarBlock = observer(() => {
     const changeForm = () => {
         FilterStore.getStartedFilters()
         ResultStore.getStartedCars()
+        console.log(ResultStore.BrandCarList)
+
     }
     let debounceOnChangeForm = debounce(changeForm, 500);
 
@@ -181,6 +183,19 @@ const SideBarBlock = observer(() => {
             <div className={s.wrapper}>
                 <CountBlock/>
                 <form onChange={debounceOnChangeForm}>
+                    {
+                        FilterStore.modelFilter.length
+                            ? <AccordionBlock open={true} name={'Бренд'}
+                                              id={'brand'}>
+                                {/*{*/}
+                                {/*    FilterStore.modelFilter[0]['options'].length*/}
+                                {/*        ? <GroupCheckBox onClick={addModel} inputName={FilterStore.modelFilter[0].id}*/}
+                                {/*                         data={FilterStore.modelFilter[0]['options']}/>*/}
+                                {/*        : false*/}
+                                {/*}*/}
+                            </AccordionBlock>
+                            : ''
+                    }
                     {
                         FilterStore.modelFilter.length
                             ?
@@ -226,8 +241,9 @@ const SideBarBlock = observer(() => {
                     }
                     {
                         FilterStore.priceFilter.length
-                            ? <AccordionBlock open={true} name={FilterStore.priceFilter[0].name} id={FilterStore.priceFilter[0].id}>
-                                <RangeSlider/>
+                            ? <AccordionBlock open={true} name={FilterStore.priceFilter[0].name}
+                                              id={FilterStore.priceFilter[0].id}>
+                                {/*<RangeSlider/>*/}
                             </AccordionBlock>
                             :
                             false

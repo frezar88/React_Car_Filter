@@ -76,6 +76,14 @@ class ResultStore {
     get SortState() {
         return this._sortState
     }
+
+    get BrandCarList(){
+        let brand = new Set()
+        this._cars.forEach(el=>{
+           brand.add(el.brand)
+        })
+        return brand
+    }
 }
 
 export default new ResultStore()

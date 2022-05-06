@@ -10,7 +10,7 @@ const MobileBlock = observer(() => {
     return (
         <div className={s.mobileBlock}>
             <MobileShowFilter onClick={()=> UiStore.showMobileMenu()}/>
-            <MobileFilterMenu />
+            {/*<MobileFilterMenu />*/}
 
         </div>
     );
