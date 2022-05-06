@@ -63,7 +63,7 @@ const ResultBlockListItem = ({
                             {
                                 promo.map(({promo_name, promo_img, promo_desk}) =>
                                     <>
-                                        <CustomTooltip TransitionComponent={Zoom} style={{maxWidth:20}} arrow title={promo_desk} placement="top">
+                                        <CustomTooltip enterTouchDelay={0} TransitionComponent={Zoom} style={{maxWidth:20}} arrow title={promo_desk} placement="top">
                                             <img style={{
                                                 width: '100%',
                                                 cursor: 'pointer'
