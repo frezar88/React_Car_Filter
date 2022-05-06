@@ -9,6 +9,8 @@ const CountBlock = observer(() => {
         <div className={s.countBlock}>
             <h6>Найдено {ResultStore.CarsList.length} авто</h6>
             <h5>Авто в наличии</h5>
+
+            
         </div>
     );
 });

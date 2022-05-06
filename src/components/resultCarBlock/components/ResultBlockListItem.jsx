@@ -4,6 +4,19 @@ import iconSeats from '../../../images/seact_icon.png'
 import priceIcon from '../../../images/price_icon.png'
 import locationIcon from '../../../images/location.png'
 import MyButton from "../../UI/MyButton";
+import Tooltip from "@mui/material/Tooltip";
+import {styled} from "@mui/material/styles";
+import {tooltipClasses, Zoom} from "@mui/material";
+
+const CustomTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+))({
+    [`& .${tooltipClasses.tooltip}`]: {
+        maxWidth: '100px',
+        textAlign:'center',
+        lineHeight:'10px'
+    },
+});
 
 const ResultBlockListItem = ({
                                  body,
@@ -22,7 +35,9 @@ const ResultBlockListItem = ({
                                  seat_count,
                                  transmission_type,
                                  years,
+                                 promo,
                              }) => {
+
     return (
         <div className={s.resultBlockListItem} data-car-id={car_id} data-model={model}
              data-complectation={complectation} data-years={years}
@@ -31,7 +46,37 @@ const ResultBlockListItem = ({
              data-transmission_type={transmission_type} data-price={price} data-location={location}
         >
             <div className={s.img}>
-                <img src={'https://stock.mitsubishi.by/'+image} alt="car"/>
+                <img src={'https://stock.mitsubishi.by/' + image} alt="car"/>
+                {
+                    promo[0]
+                        ?
+                        <div style={{
+                            position: "absolute",
+                            left: 0, top: 0,
+                            display: "grid",
+                            gridTemplateColumns: '1fr 1fr',
+                            maxWidth: 69,
+                            gap: 5,
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>
+                            {
+                                promo.map(({promo_name, promo_img, promo_desk}) =>
+                                    <>
+                                        <CustomTooltip TransitionComponent={Zoom} style={{maxWidth:20}} arrow title={promo_desk} placement="top">
+                                            <img style={{
+                                                width: '100%',
+                                                cursor: 'pointer'
+                                            }} src={'https://stock.mitsubishi.by/' + promo_img} alt={promo_name}/>
+                                        </CustomTooltip>
+
+                                    </>
+                                )
+                            }
+                        </div>
+                        : ''
+                }
+                {/*<img src={image} alt="car"/>*/}
             </div>
             <div className={s.wrapper}>
                 <div className={s.carName}>
