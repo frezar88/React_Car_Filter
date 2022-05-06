@@ -80,7 +80,7 @@ class ResultStore {
     get BrandCarList(){
         let brand = new Set()
         this._cars.forEach(el=>{
-           brand.add(el.brand)
+           brand.add({category:el.brand})
         })
         return brand
     }
