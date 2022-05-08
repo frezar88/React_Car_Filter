@@ -6,6 +6,7 @@ import {observer} from "mobx-react-lite";
 
 const ResultBlockList = observer(() => {
 
+
     return (
         <div className={s.resultBlockList}>
             {ResultStore.CarsList.map((item) =>

@@ -6,7 +6,9 @@ import FilterStore from './filterStore'
 class ResultStore {
     _cars = [];
     _sortState = '';
-    _priceFilter = [0,10000000000];
+    _priceFilter = [0, 10000000000];
+    _promo = new Set();
+    _activePromo=[]
 
     constructor() {
         makeAutoObservable(this)
@@ -14,10 +16,19 @@ class ResultStore {
 
     getStartedCars() {
         getCars(FilterStore.FiltersData).then((data) => {
+                if (!this._promo.size) {
+                    data.data['cars'].forEach(({promo}) => {
+                        if(promo[0]){
+                            promo.forEach(el => {
+                                this._promo.add(el['promo_name'])
+                            })
+                        }
+
+                    })
+                }
                 this._cars = [...data.data['cars']]
             }
         )
-
     }
 
     get CarsList() {
@@ -29,7 +40,7 @@ class ResultStore {
                 let carsDESC = [...this._cars].sort((a, b) => b.price - a.price)
                 return carsDESC
             default:
-                return this._cars.filter(item=>+item.price >= +this._priceFilter[0] && +item.price <= +this._priceFilter[1])
+                return this._cars.filter(item => +item.price >= +this._priceFilter[0] && +item.price <= +this._priceFilter[1])
         }
     }
 
@@ -41,8 +52,19 @@ class ResultStore {
         return this._sortState
     }
 
-    setPriceFilter(data){
+    setPriceFilter(data) {
         this._priceFilter = data
+    }
+
+    get Promo() {
+        return [...this._promo]
+    }
+
+    setActivePromo(data){
+        this._activePromo=data
+    }
+    get ActivePromo(){
+        return this._activePromo
     }
 }
 

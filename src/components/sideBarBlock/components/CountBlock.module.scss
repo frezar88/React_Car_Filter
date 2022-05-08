@@ -1,21 +1,31 @@
 .countBlock{
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: center;
-  justify-content: center;
-  grid-gap: 40px;
   border-bottom: solid 1px rgb(220, 220, 220);
-  padding: 30px 10px 45px;
-  h6,h5{
-    align-self: center;
-    justify-self: center;
+  div{
+    &:first-child{
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      justify-content: center;
+      grid-gap: 40px;
+      //border-bottom: solid 1px rgb(220, 220, 220);
+      padding: 30px 10px 25px;
+      h6,h5{
+        align-self: center;
+        justify-self: center;
+      }
+      h6{
+        color:  var(--prime-light-gray);
+        font-size: 14px;
+      }
+      h5{
+        color: var(--prime-black);
+        font-size: 20px;
+      }
+    }
+    &:last-child{
+      display: grid;
+      padding: 0 16px 20px;
+    }
   }
-  h6{
-    color:  var(--prime-light-gray);
-    font-size: 14px;
-  }
-  h5{
-    color: var(--prime-black);
-    font-size: 20px;
-  }
+
 }

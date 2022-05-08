@@ -12,6 +12,7 @@ const App = observer(() => {
     useEffect(() => {
         FilterStore.getStartedFilters()
         ResultStore.getStartedCars()
+
     }, [])
     return (
         <div className={s.App}>

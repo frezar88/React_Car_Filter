@@ -12,9 +12,11 @@ const CustomTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
 ))({
     [`& .${tooltipClasses.tooltip}`]: {
-        maxWidth: '100px',
+        maxWidth: '170px',
         textAlign:'center',
-        lineHeight:'10px'
+        lineHeight:'12px',
+        fontFamily:'Fonts',
+        padding:10,
     },
 });
 

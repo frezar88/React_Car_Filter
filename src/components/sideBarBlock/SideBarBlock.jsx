@@ -179,6 +179,7 @@ const SideBarBlock = observer(() => {
     const changeForm = () => {
         FilterStore.getStartedFilters()
         ResultStore.getStartedCars()
+        console.log(ResultStore.ActivePromo)
     }
 
     let debounceOnChangeForm = debounce(changeForm, 500);
