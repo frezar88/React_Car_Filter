@@ -1,7 +1,7 @@
 import React from 'react';
 import ResultBlockListItem from "./ResultBlockListItem";
 import s from './ResultBlockList.module.scss';
-import ResultStore from '../../../store/resultStore';
+import CarsStore from '../../../store/carsStore';
 import {observer} from "mobx-react-lite";
 
 const ResultBlockList = observer(() => {
@@ -10,7 +10,7 @@ const ResultBlockList = observer(() => {
     return (
         <div className={s.resultBlockList}>
             {
-                ResultStore.CarsList.map((item) =>
+                CarsStore.CarsList.map((item) =>
                     <ResultBlockListItem key={item['car_id']} body={item.body} car_id={item.car_id} color={item.color}
                                          complectation={item.complectation}
                                          drive_type_id={item.drive_type_id} engine={item.engine}

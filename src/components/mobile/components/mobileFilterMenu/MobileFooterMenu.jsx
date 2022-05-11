@@ -2,7 +2,7 @@ import React from 'react';
 import MyButton from "../../../UI/MyButton";
 import s from './MobileFooterMenu.module.scss'
 import UiStore from "../../../../store/uiStore";
-import ResultStore from '../../../../store/resultStore'
+import ResultStore from '../../../../store/carsStore'
 import {observer} from "mobx-react-lite";
 
 const MobileFooterMenu = observer(() => {

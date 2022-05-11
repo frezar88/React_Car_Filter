@@ -3,13 +3,12 @@ import ResultCarBlock from "./components/resultCarBlock/ResultCarBlock";
 import SideBarBlock from "./components/sideBarBlock/SideBarBlock";
 import {useEffect} from "react";
 import {observer} from "mobx-react-lite";
-import ResultStore from "./store/resultStore";
+import CarsStore from "./store/carsStore";
 
 
 const App = observer(() => {
     useEffect(() => {
-        ResultStore.setStartedCars()
-
+        CarsStore.setStartedCars()
     }, [])
     return (
         <div className={s.App}>

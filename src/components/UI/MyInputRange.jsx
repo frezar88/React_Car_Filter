@@ -10,7 +10,7 @@ import {useState} from "react";
 import s from "../sideBarBlock/SideBarBlock.module.scss";
 import MyInputText from "./MyInputText";
 import {observer} from "mobx-react-lite";
-import ResultStore from "../../store/resultStore";
+import ResultStore from "../../store/carsStore";
 
 function ValueLabelComponent(props) {
     const {children, value} = props;

@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './SortingPyramid.module.scss'
-import ResultStore from '../../store/resultStore'
+import ResultStore from '../../store/carsStore'
 
 const SortingPyramid = () => {
     const click = (e) => {
