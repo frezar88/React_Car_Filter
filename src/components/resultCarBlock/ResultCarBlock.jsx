@@ -10,7 +10,7 @@ import Spinner from "../UI/Spinner";
 const ResultCarBlock = observer(() => {
     return (
         <div className={s.resultCarBlock}>
-            <MobileBlock/>
+            {/*<MobileBlock/>*/}
             <SortBarBlock/>
             {
                 ResultStore.CarsList[0]

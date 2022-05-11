@@ -8,15 +8,15 @@ import Tooltip from "@mui/material/Tooltip";
 import {styled} from "@mui/material/styles";
 import {tooltipClasses, Zoom} from "@mui/material";
 
-const CustomTooltip = styled(({ className, ...props }) => (
-    <Tooltip {...props} classes={{ popper: className }} />
+const CustomTooltip = styled(({className, ...props}) => (
+    <Tooltip {...props} classes={{popper: className}}/>
 ))({
     [`& .${tooltipClasses.tooltip}`]: {
         maxWidth: '170px',
-        textAlign:'center',
-        lineHeight:'12px',
-        fontFamily:'Fonts',
-        padding:10,
+        textAlign: 'center',
+        lineHeight: '12px',
+        fontFamily: 'Fonts',
+        padding: 10,
     },
 });
 
@@ -65,15 +65,20 @@ const ResultBlockListItem = ({
                         }}>
                             {
                                 promo.map(({promo_name, promo_img, promo_desk}) =>
-                                    <>
-                                        <CustomTooltip enterTouchDelay={0} TransitionComponent={Zoom} style={{maxWidth:20}} arrow title={promo_desk} placement="top">
-                                            <img style={{
-                                                width: '100%',
-                                                cursor: 'pointer'
-                                            }} src={'https://stock.mitsubishi.by/' + promo_img} alt={promo_name}/>
-                                        </CustomTooltip>
-
-                                    </>
+                                    <CustomTooltip
+                                        key={promo_name}
+                                        enterTouchDelay={0}
+                                        TransitionComponent={Zoom}
+                                        style={{maxWidth: 20}}
+                                        arrow title={promo_desk}
+                                        placement="top"
+                                    >
+                                        <img style={{
+                                            width: '100%',
+                                            cursor: 'pointer'
+                                        }} src={'https://stock.mitsubishi.by/' + promo_img} alt={promo_name}
+                                        />
+                                    </CustomTooltip>
                                 )
                             }
                         </div>
