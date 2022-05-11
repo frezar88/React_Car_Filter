@@ -6,14 +6,14 @@ import {FormControlLabel, Typography} from "@mui/material";
 import CustomizedCheckbox from "../../UI/MyInputCheckBox";
 
 const CountBlock = observer(() => {
-
-    const change=(e)=>{
-    let inputName = e.target.attributes['name'].value
-        if(e.target.checked){
-            ResultStore.setActivePromo([...ResultStore.ActivePromo,inputName])
-        }else{
-            ResultStore.setActivePromo(ResultStore.ActivePromo.filter(item=>item !== inputName))
+    const change = (e) => {
+        let inputName = e.target.attributes['name'].value
+        if (e.target.checked) {
+            ResultStore.setActivePromo([...ResultStore.ActivePromo, inputName])
+        } else {
+            ResultStore.setActivePromo(ResultStore.ActivePromo.filter(item => item !== inputName))
         }
+        ResultStore.getStartedCars()
     }
     return (
         <div className={s.countBlock}>
@@ -22,14 +22,15 @@ const CountBlock = observer(() => {
                 <h5>{ResultStore.Promo.length ? 'Cпецпредложение' : 'Авто в наличии'} </h5>
             </div>
             <div>
-                <form onChange={change}>
+                <form className={s.form} onChange={change}>
                     {
                         ResultStore.Promo.length
                             ?
                             ResultStore.Promo.map((el) =>
                                 <FormControlLabel
+                                    key={el}
                                     control={<CustomizedCheckbox data-name={'1'} name={el}/>}
-                                    label={<Typography>{el}</Typography>}
+                                    label={<Typography>{el} ({ResultStore.CountPromo[el]+1})</Typography>}
                                 />
                             ) :
                             false

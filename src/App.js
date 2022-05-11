@@ -1,7 +1,7 @@
 import s from './App.module.scss';
 import ResultCarBlock from "./components/resultCarBlock/ResultCarBlock";
 import SideBarBlock from "./components/sideBarBlock/SideBarBlock";
-import {useEffect, useMemo} from "react";
+import {useEffect} from "react";
 
 import FilterStore from './store/filterStore'
 import {observer} from "mobx-react-lite";
