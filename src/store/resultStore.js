@@ -10,6 +10,7 @@ class ResultStore {
     _promo = new Set();
     _activePromo = []
     _countPromo={}
+    _hiddenPromo= new Set()
 
     constructor() {
         makeAutoObservable(this)
@@ -31,14 +32,20 @@ class ResultStore {
                         }
                     })
                 }else{
+                    this._hiddenPromo.clear()
                     data.data['cars'].forEach(({promo}) => {
                         if (promo[0]) {
                             promo.forEach(el => {
                                 this._promo.add(el['promo_name'])
+                                this._hiddenPromo.add(el['promo_name'])
                             })
                         }
                     })
+                    if(!this._hiddenPromo.size){
+                        this._hiddenPromo.add('clear')
+                    }
                 }
+                console.log(this._hiddenPromo)
                 this._cars = [...data.data['cars']]
             }
         )
@@ -88,6 +95,10 @@ class ResultStore {
 
     get Promo() {
         return [...this._promo]
+    }
+
+    get HiddenPromo(){
+        return [...this._hiddenPromo]
     }
 
     setActivePromo(data) {

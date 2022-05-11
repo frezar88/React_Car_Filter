@@ -29,8 +29,26 @@ const CountBlock = observer(() => {
                             ResultStore.Promo.map((el) =>
                                 <FormControlLabel
                                     key={el}
-                                    control={<CustomizedCheckbox data-name={'1'} name={el}/>}
-                                    label={<Typography>{el} ({ResultStore.CountPromo[el]+1})</Typography>}
+                                    control={<CustomizedCheckbox
+                                        disabled={
+                                            !ResultStore.HiddenPromo.length
+                                                ? ''
+                                                : ResultStore.HiddenPromo[0] === 'clear'
+                                                    ? s.disabled
+                                                    : ResultStore.HiddenPromo.includes(el)
+                                                        ? ''
+                                                        : s.disabled
+                                        }
+                                        data-name={'1'} name={el}/>}
+                                    label={<Typography className={
+                                        !ResultStore.HiddenPromo.length
+                                            ? ''
+                                            : ResultStore.HiddenPromo[0] === 'clear'
+                                                ? s.disabled
+                                                : ResultStore.HiddenPromo.includes(el)
+                                                        ? ''
+                                                        : s.disabled
+                                    }>{el} ({ResultStore.CountPromo[el] + 1})</Typography>}
                                 />
                             ) :
                             false
