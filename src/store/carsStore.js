@@ -1,11 +1,12 @@
 import {makeAutoObservable} from "mobx";
 import {axiosGetCars} from "../http/requests";
+import FilterStore from './filterStore'
 
 
 class CarsStore {
     _cars = [];
     _sortState = '';
-    _promo = new Set();
+
 
     constructor() {
         makeAutoObservable(this)
@@ -13,6 +14,7 @@ class CarsStore {
 
     setStartedCars() {
         axiosGetCars().then((data) => {
+                this.bruteForceAnArray(data)
                 this.setCars([...data.data['cars']])
             }
         )
@@ -29,11 +31,56 @@ class CarsStore {
         }
     }
 
-    setSortState(data) {
-        return this._sortState = data
+
+    bruteForceAnArray(data){
+        data.data['cars'].forEach(({promo,brand,model}) => {
+            this.collectStartedPromoAndCountPromo(promo)
+            this.collectStartedBrands(brand)
+            this.collectStartedModels(model)
+        })
+
+    }
+//----------brand----------
+    collectStartedBrands(brand){
+        if(brand){
+            FilterStore.setStartedBrands(brand)
+        }
     }
 
-    getSortState(){
+//---------model---------
+    collectStartedModels(model){
+        if(model){
+            FilterStore.setStartedModel(model)
+        }
+    }
+
+//----------promo----------
+    collectStartedPromoAndCountPromo(promo) {
+
+            if (promo.length) {
+                promo.forEach(el => {
+                    FilterStore.setStartedPromo(el['promo_name'])
+                    this.collectCountPromo(el)
+                })
+            }
+
+    }
+    collectCountPromo(el) {
+        let allPromo =FilterStore.getCountPromo()
+        if (allPromo[el['promo_name']] || allPromo[el['promo_name']]===0){
+            allPromo[el['promo_name']]+=1
+        }else{
+            allPromo[el['promo_name']]=0
+        }
+        FilterStore.setCountPromo(allPromo)
+
+    }
+
+    setSortState(data) {
+        this._sortState = data
+    }
+
+    getSortState() {
         return this._sortState
     }
 
@@ -42,7 +89,7 @@ class CarsStore {
     }
 
     setCars(data) {
-        return this._cars = data
+        this._cars = data
     }
 }
 

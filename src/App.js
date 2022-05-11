@@ -10,14 +10,18 @@ const App = observer(() => {
     useEffect(() => {
         CarsStore.setStartedCars()
     }, [])
+    const changeForm = (e) => {
+        console.log(e.target)
+    }
     return (
         <div className={s.App}>
             {/*<HeaderCarsBlock/>*/}
-            <div className={s.wrapper}>
-                <SideBarBlock/>
-                <ResultCarBlock/>
-            </div>
-
+            <form onChange={changeForm}>
+                <div className={s.wrapper}>
+                    <SideBarBlock/>
+                    <ResultCarBlock/>
+                </div>
+            </form>
         </div>
     );
 });

@@ -2,11 +2,11 @@ import React from 'react';
 import s from './CountBlock.module.scss'
 import CarsStore from '../../../store/carsStore'
 import {observer} from "mobx-react-lite";
+import FilterStore from "../../../store/filterStore";
+import {FormControlLabel, Typography} from "@mui/material";
+import CustomizedCheckbox from "../../UI/MyInputCheckBox";
 
 const CountBlock = observer(() => {
-    const change = (e) => {
-
-    }
     return (
         <div className={s.countBlock}>
             <div>
@@ -14,8 +14,18 @@ const CountBlock = observer(() => {
                 <h5>{'Авто в наличии'} </h5>
             </div>
             <div>
-                <form className={s.form} onChange={change}>
-                </form>
+                {
+                    FilterStore.getStartedPromo().map(el =>
+                        <FormControlLabel
+                            key={el}
+                            control={<CustomizedCheckbox data-name={'promo'} name={el}/>}
+                            label={<Typography>{el} ({FilterStore.getCountPromo()[el] + 1})</Typography>}
+                        />
+                    )
+                }
+                {
+
+                }
             </div>
 
         </div>
