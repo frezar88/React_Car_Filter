@@ -5,8 +5,15 @@ import {observer} from "mobx-react-lite";
 import FilterStore from "../../../store/filterStore";
 import {FormControlLabel, Typography} from "@mui/material";
 import CustomizedCheckbox from "../../UI/MyInputCheckBox";
+import ChangeFormStore from "../../../store/changeFormStore";
 
 const CountBlock = observer(() => {
+
+    const checkStatusActive = () => {
+
+        return s.disabled
+    }
+
     return (
         <div className={s.countBlock}>
             <div>
@@ -19,7 +26,8 @@ const CountBlock = observer(() => {
                         <FormControlLabel
                             key={el}
                             control={<CustomizedCheckbox data-name={'promo'} name={el}/>}
-                            label={<Typography>{el} ({FilterStore.getCountPromo()[el] + 1})</Typography>}
+                            label={<Typography
+                                className={checkStatusActive()}>{el} ({FilterStore.getCountPromo()[el] + 1})</Typography>}
                         />
                     )
                 }

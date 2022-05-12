@@ -46,7 +46,6 @@ class CarsStore {
             || ChangeFormStore.getChangeColor().length
             || ChangeFormStore.getChangePromo().length
         ) {
-
             let actualCars = this.getCats()
                 .filter(item => ChangeFormStore.getChangeBrand().length ? ChangeFormStore.getChangeBrand().includes(item.brand) : item)
                 .filter(item => ChangeFormStore.getChangeModel().length ? ChangeFormStore.getChangeModel().includes(item.model) : item)
