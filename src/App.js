@@ -54,6 +54,7 @@ const App = observer(() => {
             default:
                 break
         }
+        console.log(ChangeFormStore.getAllChangeFilters())
     }
     return (
         <div className={s.App}>
