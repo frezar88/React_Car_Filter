@@ -11,7 +11,7 @@ const ResultBlockList = observer(() => {
         <div className={s.resultBlockList}>
             {
                 CarsStore.CarsList.map((item) =>
-                    <ResultBlockListItem key={item['car_id']} body={item.body} car_id={item.car_id} color={item.color}
+                    <ResultBlockListItem  key={item['car_id']} body={item.body} car_id={item.car_id} color={item.color}
                                          complectation={item.complectation}
                                          drive_type_id={item.drive_type_id} engine={item.engine}
                                          fueltype={item.fueltype}

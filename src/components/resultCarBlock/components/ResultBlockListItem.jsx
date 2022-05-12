@@ -41,7 +41,7 @@ const ResultBlockListItem = ({
                              }) => {
 
     return (
-        <div className={s.resultBlockListItem} data-car-id={car_id} data-model={model}
+        <div  className={s.resultBlockListItem} data-car-id={car_id} data-model={model}
              data-complectation={complectation} data-years={years}
              data-engine={engine} data-power={power} data-fueltype={fueltype}
              data-drive_type_id={drive_type_id}
