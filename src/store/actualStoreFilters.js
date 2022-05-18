@@ -1,5 +1,6 @@
 import {makeAutoObservable} from "mobx";
 import CarsStore from './carsStore'
+import ChangeFormStore from "./changeFormStore";
 
 class ActualStoreCar {
     _actualFilters = {
@@ -12,7 +13,8 @@ class ActualStoreCar {
         'body': new Set(),
         'location': new Set(),
         'color': new Set(),
-        'price':{min:0,max:0}
+        'price':{min:0,max:0},
+        'complectation':[]
 
     }
 
@@ -57,9 +59,7 @@ class ActualStoreCar {
                 let SortArray = CarsStore.getActualCarList().sort((a, b) => a.price - b.price)
                 this.setActualPrice({min: SortArray[0].price, max: SortArray[SortArray.length - 1].price})
             }
-            // else {
-            //     this.setActualPrice({min: 0, max: 0})
-            // }
+
 
         }
         return this.getActualFilters()
@@ -157,6 +157,7 @@ class ActualStoreCar {
         this._actualFilters.color.clear()
         this._actualFilters.drive_type_id.clear()
         this._actualFilters.price = {min: 0, max: 0}
+        // ChangeFormStore.setChangeComplectation([])
     }
 }
 

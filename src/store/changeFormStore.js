@@ -6,12 +6,13 @@ class ChangeFormStore {
         'brand': [],
         'model': [],
         'year': [],
-        'transmission_type':[],
-        'drive_type_id':[],
-        'body':[],
+        'transmission_type': [],
+        'drive_type_id': [],
+        'body': [],
         'location': [],
         'color': [],
-        'price':{min:0,max:0}
+        'price': {min: 0, max: 0},
+        'complectation': []
     }
 
 
@@ -21,6 +22,9 @@ class ChangeFormStore {
 
     getAllChangeFilters() {
         return this._changeData
+    }
+    setAllChangeFilters(data){
+        this._changeData = data
     }
 
 // ---------price----------
@@ -33,85 +37,94 @@ class ChangeFormStore {
     }
 
 //----------promo----------
-    setChangePromo(data){
+    setChangePromo(data) {
         this._changeData.promo = data
     }
 
-    getChangePromo(){
-        return  this._changeData.promo
+    getChangePromo() {
+        return this._changeData.promo
     }
+
 //----------brand----------
-    setChangeBrand(data){
+    setChangeBrand(data) {
         this._changeData.brand = data
     }
 
-    getChangeBrand(){
-        return  this._changeData.brand
+    getChangeBrand() {
+        return this._changeData.brand
     }
 
 //----------model----------
-    setChangeModel(data){
+    setChangeModel(data) {
         this._changeData.model = data
     }
 
-    getChangeModel(){
-        return  this._changeData.model
+    getChangeModel() {
+        return this._changeData.model
     }
 
 //----------year----------
-    setChangeYear(data){
+    setChangeYear(data) {
         this._changeData.year = data
     }
 
-    getChangeYear(){
-        return  this._changeData.year
+    getChangeYear() {
+        return this._changeData.year
     }
 
 //----------transmission_type----------
-    setChangeTransmission(data){
+    setChangeTransmission(data) {
         this._changeData.transmission_type = data
     }
 
-    getChangeTransmission(){
-        return  this._changeData.transmission_type
+    getChangeTransmission() {
+        return this._changeData.transmission_type
     }
 
 //----------drive_type_id----------
-    setChangeDrive(data){
+    setChangeDrive(data) {
         this._changeData.drive_type_id = data
     }
 
-    getChangeDrive(){
-        return  this._changeData.drive_type_id
+    getChangeDrive() {
+        return this._changeData.drive_type_id
     }
 
 //----------body----------
-    setChangeBody(data){
+    setChangeBody(data) {
         this._changeData.body = data
     }
 
-    getChangeBody(){
-        return  this._changeData.body
+    getChangeBody() {
+        return this._changeData.body
     }
 
 //----------location----------
-    setChangeLocation(data){
+    setChangeLocation(data) {
         this._changeData.location = data
     }
 
-    getChangeLocation(){
-        return  this._changeData.location
+    getChangeLocation() {
+        return this._changeData.location
     }
 
 //----------color----------
-    setChangeColor(data){
+    setChangeColor(data) {
         this._changeData.color = data
     }
 
-    getChangeColor(){
-        return  this._changeData.color
+    getChangeColor() {
+        return this._changeData.color
     }
 
+//--------complectation-----
+    setChangeComplectation(data) {
+        this._changeData.complectation = data
+    }
+
+    getChangeComplectation() {
+        return this._changeData.complectation
+    }
 }
 
 export default new ChangeFormStore()

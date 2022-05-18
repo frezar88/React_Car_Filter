@@ -5,7 +5,7 @@ import AccordionBlock from "../UI/AccordionBlock";
 import ResetFilterBlock from "./components/ResetFilterBlock";
 import {observer} from "mobx-react-lite";
 import CustomizedCheckbox from "../UI/MyInputCheckBox";
-import {dividerClasses, FormControlLabel, Typography} from "@mui/material";
+import {FormControlLabel, Typography} from "@mui/material";
 import FilterStore from "../../store/filterStore";
 import ActualStoreFilters from "../../store/actualStoreFilters";
 import {giveClassNameActiveOrDisabled} from "../../const";

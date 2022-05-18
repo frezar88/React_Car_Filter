@@ -6,9 +6,11 @@ import CarsStore from "./store/carsStore";
 import ChangeFormStore from "./store/changeFormStore";
 import ActualStoreFilters from "./store/actualStoreFilters";
 import UiStore from "./store/uiStore";
+import {observer} from "mobx-react-lite";
+import HeaderCarsBlock from "./components/headerCarsBlock/HeaderCarsBlock";
 
 
-const App = () => {
+const App = observer(() => {
     useEffect(() => {
         CarsStore.setStartedCars()
     }, [])
@@ -21,9 +23,11 @@ const App = () => {
         }
     }
     const changeForm = (e) => {
+
         let type = e.target.attributes['data-name'].value
         let value = e.target.attributes['name'].value
         let checked = e.target.checked
+
         switch (type) {
             case 'promo':
                 action('setChangePromo', 'getChangePromo', checked, value)
@@ -32,7 +36,17 @@ const App = () => {
                 action('setChangeBrand', 'getChangeBrand', checked, value)
                 break
             case 'model':
-                action('setChangeModel', 'getChangeModel', checked, value)
+                if (!checked) {
+                    ChangeFormStore.setAllChangeFilters(
+                        {
+                            ...ChangeFormStore.getAllChangeFilters(),
+                            complectation: [],
+                            model: [...ChangeFormStore.getChangeModel()].filter(item => item !== value)
+                        }
+                    )
+                } else {
+                    action('setChangeModel', 'getChangeModel', checked, value, 'model')
+                }
                 break
             case 'year':
                 action('setChangeYear', 'getChangeYear', checked, value)
@@ -52,14 +66,17 @@ const App = () => {
             case 'color':
                 action('setChangeColor', 'getChangeColor', checked, value)
                 break
+            case 'complectation':
+                action('setChangeComplectation', 'getChangeComplectation', checked, value)
+                break
             default:
                 break
         }
+
         ActualStoreFilters.takeActualCarList()
 
-
         UiStore.setArrayCountSlice(27)
-        console.log(e.target)
+
     }
     return (
         <div className={s.App}>
@@ -72,6 +89,6 @@ const App = () => {
             </form>
         </div>
     );
-};
+});
 
 export default App;

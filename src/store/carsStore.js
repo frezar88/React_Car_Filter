@@ -28,7 +28,6 @@ class CarsStore {
     }
 
     get CarsList() {
-
         switch (this.getSortState()) {
             case 'asc':
                 return [...this.createActualCarList()].sort((a, b) => a.price - b.price)
@@ -54,6 +53,7 @@ class CarsStore {
             || ChangeFormStore.getChangePromo().length
             || ChangeFormStore.getChangePrice().min
             || ChangeFormStore.getChangePrice().max
+            || ChangeFormStore.getChangeComplectation().length
         ) {
             let actualCars = this.getCats()
                 .filter(item => ChangeFormStore.getChangePrice().min ? ChangeFormStore.getChangePrice().min <= item.price : item)
@@ -66,10 +66,13 @@ class CarsStore {
                 .filter(item => ChangeFormStore.getChangeBody().length ? ChangeFormStore.getChangeBody().includes(item.body) : item)
                 .filter(item => ChangeFormStore.getChangeLocation().length ? ChangeFormStore.getChangeLocation().includes(item.location) : item)
                 .filter(item => ChangeFormStore.getChangeColor().length ? ChangeFormStore.getChangeColor().includes(item.color) : item)
+                .filter(item => ChangeFormStore.getChangeComplectation().length ? ChangeFormStore.getChangeComplectation().includes(item.complectation) : item)
                 .filter(item => ChangeFormStore.getChangePromo().length
                     ? item.promo ? item.promo.find(item2 => ChangeFormStore.getChangePromo().includes(item2['promo_name'])) : false
                     : item)
-            this.setActualCarList(actualCars)
+                this.setActualCarList(actualCars)
+
+
 
             return actualCars
 

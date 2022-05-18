@@ -54,6 +54,7 @@ const ResultBlockList = observer(() => {
                                              price2={item.price2} seat_count={item['seat-count']}
                                              transmission_type={item.transmission_type}
                                              years={item.years} promo={item.promo} reserved={item.reserved}
+                                             vin = {item.vin}
                         />
                     )
             }

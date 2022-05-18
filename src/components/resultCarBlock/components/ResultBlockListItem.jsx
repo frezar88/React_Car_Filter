@@ -59,8 +59,12 @@ const ResultBlockListItem = ({
         btnSendModel.setAttribute('price', price)
         btnSendModel.setAttribute('location', location)
         btnSendModel.setAttribute('vin', vin)
-        if (promo) {
-            btnSendModel.setAttribute('promo', promo)
+        if (promo.length) {
+            let arrPromo = []
+            promo.forEach(({promo_name})=>{
+                arrPromo.push(promo_name)
+            })
+            btnSendModel.setAttribute('promo', arrPromo.join(' '))
         } else {
             btnSendModel.removeAttribute('promo')
         }
@@ -86,8 +90,8 @@ const ResultBlockListItem = ({
              data-transmission_type={transmission_type} data-price={price} data-location={location}
         >
             <div className={s.img}>
-                {/*<img src={'https://stock.mitsubishi.by/' + image} alt="car"/>*/}
-                <img src={image} alt="car"/>
+                <img src={'https://stock.mitsubishi.by/' + image} alt="car"/>
+                {/*<img src={image} alt="car"/>*/}
 
                 {reserved == '1'
                     ? <img style={{position: "absolute", left: 0, width: '100%'}} src={reservedImg} alt="reserved"/>
