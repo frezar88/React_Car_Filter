@@ -5,8 +5,12 @@ import AccordionBlock from "../UI/AccordionBlock";
 import ResetFilterBlock from "./components/ResetFilterBlock";
 import {observer} from "mobx-react-lite";
 import CustomizedCheckbox from "../UI/MyInputCheckBox";
-import {FormControlLabel, Typography} from "@mui/material";
+import {dividerClasses, FormControlLabel, Typography} from "@mui/material";
 import FilterStore from "../../store/filterStore";
+import ActualStoreFilters from "../../store/actualStoreFilters";
+import {giveClassNameActiveOrDisabled} from "../../const";
+import RangeSlider from "../UI/MyInputRange";
+import ChangeFormStore from "../../store/changeFormStore";
 
 
 const SideBarBlock = observer(() => {
@@ -15,40 +19,102 @@ const SideBarBlock = observer(() => {
         <div className={s.sideBarBlock}>
             <div className={s.wrapper}>
                 <CountBlock/>
-                <AccordionBlock open={true} name={'Бренд'}>
-                    <div className={s.accordContainer}>
-                        {
-                            FilterStore.getStartedBrand().map((el) =>
-                                <FormControlLabel
-                                    key={el}
-                                    control={<CustomizedCheckbox data-name={'brand'} name={el}/>}
-                                    label={<Typography>{el}</Typography>}
-                                />
-                            )
-                        }
-                    </div>
-                </AccordionBlock>
+                {FilterStore.getStartedBrand() && FilterStore.getStartedBrand().length !== 1
+                    ?
+                    <AccordionBlock open={true} name={'Бренд'}>
+                        <div className={s.accordContainer}>
+                            {
+                                FilterStore.getStartedBrand().map((el) =>
+                                    <FormControlLabel
+                                        key={el}
+                                        control={<CustomizedCheckbox
+                                            disabled={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualBrand(), '1')}
+                                            data-name={'brand'} name={el}/>}
+                                        label={<Typography
+                                            className={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualBrand())}>{el}</Typography>}
+                                    />
+                                )
+                            }
+                        </div>
+                    </AccordionBlock>
+                    :
+                    false
+                }
+
                 <AccordionBlock open={true} name={'Модель'}>
                     <div className={s.accordContainer}>
                         {
                             FilterStore.getStartedModel().map((el) =>
                                 <FormControlLabel
                                     key={el}
-                                    control={<CustomizedCheckbox data-name={'model'} name={el}/>}
-                                    label={<Typography>{el}</Typography>}
+                                    control={<CustomizedCheckbox
+                                        disabled={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualModel(), '1')}
+                                        data-name={'model'} name={el}/>}
+                                    label={<Typography
+                                        className={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualModel())}> {el}</Typography>}
                                 />
                             )
                         }
                     </div>
                 </AccordionBlock>
+                {
+                    FilterStore.getStartedComplectations().filter(item => ChangeFormStore.getChangeModel().includes(Object.keys(item).join())).length
+                        ?       <AccordionBlock
+                            className={s.complectaion}
+                            style={{display: 'grid'}}
+                            open={true}
+                            name={'Комплектация'}
+                            id={'price'}
+                        >
+                            {
+                                FilterStore.getStartedComplectations()
+                                    .filter(item => ChangeFormStore.getChangeModel().includes(Object.keys(item).join()))
+                                    .map((item, index) =>
+                                        <div
+                                            key={index}
+                                            className={s.complectaions__block}
+                                        >
+                                            <h3 className={s.title_complectation}>{Object.keys(item)}</h3>
+                                            {
+                                                item[Object.keys(item)].map((el, index) =>
+                                                    <div key={index} style={{display: 'grid'}}>
+                                                        <FormControlLabel
+                                                            control={<CustomizedCheckbox data-name={'complectation'}
+                                                                                         name={el}/>}
+                                                            label={<Typography>{el} </Typography>}
+                                                        />
+                                                    </div>
+                                                )
+                                            }
+                                        </div>
+                                    )
+                            }
+                        </AccordionBlock>
+                        :''
+                }
+
+
+                <AccordionBlock open={true} name={'Цена'}
+                                id={'price'}>
+                    {
+                        FilterStore.getStartedPrice()["min"]
+                            ? <RangeSlider/>
+                            : false
+                    }
+                </AccordionBlock>
+
+
                 <AccordionBlock open={true} name={'Год'}>
                     <div className={s.accordContainer}>
                         {
                             FilterStore.getStartedYear().map((el) =>
                                 <FormControlLabel
                                     key={el}
-                                    control={<CustomizedCheckbox data-name={'year'} name={el}/>}
-                                    label={<Typography>{el}</Typography>}
+                                    control={<CustomizedCheckbox
+                                        disabled={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualYear(), '1')}
+                                        data-name={'year'} name={el}/>}
+                                    label={<Typography
+                                        className={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualYear())}>{el}</Typography>}
                                 />
                             )
                         }
@@ -60,8 +126,11 @@ const SideBarBlock = observer(() => {
                             FilterStore.getStartedTransmission().map((el) =>
                                 <FormControlLabel
                                     key={el}
-                                    control={<CustomizedCheckbox data-name={'transmission_type'} name={el}/>}
-                                    label={<Typography>{el}</Typography>}
+                                    control={<CustomizedCheckbox
+                                        disabled={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualTransmission(), '1')}
+                                        data-name={'transmission_type'} name={el}/>}
+                                    label={<Typography
+                                        className={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualTransmission())}>{el}</Typography>}
                                 />
                             )
                         }
@@ -73,8 +142,11 @@ const SideBarBlock = observer(() => {
                             FilterStore.getStartedDrive().map((el) =>
                                 <FormControlLabel
                                     key={el}
-                                    control={<CustomizedCheckbox data-name={'drive_type_id'} name={el}/>}
-                                    label={<Typography>{el}</Typography>}
+                                    control={<CustomizedCheckbox
+                                        disabled={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualDrive(), '1')}
+                                        data-name={'drive_type_id'} name={el}/>}
+                                    label={<Typography
+                                        className={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualDrive())}>{el}</Typography>}
                                 />
                             )
                         }
@@ -86,8 +158,11 @@ const SideBarBlock = observer(() => {
                             FilterStore.getStartedBody().map((el) =>
                                 <FormControlLabel
                                     key={el}
-                                    control={<CustomizedCheckbox data-name={'body'} name={el}/>}
-                                    label={<Typography>{el}</Typography>}
+                                    control={<CustomizedCheckbox
+                                        disabled={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualBody(), '1')}
+                                        data-name={'body'} name={el}/>}
+                                    label={<Typography
+                                        className={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualBody(),)}>{el}</Typography>}
                                 />
                             )
                         }
@@ -99,8 +174,11 @@ const SideBarBlock = observer(() => {
                             FilterStore.getStartedLocation().map((el) =>
                                 <FormControlLabel
                                     key={el}
-                                    control={<CustomizedCheckbox data-name={'location'} name={el}/>}
-                                    label={<Typography>{el}</Typography>}
+                                    control={<CustomizedCheckbox
+                                        disabled={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualLocation(), '1')}
+                                        data-name={'location'} name={el}/>}
+                                    label={<Typography
+                                        className={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualLocation(),)}>{el}</Typography>}
                                 />
                             )
                         }
@@ -112,33 +190,16 @@ const SideBarBlock = observer(() => {
                             FilterStore.getStartedColor().map((el) =>
                                 <FormControlLabel
                                     key={el}
-                                    control={<CustomizedCheckbox data-name={'color'} name={el}/>}
-                                    label={<Typography>{el}</Typography>}
+                                    control={<CustomizedCheckbox
+                                        disabled={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualColor(), '1')}
+                                        data-name={'color'} name={el}/>}
+                                    label={<Typography
+                                        className={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualColor(),)}>{el}</Typography>}
                                 />
                             )
                         }
                     </div>
                 </AccordionBlock>
-
-                {/*<AccordionBlock*/}
-                {/*    open={true}*/}
-                {/*    name={'Бренд'}*/}
-
-                {/*>*/}
-                {/*    <GroupCheckBox*/}
-                {/*        inputName={'brand'}*/}
-                {/*        data={[{category: '1', disabled: false, name: '1'}]}*/}
-                {/*    />*/}
-                {/*</AccordionBlock>*/}
-
-
-                {/*<AccordionBlock open={true} name={'price'}*/}
-                {/*                id={'price'}>*/}
-
-                {/*    <RangeSlider/>*/}
-                {/*</AccordionBlock>*/}
-
-
                 <ResetFilterBlock/>
             </div>
         </div>

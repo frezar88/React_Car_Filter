@@ -2,12 +2,13 @@ import s from './App.module.scss';
 import ResultCarBlock from "./components/resultCarBlock/ResultCarBlock";
 import SideBarBlock from "./components/sideBarBlock/SideBarBlock";
 import {useEffect} from "react";
-import {observer} from "mobx-react-lite";
 import CarsStore from "./store/carsStore";
 import ChangeFormStore from "./store/changeFormStore";
+import ActualStoreFilters from "./store/actualStoreFilters";
+import UiStore from "./store/uiStore";
 
 
-const App = observer(() => {
+const App = () => {
     useEffect(() => {
         CarsStore.setStartedCars()
     }, [])
@@ -54,7 +55,11 @@ const App = observer(() => {
             default:
                 break
         }
-        console.log(ChangeFormStore.getAllChangeFilters())
+        ActualStoreFilters.takeActualCarList()
+
+
+        UiStore.setArrayCountSlice(27)
+        console.log(e.target)
     }
     return (
         <div className={s.App}>
@@ -67,6 +72,6 @@ const App = observer(() => {
             </form>
         </div>
     );
-});
+};
 
 export default App;

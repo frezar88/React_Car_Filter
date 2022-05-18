@@ -2,6 +2,7 @@ import {makeAutoObservable} from "mobx";
 import {axiosGetCars} from "../http/requests";
 import FilterStore from './filterStore'
 import ChangeFormStore from './changeFormStore'
+import {CheckUrlAndClickInput} from "../const";
 
 
 class CarsStore {
@@ -18,11 +19,16 @@ class CarsStore {
         axiosGetCars().then((data) => {
                 this.bruteForceAnArray(data)
                 this.setCars([...data.data['cars']])
+            setTimeout(()=>{
+                CheckUrlAndClickInput()
+            },1000)
+
             }
         )
     }
 
     get CarsList() {
+
         switch (this.getSortState()) {
             case 'asc':
                 return [...this.createActualCarList()].sort((a, b) => a.price - b.price)
@@ -33,6 +39,7 @@ class CarsStore {
             default:
                 return this.createActualCarList()
         }
+
     }
 
     createActualCarList() {
@@ -45,8 +52,12 @@ class CarsStore {
             || ChangeFormStore.getChangeLocation().length
             || ChangeFormStore.getChangeColor().length
             || ChangeFormStore.getChangePromo().length
+            || ChangeFormStore.getChangePrice().min
+            || ChangeFormStore.getChangePrice().max
         ) {
             let actualCars = this.getCats()
+                .filter(item => ChangeFormStore.getChangePrice().min ? ChangeFormStore.getChangePrice().min <= item.price : item)
+                .filter(item => ChangeFormStore.getChangePrice().max ? ChangeFormStore.getChangePrice().max >= item.price : item)
                 .filter(item => ChangeFormStore.getChangeBrand().length ? ChangeFormStore.getChangeBrand().includes(item.brand) : item)
                 .filter(item => ChangeFormStore.getChangeModel().length ? ChangeFormStore.getChangeModel().includes(item.model) : item)
                 .filter(item => ChangeFormStore.getChangeYear().length ? ChangeFormStore.getChangeYear().includes(item.years) : item)
@@ -59,9 +70,11 @@ class CarsStore {
                     ? item.promo ? item.promo.find(item2 => ChangeFormStore.getChangePromo().includes(item2['promo_name'])) : false
                     : item)
             this.setActualCarList(actualCars)
+
             return actualCars
 
         }
+        this.setActualCarList([])
         return this.getCats()
 
     }
@@ -75,6 +88,9 @@ class CarsStore {
     }
 
     bruteForceAnArray(data) {
+        this.collectStartedPrice(data)
+        let obj = {}
+        let arr =[]
         data.data['cars'].forEach(({
                                        promo,
                                        brand,
@@ -84,7 +100,8 @@ class CarsStore {
                                        drive_type_id,
                                        body,
                                        location,
-                                       color
+                                       color,
+                                       complectation
                                    }) => {
             this.collectStartedPromoAndCountPromo(promo)
             this.collectStartedBrands(brand)
@@ -95,7 +112,36 @@ class CarsStore {
             this.collectStartedBody(body)
             this.collectStartedLocation(location)
             this.collectStartedColor(color)
+            this.collectStartedComplectations(model, complectation, obj)
         })
+
+        for (let key  in obj){
+            arr.push({[key]:[...obj[key]]})
+        }
+        FilterStore.setStartedComplectation(arr)
+    }
+
+
+//-------complectations-------
+    collectStartedComplectations(model, complectations, obj,) {
+        if (!obj[model]){
+            obj[model] =new Set([])
+        }else{
+            obj[model].add(complectations)
+        }
+
+
+    }
+
+
+//---------price-----------
+    collectStartedPrice(data) {
+        let sortedArrToGetMinMaxPrice = data.data['cars'].sort((a, b) => a.price - b.price)
+        FilterStore.setStartedPrice(
+            {
+                min: sortedArrToGetMinMaxPrice[0].price,
+                max: sortedArrToGetMinMaxPrice[sortedArrToGetMinMaxPrice.length - 1].price
+            })
 
     }
 
@@ -106,6 +152,7 @@ class CarsStore {
         }
     }
 
+
 //---------model---------
     collectStartedModels(model) {
         if (model) {
@@ -113,13 +160,14 @@ class CarsStore {
         }
     }
 
+
 //---------year---------
     collectStartedYear(years) {
         if (years) {
             FilterStore.setStartedYear(years)
-
         }
     }
+
 
 //---------transmission---------
     collectStartedTransmission(transmission_type) {
@@ -128,12 +176,14 @@ class CarsStore {
         }
     }
 
+
 //---------drive---------
     collectStartedDrive(drive_type_id) {
         if (drive_type_id) {
             FilterStore.setStartedDrive(drive_type_id)
         }
     }
+
 
 //---------body---------
     collectStartedBody(body) {
@@ -142,12 +192,14 @@ class CarsStore {
         }
     }
 
+
 //---------location---------
     collectStartedLocation(location) {
         if (location) {
             FilterStore.setStartedLocation(location)
         }
     }
+
 
 //---------color---------
     collectStartedColor(color) {
@@ -159,15 +211,14 @@ class CarsStore {
 
 //----------promo----------
     collectStartedPromoAndCountPromo(promo) {
-
         if (promo.length) {
             promo.forEach(el => {
                 FilterStore.setStartedPromo(el['promo_name'])
                 this.collectCountPromo(el)
             })
         }
-
     }
+
 
     collectCountPromo(el) {
         let allPromo = FilterStore.getCountPromo()
@@ -177,7 +228,6 @@ class CarsStore {
             allPromo[el['promo_name']] = 0
         }
         FilterStore.setCountPromo(allPromo)
-
     }
 
     setSortState(data) {

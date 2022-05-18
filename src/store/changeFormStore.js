@@ -10,7 +10,8 @@ class ChangeFormStore {
         'drive_type_id':[],
         'body':[],
         'location': [],
-        'color': []
+        'color': [],
+        'price':{min:0,max:0}
     }
 
 
@@ -20,6 +21,15 @@ class ChangeFormStore {
 
     getAllChangeFilters() {
         return this._changeData
+    }
+
+// ---------price----------
+    setChangePrice(data) {
+        this._changeData.price = data
+    }
+
+    getChangePrice() {
+        return this._changeData.price
     }
 
 //----------promo----------

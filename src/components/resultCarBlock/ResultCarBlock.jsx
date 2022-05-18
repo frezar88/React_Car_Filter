@@ -5,11 +5,12 @@ import ResultBlockList from "./components/ResultBlockList";
 import {observer} from "mobx-react-lite";
 import CarsStore from '../../store/carsStore'
 import Spinner from "../UI/Spinner";
+import MobileBlock from "../mobile/MobileBlock";
 
 const ResultCarBlock = observer(() => {
     return (
         <div className={s.resultCarBlock}>
-            {/*<MobileBlock/>*/}
+            <MobileBlock/>
             <SortBarBlock/>
             {
                 CarsStore.CarsList.length

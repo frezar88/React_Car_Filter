@@ -1,14 +1,15 @@
 .countBlock{
   border-bottom: solid 1px rgb(220, 220, 220);
+  background: var(--prime-background);
   div{
     &:first-child{
-      display: grid;
-      grid-template-columns: 1fr;
-      align-items: center;
-      justify-content: center;
+      //display: grid;
+      //grid-template-columns: 1fr;
+      //align-items: center;
+      //justify-content: center;
       grid-gap: 40px;
       //border-bottom: solid 1px rgb(220, 220, 220);
-      padding: 30px 10px 25px;
+      //padding: 30px 10px 25px;
       h6,h5{
         align-self: center;
         justify-self: center;
@@ -22,18 +23,19 @@
         font-size: 20px;
       }
     }
-    &:last-child{
-      display: grid;
-      padding: 0 16px 20px;
-    }
-    .form{
-      display: grid;
-      justify-content: flex-start;
-    }
+    //&:last-child{
+    //  display: grid;
+    //  padding: 0 16px 20px;
+    //}
+    //.form{
+    //  display: grid;
+    //  justify-content: flex-start;
+    //}
   }
-.disabled{
-  opacity: 0.6;
-  color: var(--prime-light-gray);
-}
+
+  .disabled {
+    opacity: 0.6;
+    color: var(--prime-light-gray);
+  }
 
 }

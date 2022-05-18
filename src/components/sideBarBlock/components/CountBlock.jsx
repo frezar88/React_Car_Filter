@@ -5,35 +5,36 @@ import {observer} from "mobx-react-lite";
 import FilterStore from "../../../store/filterStore";
 import {FormControlLabel, Typography} from "@mui/material";
 import CustomizedCheckbox from "../../UI/MyInputCheckBox";
-import ChangeFormStore from "../../../store/changeFormStore";
+import {giveClassNameActiveOrDisabled} from "../../../const";
+import ActualStoreFilters from "../../../store/actualStoreFilters";
+import AccordionBlock from "../../UI/AccordionBlock";
 
 const CountBlock = observer(() => {
 
-    const checkStatusActive = () => {
-
-        return s.disabled
-    }
 
     return (
         <div className={s.countBlock}>
             <div>
-                <h6>Найдено {CarsStore.CarsList.length} авто</h6>
-                <h5>{'Авто в наличии'} </h5>
+                <h6 style={{textAlign:'center', padding:'20px 0 0',background:'#fff'}}>Найдено {CarsStore.CarsList.length} авто</h6>
+                {/*<h5>{'Авто в наличии'} </h5>*/}
             </div>
             <div>
-                {
-                    FilterStore.getStartedPromo().map(el =>
-                        <FormControlLabel
-                            key={el}
-                            control={<CustomizedCheckbox data-name={'promo'} name={el}/>}
-                            label={<Typography
-                                className={checkStatusActive()}>{el} ({FilterStore.getCountPromo()[el] + 1})</Typography>}
-                        />
-                    )
-                }
-                {
-
-                }
+                <AccordionBlock open={true} style={{marginBottom: 20,boxShadow:'none'}} name={'Спецпредложение'}>
+                    <div style={{display:'grid',gridGap:0}}>
+                        {
+                            FilterStore.getStartedPromo().map(el =>
+                                <FormControlLabel
+                                    key={el}
+                                    control={<CustomizedCheckbox
+                                        disabled={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualPromo(), '1')}
+                                        data-name={'promo'} name={el}/>}
+                                    label={<Typography
+                                        className={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualPromo(),)}>{el} ({FilterStore.getCountPromo()[el] + 1})</Typography>}
+                                />
+                            )
+                        }
+                    </div>
+                </AccordionBlock>
             </div>
 
         </div>

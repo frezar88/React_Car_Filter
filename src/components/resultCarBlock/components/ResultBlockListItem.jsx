@@ -7,6 +7,7 @@ import MyButton from "../../UI/MyButton";
 import Tooltip from "@mui/material/Tooltip";
 import {styled} from "@mui/material/styles";
 import {tooltipClasses, Zoom} from "@mui/material";
+import reservedImg from '../../../images/zarezervirovan_1.svg'
 
 const CustomTooltip = styled(({className, ...props}) => (
     <Tooltip {...props} classes={{popper: className}}/>
@@ -38,18 +39,61 @@ const ResultBlockListItem = ({
                                  transmission_type,
                                  years,
                                  promo,
+                                 vin,
+                                 reserved,
+                                 ...props
                              }) => {
 
+    const setDataForModal = (e) => {
+        const modal = document.querySelector('.modal-car ')
+        const html = document.querySelector('body')
+        const btnSendModel = document.querySelector('.modal-car .modal-car__content .modal-form-send')
+        btnSendModel.setAttribute('model', model)
+        btnSendModel.setAttribute('complectation', complectation)
+        btnSendModel.setAttribute('years', years)
+        btnSendModel.setAttribute('engine', engine)
+        btnSendModel.setAttribute('power', power)
+        btnSendModel.setAttribute('fueltype', fueltype)
+        btnSendModel.setAttribute('drive_type_id', drive_type_id)
+        btnSendModel.setAttribute('transmission_type', transmission_type)
+        btnSendModel.setAttribute('price', price)
+        btnSendModel.setAttribute('location', location)
+        btnSendModel.setAttribute('vin', vin)
+        if (promo) {
+            btnSendModel.setAttribute('promo', promo)
+        } else {
+            btnSendModel.removeAttribute('promo')
+        }
+        html.style.overflow = 'hidden'
+        modal.classList.add('active')
+
+        let content = document.querySelector('.modal-car__content')
+        let contentSuccess = document.querySelector('.modal-car__content-success')
+        contentSuccess['style'].display = 'none'
+
+        content['style'].display = 'block'
+
+    }
+
     return (
-        <div  className={s.resultBlockListItem} data-car-id={car_id} data-model={model}
+        <div {...props}
+             className={reserved == '0' ? [s.resultBlockListItem].join(' ') : [s.resultBlockListItem, s.disabled].join(' ')}
+             data-car-id={car_id}
+             data-model={model}
              data-complectation={complectation} data-years={years}
              data-engine={engine} data-power={power} data-fueltype={fueltype}
              data-drive_type_id={drive_type_id}
              data-transmission_type={transmission_type} data-price={price} data-location={location}
         >
             <div className={s.img}>
-                <img src={'https://stock.mitsubishi.by/' + image} alt="car"/>
-                {/*<img src={image} alt="car"/>*/}
+                {/*<img src={'https://stock.mitsubishi.by/' + image} alt="car"/>*/}
+                <img src={image} alt="car"/>
+
+                {reserved == '1'
+                    ? <img style={{position: "absolute", left: 0, width: '100%'}} src={reservedImg} alt="reserved"/>
+                    : false
+                }
+
                 {
                     promo[0]
                         ?
@@ -152,7 +196,7 @@ const ResultBlockListItem = ({
                     <p>{location}</p>
                 </div>
                 <div className={s.btnMore}>
-                    <MyButton>Запросить предложение</MyButton>
+                    <MyButton onClick={setDataForModal}>Запросить предложение</MyButton>
 
                 </div>
             </div>

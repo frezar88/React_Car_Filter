@@ -6,11 +6,13 @@ class FilterStore {
         'brand': new Set(),
         'model': new Set(),
         'year': new Set(),
-        'transmission_type':new Set(),
-        'drive_type_id':new Set(),
-        'body':new Set(),
+        'transmission_type': new Set(),
+        'drive_type_id': new Set(),
+        'body': new Set(),
         'location': new Set(),
-        'color': new Set()
+        'color': new Set(),
+        'price': {min: 0, max: 100},
+        complectation: []
     }
     _countPromo = {};
 
@@ -22,6 +24,7 @@ class FilterStore {
         return this._startedFilters
     }
 
+
 //----------promo---------
 
     setStartedPromo(data) {
@@ -29,80 +32,101 @@ class FilterStore {
     }
 
     getStartedPromo() {
-        return [...this._startedFilters.promo].sort((a,b)=>a.localeCompare(b))
+        return [...this._startedFilters.promo].sort((a, b) => a.localeCompare(b))
     }
+
 //---------brand--------
 
-    setStartedBrand(data){
+    setStartedBrand(data) {
         this._startedFilters.brand.add(data)
     }
 
-    getStartedBrand(){
-        return [...this._startedFilters.brand].sort((a,b)=>a.localeCompare(b))
+    getStartedBrand() {
+        return [...this._startedFilters.brand].sort((a, b) => a.localeCompare(b))
     }
+
 //---------model---------
 
-    setStartedModel(data){
+    setStartedModel(data) {
         this._startedFilters.model.add(data)
     }
 
-    getStartedModel(){
-       return  [...this._startedFilters.model].sort((a,b)=>a.localeCompare(b))
+    getStartedModel() {
+        return [...this._startedFilters.model].sort((a, b) => a.localeCompare(b))
     }
+
 //---------year---------
-    setStartedYear(data){
+    setStartedYear(data) {
         this._startedFilters.year.add(data)
     }
 
-    getStartedYear(){
-        return  [...this._startedFilters.year].sort((a,b)=>a - b)
+    getStartedYear() {
+        return [...this._startedFilters.year].sort((a, b) => a - b)
     }
 
 //---------transmission_type----------
-    setStartedTransmission(data){
+    setStartedTransmission(data) {
         this._startedFilters.transmission_type.add(data)
     }
 
-    getStartedTransmission(){
-        return  [...this._startedFilters.transmission_type]
+    getStartedTransmission() {
+        return [...this._startedFilters.transmission_type]
     }
 
 //---------drive_type_id----------
-    setStartedDrive(data){
+    setStartedDrive(data) {
         this._startedFilters.drive_type_id.add(data)
     }
 
-    getStartedDrive(){
-        return  [...this._startedFilters.drive_type_id].sort((a,b)=>a.localeCompare(b))
+    getStartedDrive() {
+        return [...this._startedFilters.drive_type_id].sort((a, b) => a.localeCompare(b))
     }
 
 //---------body----------
-    setStartedBody(data){
+    setStartedBody(data) {
         this._startedFilters.body.add(data)
     }
 
-    getStartedBody(){
-        return  [...this._startedFilters.body].sort((a,b)=>a.localeCompare(b))
+    getStartedBody() {
+        return [...this._startedFilters.body].sort((a, b) => a.localeCompare(b))
     }
 
 //---------location----------
-    setStartedLocation(data){
+    setStartedLocation(data) {
         this._startedFilters.location.add(data)
     }
 
-    getStartedLocation(){
-        return  [...this._startedFilters.location].sort((a,b)=>a.localeCompare(b))
+    getStartedLocation() {
+        return [...this._startedFilters.location].sort((a, b) => a.localeCompare(b))
     }
 
 //---------color----------
-    setStartedColor(data){
+    setStartedColor(data) {
         this._startedFilters.color.add(data)
     }
 
-    getStartedColor(){
-        return  [...this._startedFilters.color].sort((a,b)=>a.localeCompare(b))
+    getStartedColor() {
+        return [...this._startedFilters.color].sort((a, b) => a.localeCompare(b))
     }
 
+//--------complectaion--------
+    setStartedComplectation(data) {
+        this._startedFilters.complectation = data
+    }
+
+    getStartedComplectations() {
+        return [...this._startedFilters.complectation].sort((a,b)=> Object.keys(a)[0].localeCompare(Object.keys(b)[0]))
+    }
+
+// --------price----------
+
+    setStartedPrice(data) {
+        this._startedFilters.price = data
+    }
+
+    getStartedPrice() {
+        return this._startedFilters.price
+    }
 
 
     setCountPromo(data) {
