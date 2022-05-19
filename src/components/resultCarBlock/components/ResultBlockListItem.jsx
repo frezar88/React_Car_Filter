@@ -90,8 +90,8 @@ const ResultBlockListItem = ({
              data-transmission_type={transmission_type} data-price={price} data-location={location}
         >
             <div className={s.img}>
-                <img src={'https://stock.mitsubishi.by/' + image} alt="car"/>
-                {/*<img src={image} alt="car"/>*/}
+                {/*<img src={'https://stock.mitsubishi.by/' + image} alt="car"/>*/}
+                <img src={image} alt="car"/>
 
                 {reserved == '1'
                     ? <img style={{position: "absolute", left: 0, width: '100%'}} src={reservedImg} alt="reserved"/>

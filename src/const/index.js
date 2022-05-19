@@ -1,7 +1,8 @@
 import s from "../components/sideBarBlock/SideBarBlock.module.scss";
 
 export const BRAND_NAME = 'Mitsubishi'
-export const PRIME_COLOR = '#ed1c24'
+// export const PRIME_COLOR = '#ed1c24'
+export const PRIME_COLOR = '#e37639'
 
 
 
