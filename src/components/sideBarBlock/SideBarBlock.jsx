@@ -57,41 +57,72 @@ const SideBarBlock = observer(() => {
                         }
                     </div>
                 </AccordionBlock>
-                {
-                    FilterStore.getStartedComplectations().filter(item => ChangeFormStore.getChangeModel().includes(Object.keys(item).join())).length
-                        ?       <AccordionBlock
-                            className={s.complectaion}
-                            style={{display: 'grid'}}
-                            open={true}
-                            name={'Комплектация'}
-                            id={'price'}
-                        >
-                            {
-                                FilterStore.getStartedComplectations()
-                                    .filter(item => ChangeFormStore.getChangeModel().includes(Object.keys(item).join()))
-                                    .map((item, index) =>
-                                        <div
-                                            key={index}
-                                            className={s.complectaions__block}
-                                        >
-                                            <h3 className={s.title_complectation}>{Object.keys(item)}</h3>
-                                            {
-                                                item[Object.keys(item)].map((el, index) =>
-                                                    <div key={index} style={{display: 'grid'}}>
-                                                        <FormControlLabel
-                                                            control={<CustomizedCheckbox data-name={'complectation'}
-                                                                                         name={el}/>}
-                                                            label={<Typography>{el} </Typography>}
-                                                        />
-                                                    </div>
-                                                )
-                                            }
-                                        </div>
-                                    )
-                            }
-                        </AccordionBlock>
-                        :''
-                }
+                {/*{*/}
+                {/*    FilterStore.getStartedComplectations().filter(item => ChangeFormStore.getChangeModel().includes(Object.keys(item).join())).length*/}
+                {/*        ? <AccordionBlock*/}
+                {/*            className={s.complectaion}*/}
+                {/*            style={{display: 'grid'}}*/}
+                {/*            open={true}*/}
+                {/*            name={'Комплектация'}*/}
+                {/*            id={'price'}*/}
+                {/*        >*/}
+                {/*            {*/}
+                {/*                FilterStore.getStartedComplectations()*/}
+                {/*                    .filter(item => ChangeFormStore.getChangeModel().includes(Object.keys(item).join()))*/}
+                {/*                    .map((item, index) =>*/}
+                {/*                        <div*/}
+                {/*                            key={index}*/}
+                {/*                            className={s.complectaions__block}*/}
+                {/*                        >*/}
+                {/*                            <h3 className={s.title_complectation}>{Object.keys(item)}</h3>*/}
+                {/*                            {*/}
+                {/*                                item[Object.keys(item)].map((el, index) =>*/}
+                {/*                                    <div key={index} style={{display: 'grid'}}>*/}
+                {/*                                        <FormControlLabel*/}
+                {/*                                            control={<CustomizedCheckbox data-name={'complectation'}*/}
+                {/*                                                                         name={el}/>}*/}
+                {/*                                            label={<Typography>{el} </Typography>}*/}
+                {/*                                        />*/}
+                {/*                                    </div>*/}
+                {/*                                )*/}
+                {/*                            }*/}
+                {/*                        </div>*/}
+                {/*                    )*/}
+                {/*            }*/}
+                {/*        </AccordionBlock>*/}
+                {/*        : ''*/}
+                {/*}*/}
+
+                <AccordionBlock
+                    className={s.complectaion}
+                    style={{display: 'grid'}}
+                    open={true}
+                    name={'Комплектация'}
+                    id={'price'}
+                >
+                    {
+                        FilterStore.getStartedComplectations()
+                            .map((item, index) =>
+                                <div
+                                    key={index}
+                                    className={s.complectaions__block}
+                                >
+                                    <h3 className={s.title_complectation}>{Object.keys(item)}</h3>
+                                    {
+                                        item[Object.keys(item)].map((el, index) =>
+                                            <div key={index} style={{display: 'grid'}}>
+                                                <FormControlLabel
+                                                    control={<CustomizedCheckbox data-name={'complectation'}
+                                                                                 name={el}/>}
+                                                    label={<Typography>{el} </Typography>}
+                                                />
+                                            </div>
+                                        )
+                                    }
+                                </div>
+                            )
+                    }
+                </AccordionBlock>
 
 
                 <AccordionBlock open={true} name={'Цена'}

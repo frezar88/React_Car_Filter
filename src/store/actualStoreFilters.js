@@ -13,8 +13,8 @@ class ActualStoreCar {
         'body': new Set(),
         'location': new Set(),
         'color': new Set(),
-        'price':{min:0,max:0},
-        'complectation':[]
+        'price': {min: 0, max: 0},
+        'complectation': []
 
     }
 
@@ -29,6 +29,7 @@ class ActualStoreCar {
 
     takeActualCarList(rangeInputs) {
         this.resetAllSetActualFilter()
+        let complectationObj = {}
         if (CarsStore.getActualCarList().length) {
             CarsStore.getActualCarList().forEach(({
                                                       promo,
@@ -39,7 +40,8 @@ class ActualStoreCar {
                                                       drive_type_id,
                                                       body,
                                                       location,
-                                                      color
+                                                      color,
+                                                      complectation
                                                   }) => {
                 this.setActualModel(model)
                 this.setActualBrand(brand)
@@ -54,8 +56,9 @@ class ActualStoreCar {
                         this.setActualPromo(el['promo_name'])
                     })
                 }
+                this.complectation(model, complectation, complectationObj)
             })
-            if(!rangeInputs){
+            if (!rangeInputs) {
                 let SortArray = CarsStore.getActualCarList().sort((a, b) => a.price - b.price)
                 this.setActualPrice({min: SortArray[0].price, max: SortArray[SortArray.length - 1].price})
             }
@@ -63,6 +66,22 @@ class ActualStoreCar {
 
         }
         return this.getActualFilters()
+    }
+
+    complectation(model, complectation, obj) {
+        if (!obj[model]){
+            obj[model]=new Set()
+        }else{
+            obj[model].add(complectation)
+        }
+    }
+
+    setActualComplectation(data) {
+        this._actualFilters.complectation = data
+    }
+
+    getActualComplectation() {
+        return this._actualFilters.complectation
     }
 
     setActualBrand(data) {
