@@ -1,0 +1,14 @@
+.top_block {
+  margin: 0 0 50px 0;
+  display: grid;
+  .button {
+    color: var(--prime-black);
+    font-weight: bold;
+    font-size:15px ;
+    &:hover{
+      color: var(--prime-color);
+    }
+  }
+
+}
+
