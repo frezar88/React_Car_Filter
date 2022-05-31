@@ -9,22 +9,29 @@ class CarsStore {
     _cars = [];
     _sortState = '';
     _actualCarList = []
-
+    _regionPrice = ''
 
 
     constructor() {
         makeAutoObservable(this)
     }
 
+    setRegionPrice(data) {
+        this._regionPrice = data
+    }
+
+    getRegionPrice() {
+        return this._regionPrice
+    }
 
     setStartedCars() {
         axiosGetCars().then((data) => {
-
+                this.setRegionPrice(data.data['isPrice'])
                 this.bruteForceAnArray(data)
                 this.setCars([...data.data['cars']])
-            setTimeout(()=>{
-                CheckUrlAndClickInput()
-            },1000)
+                setTimeout(() => {
+                    CheckUrlAndClickInput()
+                }, 1000)
 
             }
         )
@@ -73,8 +80,7 @@ class CarsStore {
                 .filter(item => ChangeFormStore.getChangePromo().length
                     ? item.promo ? item.promo.find(item2 => ChangeFormStore.getChangePromo().includes(item2['promo_name'])) : false
                     : item)
-                this.setActualCarList(actualCars)
-
+            this.setActualCarList(actualCars)
 
 
             return actualCars
@@ -96,7 +102,7 @@ class CarsStore {
     bruteForceAnArray(data) {
         this.collectStartedPrice(data)
         let obj = {}
-        let arr =[]
+        let arr = []
         data.data['cars'].forEach(({
                                        promo,
                                        brand,
@@ -121,8 +127,8 @@ class CarsStore {
             this.collectStartedComplectations(model, complectation, obj)
         })
 
-        for (let key  in obj){
-            arr.push({[key]:[...obj[key]]})
+        for (let key in obj) {
+            arr.push({[key]: [...obj[key]]})
         }
         FilterStore.setStartedComplectation(arr)
     }
@@ -130,9 +136,9 @@ class CarsStore {
 
 //-------complectations-------
     collectStartedComplectations(model, complectations, obj,) {
-        if (!obj[model]){
-            obj[model] =new Set([])
-        }else{
+        if (!obj[model]) {
+            obj[model] = new Set([])
+        } else {
             obj[model].add(complectations)
         }
 
