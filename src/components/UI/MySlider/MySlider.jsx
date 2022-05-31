@@ -14,8 +14,8 @@ const MySlider = ({data = [1, 1, 1, 1, 1], infiniteLoop, emulateTouch}) => {
                 emulateTouch={emulateTouch}
                 infiniteLoop={infiniteLoop}>
                 {
-                    data.map((e) =>
-                        <div>
+                    data.map((e,index) =>
+                        <div key={index}>
                             <img
                                 src="https://media-cdn.tripadvisor.com/media/photo-s/15/a4/9b/77/legacy-hotel-at-img-academy.jpg"
                                 alt="aaa"/>

@@ -1,15 +1,56 @@
-.car_card{
+.car_card {
   max-width: 550px;
+  min-width: 320px;
   width: 100%;
   padding: 20px;
   background: var(--car_card-background);
-  .car_name{
+
+  .car_name {
     font-size: 22px;
     color: var(--prime-black);
     margin-bottom: 20px;
   }
-  .year{
+
+  .year {
     font-size: 15px;
     color: var(--prime-gray);
+    margin-bottom: 40px;
+  }
+
+  .features {
+    ul {
+
+
+      li {
+        margin: 5px 0;
+        position: relative;
+        font-size: 15px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        &:before {
+          font-family: Iconfont !important;
+          font-size: 25px;
+          color: var(--prime-gray);
+        }
+
+        &:nth-child(1):before {
+          content: "\f156";
+        }
+
+        &:nth-child(2):before {
+          content:"\f15c" ;
+        }
+
+        &:nth-child(3):before {
+          content: "\f158";
+        }
+
+        &:nth-child(4):before {
+          content:"\f161" ;
+        }
+      }
+    }
   }
 }
