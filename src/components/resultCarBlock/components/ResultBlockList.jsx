@@ -10,7 +10,7 @@ const ResultBlockList = observer(() => {
 
     const [loadCars, setLoadCars] = useState(false)
 
-    const [regionPrice]=useState(CarsStore.getRegionPrice())
+    const [regionPrice] = useState(CarsStore.getRegionPrice())
 
     useEffect(() => {
         if (loadCars) {

@@ -8,6 +8,7 @@ import Tooltip from "@mui/material/Tooltip";
 import {styled} from "@mui/material/styles";
 import {tooltipClasses, Zoom} from "@mui/material";
 import reservedImg from '../../../images/zarezervirovan_1.svg'
+import CarsStore from "../../../store/carsStore";
 
 const CustomTooltip = styled(({className, ...props}) => (
     <Tooltip {...props} classes={{popper: className}}/>
@@ -91,8 +92,8 @@ const ResultBlockListItem = ({
              data-transmission_type={transmission_type} data-price={price} data-location={location}
         >
             <div className={s.img}>
-                <img src={'https://stock.mitsubishi.by/' + image} alt="car"/>
-                {/*<img src={image} alt="car"/>*/}
+                {/*<img src={'https://stock.mitsubishi.by/' + image} alt="car"/>*/}
+                <img src={image} alt="car"/>
 
                 {reserved == '1'
                     ? <img style={{position: "absolute", left: 0, width: '100%'}} src={reservedImg} alt="reserved"/>
@@ -125,7 +126,9 @@ const ResultBlockListItem = ({
                                         <img style={{
                                             width: '100%',
                                             cursor: 'pointer'
-                                        }} src={'https://stock.mitsubishi.by/' + promo_img} alt={promo_name}
+                                        }}
+                                             // src={'https://stock.mitsubishi.by/' + promo_img} alt={promo_name}
+                                             src={promo_img} alt={promo_name}
                                         />
                                     </CustomTooltip>
                                 )
@@ -182,12 +185,12 @@ const ResultBlockListItem = ({
                     </ul>
                 </div>
                 <div className={s.priceBlock}>
-                    <p><span>{price.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")}</span> <span> BYN</span></p>
+                    <p><span>{price.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")}</span> <span>{CarsStore.getRegionPrice() ==='price'?'BYN':'RUB'} </span></p>
                     <div>
                         {
                             price2
                                 ? <p>
-                                    <span>{price2.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")}</span>
+                                    <span>{price2? price2.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1"):''}</span>
                                     <span>{price2 ? 'BYN' : ''}</span>
                                 </p>
                                 : ''

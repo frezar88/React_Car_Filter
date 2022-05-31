@@ -15,7 +15,7 @@ const CountBlock = observer(() => {
     return (
         <div className={s.countBlock}>
             <div>
-                <h6 style={{textAlign:'center', padding:'20px 0 0',background:'#fff'}}>Найдено {CarsStore.CarsList.length} авто</h6>
+                <h6 style={{textAlign:'center', padding:'20px 0 0',background:'#fff',margin:0}}>Найдено {CarsStore.CarsList.length} авто</h6>
                 {/*<h5>{'Авто в наличии'} </h5>*/}
             </div>
             <div>
