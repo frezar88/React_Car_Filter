@@ -35,6 +35,7 @@ const ResultBlockListItem = ({
                                  power,
                                  price,
                                  price2,
+                                 ru_price,
                                  seat_count,
                                  transmission_type,
                                  years,
@@ -61,7 +62,7 @@ const ResultBlockListItem = ({
         btnSendModel.setAttribute('vin', vin)
         if (promo.length) {
             let arrPromo = []
-            promo.forEach(({promo_name})=>{
+            promo.forEach(({promo_name}) => {
                 arrPromo.push(promo_name)
             })
             btnSendModel.setAttribute('promo', arrPromo.join(' '))

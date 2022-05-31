@@ -11,12 +11,15 @@ class CarsStore {
     _actualCarList = []
 
 
+
     constructor() {
         makeAutoObservable(this)
     }
 
+
     setStartedCars() {
         axiosGetCars().then((data) => {
+
                 this.bruteForceAnArray(data)
                 this.setCars([...data.data['cars']])
             setTimeout(()=>{

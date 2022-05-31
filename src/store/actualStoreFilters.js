@@ -57,7 +57,7 @@ class ActualStoreCar {
             })
             if(!rangeInputs){
                 let SortArray = CarsStore.getActualCarList().sort((a, b) => a.price - b.price)
-                this.setActualPrice({min: SortArray[0].price, max: SortArray[SortArray.length - 1].price})
+                this.setActualPrice({min: SortArray[0].price ,max: SortArray[SortArray.length - 1].price})
             }
 
 
