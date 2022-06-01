@@ -25,6 +25,7 @@
   display: grid;
   grid-gap: 20px;
   //background: var(--prime-background);
+  min-height: 90vh;
   background: #fff;
   .wrapper{
     max-width: var(--wrapper-max-width);

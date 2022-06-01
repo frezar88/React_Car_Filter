@@ -19,7 +19,6 @@ const App = observer(() => {
         })
     }, [])
 
-
     return (
         <div className={s.App}>
             <div className={s.wrapper}>
