@@ -115,22 +115,29 @@ const ResultBlockListItem = ({
                         }}>
                             {
                                 promo.map(({promo_name, promo_img, promo_desk}) =>
-                                    <CustomTooltip
-                                        key={promo_name}
-                                        enterTouchDelay={0}
-                                        TransitionComponent={Zoom}
-                                        style={{maxWidth: 20}}
-                                        arrow title={promo_desk}
-                                        placement="top"
-                                    >
-                                        <img style={{
-                                            width: '100%',
-                                            cursor: 'pointer'
-                                        }}
-                                             // src={'https://stock.mitsubishi.by/' + promo_img} alt={promo_name}
-                                             src={promo_img} alt={promo_name}
-                                        />
-                                    </CustomTooltip>
+                                    < div key={promo_name}>
+                                        {
+                                            promo_img && promo_img !== ' '
+                                                ? <CustomTooltip
+                                                    key={promo_name}
+                                                    enterTouchDelay={0}
+                                                    TransitionComponent={Zoom}
+                                                    style={{maxWidth: 20}}
+                                                    arrow title={promo_desk}
+                                                    placement="top"
+                                                >
+                                                    <img style={{
+                                                        width: '100%',
+                                                        cursor: 'pointer'
+                                                    }}
+                                                        // src={'https://stock.mitsubishi.by/' + promo_img} alt={promo_name}
+                                                         src={promo_img} alt={promo_name}
+                                                    />
+
+                                                </CustomTooltip>
+                                                : ''
+                                        }
+                                    </div>
                                 )
                             }
                         </div>
@@ -185,12 +192,13 @@ const ResultBlockListItem = ({
                     </ul>
                 </div>
                 <div className={s.priceBlock}>
-                    <p><span>{price.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")}</span> <span>{CarsStore.getRegionPrice() ==='price'?'BYN':'RUB'} </span></p>
+                    <p><span>{price.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")}</span>
+                        <span>{CarsStore.getRegionPrice() === 'price' ? 'BYN' : 'RUB'} </span></p>
                     <div>
                         {
                             price2
                                 ? <p>
-                                    <span>{price2? price2.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1"):''}</span>
+                                    <span>{price2 ? price2.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : ''}</span>
                                     <span>{price2 ? 'BYN' : ''}</span>
                                 </p>
                                 : ''
