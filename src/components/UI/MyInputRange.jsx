@@ -104,21 +104,13 @@ const RangeSlider = observer(() => {
         <Box sx={{width: '100%', padding: '0 10px', boxSizing: 'border-box'}}>
             <div className={s.priceContainer} style={{}}>
                 <MyInputText
-                    value={
-                        ActualStoreFilters.getActualPrice().min && ActualStoreFilters.getActualPrice().min !== 0
-                            ? Number(ActualStoreFilters.getActualPrice().min)
-                            : value[0]
-                    }
+                    value={value[0]}
                     name={'Минимальная цена'}
                     onInput={(e) => setValue(e.target.value)}
                 />
 
                 <MyInputText
-                    value={
-                        ActualStoreFilters.getActualPrice().max && ActualStoreFilters.getActualPrice().max !== 0
-                            ? Number(ActualStoreFilters.getActualPrice().max)
-                            : value[1]
-                    }
+                    value={value[1]}
                     name={'Максимальная цена'}
                     onInput={(e) => setValue(e.target.value)}
                 />
@@ -127,14 +119,10 @@ const RangeSlider = observer(() => {
                 // disabled={ActualStoreFilters.getActualPrice().min == ActualStoreFilters.getActualPrice().max}
                 valueLabelDisplay="off"
                 min={
-                    ActualStoreFilters.getActualPrice().min && ActualStoreFilters.getActualPrice().min !== 0
-                        ? Number(ActualStoreFilters.getActualPrice().min)
-                        : Number(FilterStore.getStartedPrice().min)
+                    Number(FilterStore.getStartedPrice().min)
                 }
                 max={
-                    ActualStoreFilters.getActualPrice().max && ActualStoreFilters.getActualPrice().max !== 0
-                        ? Number(ActualStoreFilters.getActualPrice().max)
-                        : Number(FilterStore.getStartedPrice().max)
+                    Number(FilterStore.getStartedPrice().max)
                 }
 
                 defaultValue={

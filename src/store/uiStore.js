@@ -5,11 +5,19 @@ class UiStore {
         show: false,
     }
     _resetSliderRange=false
+    _show_no_car = false
 
     _arrayCountSlice=27
 
     constructor() {
         makeAutoObservable(this)
+    }
+
+    setShowNoCar(data){
+        this._show_no_car = data
+    }
+    getShowNoCar(){
+        return this._show_no_car
     }
 
 //-----------mobile------------

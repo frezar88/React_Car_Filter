@@ -6,6 +6,7 @@ import {observer} from "mobx-react-lite";
 import CarsStore from '../../store/carsStore'
 import Spinner from "../UI/Spinner";
 import MobileBlock from "../mobile/MobileBlock";
+import UiStore from "../../store/uiStore";
 
 const ResultCarBlock = observer(() => {
     return (
@@ -15,7 +16,19 @@ const ResultCarBlock = observer(() => {
             {
                 CarsStore.CarsList.length
                     ? <ResultBlockList/>
-                    : <Spinner/>
+                    : UiStore.getShowNoCar()
+                        ? <div style={{
+                            height:'100%',
+                            maxHeight:800,
+                            background:'#fff',
+                            display:'flex',
+                            alignItems:'center',
+                            justifyContent:"center"
+                        }}>
+                            <h1 style={{fontSize:18}}>Автомобили не найдены</h1>
+                        </div>
+                        : <Spinner/>
+
             }
         </div>
     );

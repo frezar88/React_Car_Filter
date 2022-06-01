@@ -3,6 +3,7 @@ import {axiosGetCars} from "../http/requests";
 import FilterStore from './filterStore'
 import ChangeFormStore from './changeFormStore'
 import {CheckUrlAndClickInput} from "../const";
+import UiStore from "./uiStore";
 
 
 class CarsStore {
@@ -29,6 +30,7 @@ class CarsStore {
                 this.setRegionPrice(data.data['isPrice'])
                 this.bruteForceAnArray(data)
                 this.setCars([...data.data['cars']])
+                UiStore.setShowNoCar(true)
                 setTimeout(() => {
                     CheckUrlAndClickInput()
                 }, 1000)

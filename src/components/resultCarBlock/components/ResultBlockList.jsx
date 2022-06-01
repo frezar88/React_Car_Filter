@@ -39,8 +39,6 @@ const ResultBlockList = observer(() => {
         <div className={s.resultBlockList}>
             {
                 CarsStore.CarsList
-                    .filter(({price}) => ChangeFormStore.getChangePrice().min ? price >= ChangeFormStore.getChangePrice().min : price)
-                    .filter(({price}) => ChangeFormStore.getChangePrice().max ? price <= ChangeFormStore.getChangePrice().max : price)
                     .slice(0, UiStore.getArrayCountSlice())
                     .map((item) =>
                         <ResultBlockListItem key={item['car_id']}
