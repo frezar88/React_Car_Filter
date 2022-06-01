@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './CarCard.module.scss'
+import MyButton from "../../UI/MyButton/MyButton";
 
 const CarCard = () => {
     return (
@@ -15,6 +16,16 @@ const CarCard = () => {
                     <li>{'8,3'} л. по городу</li>
                     <li>Полный привод</li>
                 </ul>
+            </div>
+            <div className={s.price}>
+                <h5>{'155 400'} BYN</h5>
+            </div>
+            <div className={s.button}>
+                <MyButton>зарезервировать</MyButton>
+            </div>
+            <div className={s.location}>
+                <p>{'NISSAN на Каменногорской, 11'}</p>
+
             </div>
 
         </div>

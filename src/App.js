@@ -9,6 +9,7 @@ const App = () => {
             <div className={s.wrapper}>
                 <TopBlock/>
                 <CarInfoBlock/>
+                <div style={{height:500}}></div>
             </div>
         </div>
     );

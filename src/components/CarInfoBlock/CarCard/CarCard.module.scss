@@ -1,4 +1,6 @@
 .car_card {
+  position: sticky;
+  top: 0;
   max-width: 550px;
   min-width: 320px;
   width: 100%;
@@ -18,9 +20,8 @@
   }
 
   .features {
+    margin-bottom: 50px;
     ul {
-
-
       li {
         margin: 5px 0;
         position: relative;
@@ -51,6 +52,36 @@
           content:"\f161" ;
         }
       }
+    }
+  }
+  .price{
+    margin-bottom: 30px;
+    h5{
+      font-size: 36px;
+      color: var(--prime-black);
+    }
+  }
+  .button{
+    margin-bottom: 20px;
+    button{
+      width: 100%;
+      color: #fff;
+      background: var(--prime-color);
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 10px 0;
+      font-size: 16px;
+    }
+  }
+  .location{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    &:before{
+      content: "\f12b";
+      font-family: Iconfont !important;
+      font-size: 18px;
     }
   }
 }
