@@ -91,8 +91,9 @@ const ResultBlockListItem = ({
              data-drive_type_id={drive_type_id}
              data-transmission_type={transmission_type} data-price={price} data-location={location}
         >
+
             <div className={s.img}>
-                {/*<img src={'https://stock.mitsubishi.by/' + image} alt="car"/>*/}
+                {/*<img data-att={'link_img'} src={'https://stock.mitsubishi.by/' + image} alt="car"/>*/}
                 <img src={image} alt="car"/>
 
                 {reserved == '1'
@@ -130,8 +131,8 @@ const ResultBlockListItem = ({
                                                         width: '100%',
                                                         cursor: 'pointer'
                                                     }}
-                                                        // src={'https://stock.mitsubishi.by/' + promo_img} alt={promo_name}
-                                                         src={promo_img} alt={promo_name}
+                                                         // src={'https://stock.mitsubishi.by/' + promo_img} alt={promo_name}
+                                                        src={promo_img} alt={promo_name}
                                                     />
 
                                                 </CustomTooltip>
@@ -146,8 +147,12 @@ const ResultBlockListItem = ({
                 {/*<img src={image} alt="car"/>*/}
             </div>
             <div className={s.wrapper}>
-                <div className={s.carName}>
-                    <div>
+                <div
+                     className={s.carName}>
+                    <div onClick={(e) => {
+                        window.location.href = `car-card?car_id=${car_id}`
+                    }}
+                         className={s.car_name}>
                         <p>{model}</p>
                         <p>{complectation}</p>
                     </div>
@@ -213,7 +218,6 @@ const ResultBlockListItem = ({
                 </div>
                 <div className={s.btnMore}>
                     <MyButton onClick={setDataForModal}>Запросить предложение</MyButton>
-
                 </div>
             </div>
 

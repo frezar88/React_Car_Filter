@@ -264,3 +264,18 @@
   opacity: 0.5;
   pointer-events: none;
 }
+
+.car_name{
+  cursor: pointer;
+  p{
+    transition: color .1s;
+  }
+  &:hover{
+    p:first-child{
+      text-decoration: underline;
+      font-weight: bold;
+      color: var(--prime-color) !important;
+    }
+  }
+
+}

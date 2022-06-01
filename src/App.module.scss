@@ -3,12 +3,12 @@
 
 .App {
   //mitsu
-  //--prime-color: #ed1c24;
+  --prime-color: #ed1c24;
   //lada
   //--prime-color: #e37639;
   //--------
   //renault
-  --prime-color: #ffcc33;
+  //--prime-color: #ffcc33;
   --backgroundBody:#d7d7d7;
   --prime-background:#e3e3e3;
 
@@ -39,10 +39,10 @@
     justify-content: space-between;
     grid-gap: 20px;
     //lada
-    //padding: 20px 15px;
+    padding: 20px 15px;
     //padding:100px 15px;
     //renault
-    padding:150px 15px;
+    //padding:150px 15px;
     box-sizing: border-box;
   }
   p+p{
