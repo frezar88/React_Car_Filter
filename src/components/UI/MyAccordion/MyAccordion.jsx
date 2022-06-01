@@ -11,24 +11,24 @@ const MyExpandMoreIcon = styled(ExpandMoreIcon)({
 
 });
 
-const MyAccordion = () => {
+const MyAccordion = ({name,value}) => {
     return (
-        <Accordion disableSpacing={true}   >
+        <Accordion   >
             <AccordionSummary
                 expandIcon={<MyExpandMoreIcon fontSize={"large"}/>}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
             >
-                <Typography style={{fontSize:17,padding:'10px 0'}}>Внешний вид</Typography>
+                <Typography style={{fontSize:17,padding:'10px 0'}}>{name}</Typography>
             </AccordionSummary>
             <AccordionDetails  >
-                <Typography>
+                <Typography component={'div'}>
                     <ul className={s.list}>
-                        <li>Климант контроль</li>
-                        <li>1</li>
-                        <li>1</li>
-                        <li>1</li>
-                        <li>1</li>
+                        {
+                            value.map((el,index)=>
+                                <li key={index}>{el}</li>
+                            )
+                        }
                     </ul>
                 </Typography>
             </AccordionDetails>

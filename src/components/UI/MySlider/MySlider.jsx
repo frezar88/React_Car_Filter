@@ -1,8 +1,10 @@
 import React from 'react';
 import {Carousel} from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import CarInfoStore from "../../../store/CarInfoStore";
 
 const MySlider = ({data = [1, 1, 1, 1, 1], infiniteLoop, emulateTouch}) => {
+    console.log(CarInfoStore.getCarInfo()['image'].split())
     return (
         <div>
             <Carousel
@@ -14,14 +16,22 @@ const MySlider = ({data = [1, 1, 1, 1, 1], infiniteLoop, emulateTouch}) => {
                 emulateTouch={emulateTouch}
                 infiniteLoop={infiniteLoop}>
                 {
-                    data.map((e,index) =>
+                    CarInfoStore.getCarInfo()['image'].split().map((e,index) =>
                         <div key={index}>
                             <img
-                                src="https://media-cdn.tripadvisor.com/media/photo-s/15/a4/9b/77/legacy-hotel-at-img-academy.jpg"
-                                alt="aaa"/>
+                                style={{transform:'scale(0.7)'}}
+                                // src={`https://stock.aps.by${e}`}
+                                src={e}
+                                alt="car"/>
                         </div>
                     )
                 }
+                <div >
+                    <img
+                        style={{transform:'scale(0.7)'}}
+                        src={`https://alogvinov.com/wp-content/uploads/2017/06/project-cars-2-screen-02-ps4-eu-26jan17.jpg`}
+                        alt="car"/>
+                </div>
             </Carousel>
         </div>
     );

@@ -11,7 +11,6 @@ const CarInfoBlock = () => {
                 <MySlider emulateTouch={true} infiniteLoop={true}/>
                 <MyTabs/>
             </div>
-
             <CarCard/>
 
         </div>

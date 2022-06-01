@@ -4,9 +4,12 @@ import MyButton from "../UI/MyButton/MyButton";
 
 
 const TopBlock = () => {
+    const backPage = ()=>{
+        window.history.back()
+    }
     return (
         <div className={s.top_block}>
-            <MyButton arrow={true} className={s.button}>К СПИСКУ АВТОМОБИЛЕЙ</MyButton>
+            <MyButton onClick={backPage} arrow={true} className={s.button}>К СПИСКУ АВТОМОБИЛЕЙ</MyButton>
         </div>
     );
 };

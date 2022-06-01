@@ -1,31 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from './CarCard.module.scss'
 import MyButton from "../../UI/MyButton/MyButton";
+import CarInfoStore from "../../../store/CarInfoStore";
 
 const CarCard = () => {
+    const [carData]=useState(CarInfoStore.getCarInfo())
+    console.log(carData)
     return (
         <div className={s.car_card}>
             <div>
-                <h5 className={s.car_name}>Nissan X-Trail LE Top Coffee</h5>
-                <p className={s.year}>2022</p>
+                <h5 className={s.car_name}>{carData.brand} {carData.model} {carData.complectation}</h5>
+                <p className={s.year}>{carData.years}</p>
             </div>
             <div className={s.features}>
                 <ul>
-                    <li>{'2.5'} л., {'171'} л.с., {'Бензин'}</li>
-                    <li>Вариатор</li>
-                    <li>{'8,3'} л. по городу</li>
-                    <li>Полный привод</li>
+                    <li>{carData.engine} л., {carData.power} л.с., {carData.fueltype}</li>
+                    <li>{carData['transmission_name']}</li>
+                    <li>{carData.body}</li>
+                    <li>{carData['drive_type_id']}</li>
                 </ul>
             </div>
             <div className={s.price}>
-                <h5>{'155 400'} BYN</h5>
+                <h5>{carData.price ? String(carData.price).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1"):''} BYN</h5>
             </div>
             <div className={s.button}>
                 <MyButton>зарезервировать</MyButton>
             </div>
             <div className={s.location}>
-                <p>{'NISSAN на Каменногорской, 11'}</p>
-
+                <p>{carData.location}</p>
             </div>
 
         </div>
