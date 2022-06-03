@@ -17,6 +17,8 @@ const MyTabList = styled(TabList)({
 });
 
 const MyCustomTab = styled(Tab)({
+    marginRight: '20px',
+    fontSize: '15px',
     width: 'unset',
     fontWeight: 'bold',
     fontFamily: 'Fonts',
@@ -27,7 +29,7 @@ const MyCustomTab = styled(Tab)({
 
 
 const MyTabs = () => {
-    const [value, setValue] = React.useState( CarInfoStore.getCarInfo()['base_options'].length?'1':'2');
+    const [value, setValue] = React.useState(CarInfoStore.getCarInfo()['base_options'].length ? '1' : '2');
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -46,19 +48,18 @@ const MyTabs = () => {
                             <MyCustomTab className={s.menu_button} label="Полная комплектация" value="2"/>
                         </MyTabList>
                     </Box>
-                    {
-                        CarInfoStore.getCarInfo()['base_options'].length
-                            ? <TabPanel style={{padding: '5px 0'}} value="1">
-                                <ul className={s.list}>
-                                    {
-                                        CarInfoStore.getCarInfo()['base_options'].map(({option_name},index)=>
-                                            <li key={index}>{option_name}</li>
-                                        )
-                                    }
-                                </ul>
-                            </TabPanel>
-                            : ''
-                    }
+
+
+                    <TabPanel style={{padding: '5px 0'}} value="1">
+                        <ul className={s.list}>
+                            {
+                                CarInfoStore.getCarInfo()['base_options'].map(({option_name}, index) =>
+                                    <li key={index}>{option_name}</li>
+                                )
+                            }
+                        </ul>
+                    </TabPanel>
+
 
                     <TabPanel style={{padding: 0}} value="2">
                         {

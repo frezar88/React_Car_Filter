@@ -1,14 +1,15 @@
 import React from 'react';
 import {Accordion, AccordionDetails, AccordionSummary, styled, Typography} from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import TabList from "@mui/lab/TabList";
 import {PRIMARY_COLOR} from "../../../const";
 import s from "../MyTabs/MyTabs.module.scss";
 
 const MyExpandMoreIcon = styled(ExpandMoreIcon)({
-
         color: PRIMARY_COLOR
+});
 
+const MyTypography = styled(Typography)({
+    fontFamily:'Fonts'
 });
 
 const MyAccordion = ({name,value}) => {
@@ -19,10 +20,10 @@ const MyAccordion = ({name,value}) => {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
             >
-                <Typography style={{fontSize:17,padding:'10px 0'}}>{name}</Typography>
+                <MyTypography style={{fontSize:17,padding:'10px 0'}}>{name}</MyTypography>
             </AccordionSummary>
             <AccordionDetails  >
-                <Typography component={'div'}>
+                <MyTypography style={{font:'Fonts'}} component={'div'}>
                     <ul className={s.list}>
                         {
                             value.map((el,index)=>
@@ -30,7 +31,7 @@ const MyAccordion = ({name,value}) => {
                             )
                         }
                     </ul>
-                </Typography>
+                </MyTypography>
             </AccordionDetails>
         </Accordion>
 
