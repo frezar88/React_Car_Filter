@@ -7,7 +7,6 @@ import ChangeFormStore from "./store/changeFormStore";
 import ActualStoreFilters from "./store/actualStoreFilters";
 import UiStore from "./store/uiStore";
 import {observer} from "mobx-react-lite";
-import HeaderCarsBlock from "./components/headerCarsBlock/HeaderCarsBlock";
 
 
 const App = observer(() => {

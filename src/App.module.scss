@@ -3,9 +3,9 @@
 
 .App {
   //mitsu
-  --prime-color: #ed1c24;
+  //--prime-color: #ed1c24;
   //lada
-  //--prime-color: #e37639;
+  --prime-color: #e37639;
   //--------
   //renault
   //--prime-color: #ffcc33;
@@ -52,10 +52,10 @@
 
 //
 ////renault
-@media (max-width: 768px){
-  .App{
-    .wrapper{
-      padding: 90px 15px !important;
-    }
-  }
-}
+//@media (max-width: 768px){
+//  .App{
+//    .wrapper{
+//      padding: 90px 15px !important;
+//    }
+//  }
+//}
