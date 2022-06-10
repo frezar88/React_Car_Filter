@@ -7,6 +7,7 @@ import CarInfoStore from "./store/CarInfoStore";
 import UiStore from "./store/uiStore";
 import Spinner from "./components/UI/MySpinner/Spinner";
 import {observer} from "mobx-react-lite";
+import MapCars from "./components/MapCars/MapCars";
 
 const App = observer(() => {
     useEffect(() => {
@@ -28,7 +29,7 @@ const App = observer(() => {
                         : <>
                             <TopBlock/>
                             <CarInfoBlock/>
-                            <div style={{height: 500}}></div>
+                            <MapCars/>
                         </>
                 }
 

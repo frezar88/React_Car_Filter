@@ -26,12 +26,7 @@ const MySlider = ({data = [1, 1, 1, 1, 1], infiniteLoop, emulateTouch}) => {
                         </div>
                     )
                 }
-                <div >
-                    <img
-                        style={{transform:'scale(0.7)'}}
-                        src={`https://alogvinov.com/wp-content/uploads/2017/06/project-cars-2-screen-02-ps4-eu-26jan17.jpg`}
-                        alt="car"/>
-                </div>
+
             </Carousel>
         </div>
     );

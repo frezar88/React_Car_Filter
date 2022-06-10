@@ -5,12 +5,12 @@ import CarInfoStore from "../../../store/CarInfoStore";
 
 const CarCard = () => {
     const [carData]=useState(CarInfoStore.getCarInfo())
-    console.log(carData)
     return (
         <div className={s.car_card}>
             <div>
-                <h5 className={s.car_name}>{carData.brand} {carData.model} {carData.complectation}</h5>
-                <p className={s.year}>{carData.years}</p>
+                <h5 className={s.car_name}><span>{carData.brand} {carData.model}</span> </h5>
+                <p className={s.complectation}> {carData.complectation}</p>
+                <p className={s.year}>{carData.years} </p>
             </div>
             <div className={s.features}>
                 <ul>

@@ -2,13 +2,14 @@
 @import 'style/fonts';
 
 .App {
-  --car_card-background:#f2f2f2;
 
+  --car_card-background:#f2f2f2;
+  --card-color-gray:gray;
   --backgroundBody:#d7d7d7;
   --prime-background:#e3e3e3;
   --prime-color: #ed1c24;
   --prime-black: #222;
-  --prime-gray: #808080;
+  --prime-gray: #444444;
   --prime-white:#fff;
   --prime-light-gray: #a1a1a1;
   --headerCar-title-size: 36px;

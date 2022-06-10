@@ -4,3 +4,9 @@
   align-items: flex-start;
   gap: 20px;
 }
+
+@media (max-width: 1024px){
+  .car_info_block{
+    display: block;
+  }
+}

@@ -17,6 +17,7 @@ const MyTabList = styled(TabList)({
 });
 
 const MyCustomTab = styled(Tab)({
+    fontSize:15,
     width: 'unset',
     fontWeight: 'bold',
     fontFamily: 'Fonts',
@@ -27,7 +28,7 @@ const MyCustomTab = styled(Tab)({
 
 
 const MyTabs = () => {
-    const [value, setValue] = React.useState( CarInfoStore.getCarInfo()['base_options'].length?'1':'2');
+    const [value, setValue] = React.useState(CarInfoStore.getCarInfo()['base_options'].length ? '1' : '2');
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -37,29 +38,26 @@ const MyTabs = () => {
             <Box sx={{width: '100%', typography: 'body1'}}>
                 <TabContext value={value}>
                     <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
-                        <MyTabList onChange={handleChange} aria-label="lab API tabs example">
-                            {
-                                CarInfoStore.getCarInfo()['base_options'].length
-                                    ? <MyCustomTab className={s.menu_button} label="Ключевые опции" value="1"/>
-                                    : ''
-                            }
+                        <MyTabList   onChange={handleChange} aria-label="lab API tabs example">
+                            <MyCustomTab
+                                variant="scrollable"
+                                scrollButtons="auto"
+                                aria-label="scrollable auto tabs example"
+                                style={{pointerEvents: CarInfoStore.getCarInfo()['base_options'].length ? 'all' : 'none',
+                               color:!CarInfoStore.getCarInfo()['base_options'].length ? 'gray':''}}
+                                className={s.menu_button} label="Ключевые опции" value="1"/>
                             <MyCustomTab className={s.menu_button} label="Полная комплектация" value="2"/>
                         </MyTabList>
                     </Box>
-                    {
-                        CarInfoStore.getCarInfo()['base_options'].length
-                            ? <TabPanel style={{padding: '5px 0'}} value="1">
-                                <ul className={s.list}>
-                                    {
-                                        CarInfoStore.getCarInfo()['base_options'].map(({option_name},index)=>
-                                            <li key={index}>{option_name}</li>
-                                        )
-                                    }
-                                </ul>
-                            </TabPanel>
-                            : ''
-                    }
-
+                    <TabPanel style={{padding: '5px 0'}} value="1">
+                        <ul className={s.list}>
+                            {
+                                CarInfoStore.getCarInfo()['base_options'].map(({option_name}, index) =>
+                                    <li style={{fontFamily:'Fonts'}} key={index}>{option_name}</li>
+                                )
+                            }
+                        </ul>
+                    </TabPanel>
                     <TabPanel style={{padding: 0}} value="2">
                         {
                             CarInfoStore.getAccordData().map(({name, value}) =>
