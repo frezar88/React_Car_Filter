@@ -42,6 +42,7 @@ const ResultBlockListItem = ({
                                  years,
                                  promo,
                                  vin,
+                                 modification,
                                  reserved,
                                  ...props
                              }) => {
@@ -97,7 +98,7 @@ const ResultBlockListItem = ({
                 <img src={image} alt="car"/>
 
                 {reserved == '1'
-                    ? <img style={{position: "absolute", left: 0, width: '100%'}} src={reservedImg} alt="reserved"/>
+                    ? <img style={{position: "absolute", left: 0, width: '100%',zIndex:1111111}} src={reservedImg} alt="reserved"/>
                     : false
                 }
 
@@ -153,7 +154,7 @@ const ResultBlockListItem = ({
                         window.location.href = `car-card?car_id=${car_id}`
                     }}
                          className={s.car_name}>
-                        <p>{model}</p>
+                        <p>{model} {modification?modification:''}</p>
                         <p>{complectation}</p>
                     </div>
                     <div>
@@ -201,7 +202,7 @@ const ResultBlockListItem = ({
                         <span>{CarsStore.getRegionPrice() === 'price' ? 'BYN' : 'RUB'} </span></p>
                     <div>
                         {
-                            price2
+                            price2 && price != price2
                                 ? <p>
                                     <span>{price2 ? price2.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : ''}</span>
                                     <span>{price2 ? 'BYN' : ''}</span>

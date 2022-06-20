@@ -49,11 +49,11 @@ const ResultBlockList = observer(() => {
                                              fueltype={item.fueltype}
                                              image={item.image} location={item.location} model={item.model}
                                              power={item.power} price={item[regionPrice?regionPrice:'price']}
-                                             price2={item.price2} ru_price={item['price-rus']}
+                                             price2={item['price-2']} ru_price={item['price-rus']}
                                              seat_count={item['seat-count']}
                                              transmission_type={item.transmission_type}
                                              years={item.years} promo={item.promo} reserved={item.reserved}
-                                             vin={item.vin}
+                                             vin={item.vin} modification={item.modification}
                         />
                     )
             }
