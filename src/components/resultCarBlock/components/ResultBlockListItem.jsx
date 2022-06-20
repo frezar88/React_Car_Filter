@@ -91,11 +91,19 @@ const ResultBlockListItem = ({
              data-engine={engine} data-power={power} data-fueltype={fueltype}
              data-drive_type_id={drive_type_id}
              data-transmission_type={transmission_type} data-price={price} data-location={location}
+             // onClick={(e) => {
+             //     let dataStop = e.target['attributes']['data-stop']
+             //     if (dataStop){
+             //        e.preventDefault()
+             //     }else{
+             //         window.location.href = `car-card?car_id=${car_id}`
+             //     }
+             // }}
         >
 
             <div className={s.img}>
-                {/*<img data-att={'link_img'} src={'https://stock.mitsubishi.by/' + image} alt="car"/>*/}
-                <img src={image} alt="car"/>
+                <img data-att={'link_img'} src={'https://stock.mitsubishi.by/' + image} alt="car"/>
+                {/*<img src={image} alt="car"/>*/}
 
                 {reserved == '1'
                     ? <img style={{position: "absolute", left: 0, width: '100%',zIndex:1111111}} src={reservedImg} alt="reserved"/>
@@ -114,7 +122,10 @@ const ResultBlockListItem = ({
                             gap: 5,
                             alignItems: 'center',
                             justifyContent: 'center'
-                        }}>
+
+                        }}
+                             data-stop={'stop'}
+                        >
                             {
                                 promo.map(({promo_name, promo_img, promo_desk}) =>
                                     < div key={promo_name}>
@@ -128,12 +139,12 @@ const ResultBlockListItem = ({
                                                     arrow title={promo_desk}
                                                     placement="top"
                                                 >
-                                                    <img style={{
+                                                    <img data-stop={'stop'} style={{
                                                         width: '100%',
                                                         cursor: 'pointer'
                                                     }}
-                                                         // src={'https://stock.mitsubishi.by/' + promo_img} alt={promo_name}
-                                                        src={promo_img} alt={promo_name}
+                                                         src={'https://stock.mitsubishi.by/' + promo_img} alt={promo_name}
+                                                        // src={promo_img} alt={promo_name}
                                                     />
 
                                                 </CustomTooltip>
@@ -150,9 +161,7 @@ const ResultBlockListItem = ({
             <div className={s.wrapper}>
                 <div
                      className={s.carName}>
-                    <div onClick={(e) => {
-                        window.location.href = `car-card?car_id=${car_id}`
-                    }}
+                    <div
                          className={s.car_name}>
                         <p>{model} {modification?modification:''}</p>
                         <p>{complectation}</p>
@@ -218,12 +227,13 @@ const ResultBlockListItem = ({
                     <p>{location}</p>
                 </div>
                 <div className={s.btnMore}>
-                    <MyButton onClick={setDataForModal}>Запросить предложение</MyButton>
+                    <MyButton data-stop={'stop'} onClick={setDataForModal}>Запросить предложение</MyButton>
                 </div>
             </div>
 
 
-        </div>);
+        </div>
+    );
 };
 
 export default ResultBlockListItem;

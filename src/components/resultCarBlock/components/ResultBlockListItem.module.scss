@@ -2,6 +2,7 @@
   background: var(--prime-white);
   transition: .3s;
   user-select: none;
+  //cursor: pointer;
 
   //&:hover {
   //  box-shadow: var(--box-shadow-resultBlockList-item);
@@ -266,17 +267,17 @@
   pointer-events: none;
 }
 
-.car_name{
-  cursor: pointer;
-  p{
-    transition: color .1s;
-  }
-  &:hover{
-    p:first-child{
-      text-decoration: underline;
-      font-weight: bold;
-      color: var(--prime-color) !important;
-    }
-  }
-
-}
+//.car_name{
+//  cursor: pointer;
+//  p{
+//    transition: color .1s;
+//  }
+//  &:hover{
+//    p:first-child{
+//      text-decoration: underline;
+//      font-weight: bold;
+//      color: var(--prime-color) !important;
+//    }
+//  }
+//
+//}
