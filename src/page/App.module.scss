@@ -1,0 +1,42 @@
+
+.App {
+  --car_card-background:#f2f2f2;
+  --card-color-gray:gray;
+  --backgroundBody:#d7d7d7;
+  --prime-background:#e3e3e3;
+  --prime-color: #ed1c24;
+  --prime-black: #222;
+  --prime-gray: #444444;
+  --prime-white:#fff;
+  --prime-light-gray: #a1a1a1;
+  --headerCar-title-size: 36px;
+  --headerCar-item-font-size:16px;
+  --grid-template-header-car: repeat(7, 1fr);.
+  --wrapper-max-width:1520px;
+  --box-shadow-resultBlockList-item:4px 5px 20px 1px #0000004a;
+
+  font-family: Fonts;
+  min-height: calc(100vh - 300px);
+  box-sizing: border-box;
+  font-weight: normal;
+  color: var(--prime-black);
+  display: grid;
+  grid-gap: 20px;
+  //background: var(--prime-background);
+  min-height: 90vh;
+  background: #fff;
+  .wrapper{
+    max-width: var(--wrapper-max-width);
+    margin: 0 auto;
+    width: 100%;
+
+    justify-content: space-between;
+    grid-gap: 20px;
+    padding:100px 15px;
+    box-sizing: border-box;
+  }
+  p+p{
+    margin-top: 0;
+  }
+}
+

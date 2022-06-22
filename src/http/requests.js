@@ -22,3 +22,7 @@ export const axiosGetCars = async (data =
                                   },) => {
     return await $host.post(`/car-in-stock/get-cars`, data)
 }
+
+export const axiosGetCarInfo = async (id) => {
+    return await $host.get(`car-in-stock/get-car-by-id?id=${id}` )
+}

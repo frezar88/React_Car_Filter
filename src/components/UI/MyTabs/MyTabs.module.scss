@@ -1,0 +1,25 @@
+.menu_button {
+  color: var(--prime-black);
+  margin-right: 20px !important;
+
+}
+
+.list {
+  margin: 10px;
+    li {
+      margin: 5px 0;
+      font-size: 16px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      &:before {
+        content: '';
+        width: 5px;
+        height: 5px;
+        background: var(--prime-color);
+      }
+    }
+
+}

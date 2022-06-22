@@ -1,7 +1,7 @@
 @import "style/nullstyle";
 @import 'style/fonts';
 
-.App {
+.AppGlobal{
   //mitsu
   //--prime-color: #ed1c24;
   //lada
@@ -9,18 +9,23 @@
   //--------
   //renault
   //--prime-color: #ffcc33;
-  --backgroundBody:#d7d7d7;
-  --prime-background:#e3e3e3;
+  --backgroundBody: #d7d7d7;
+  --prime-background: #e3e3e3;
 
   --prime-black: #222;
   --prime-gray: #808080;
-  --prime-white:#fff;
+  --prime-white: #fff;
   --prime-light-gray: #a1a1a1;
   --headerCar-title-size: 36px;
-  --headerCar-item-font-size:16px;
+  --headerCar-item-font-size: 16px;
   --grid-template-header-car: repeat(7, 1fr);
-  --wrapper-max-width:1520px;
-  --box-shadow-resultBlockList-item:4px 5px 20px 1px #0000004a;
+  --wrapper-max-width: 1520px;
+  --box-shadow-resultBlockList-item: 4px 5px 20px 1px #0000004a;
+}
+
+.App {
+  overflow: hidden;
+
 
   font-family: Fonts;
   min-height: calc(100vh - 300px);
@@ -30,7 +35,8 @@
   display: grid;
   grid-gap: 20px;
   background: var(--prime-background);
-  .wrapper{
+
+  .wrapper {
     max-width: var(--wrapper-max-width);
     margin: 0 auto;
     width: 100%;
@@ -45,8 +51,60 @@
     //padding:150px 15px;
     box-sizing: border-box;
   }
-  p+p{
+
+  .wrapper.hide {
+    transition: .1s;
+    //transform: translateX(-2000px);
+    animation: hide 1s linear forwards;
+  }
+
+  .wrapper.show {
+    transition: .3s;
+    animation: show 1s linear forwards;
+  }
+
+  p + p {
     margin-top: 0;
+  }
+}
+
+
+
+@keyframes hide {
+  0% {
+    transform: translateX(0);
+  }
+  20%{
+    z-index: -1;
+    opacity: 0;
+    transform: translateX(0);
+  }
+  55% {
+    z-index: -1;
+    opacity: 0;
+    transform: translateX(0);
+  }
+  99%{
+    transform: translateX(0);
+  }
+  100% {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    transform: translateX(-10000px);
+  }
+}
+
+@keyframes show {
+  0% {
+    z-index: -1;
+    opacity: 0;
+  }
+
+  100% {
+    position: relative;
+    z-index: 1;
+    opacity: 1;
   }
 }
 

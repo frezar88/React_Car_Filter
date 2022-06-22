@@ -4,7 +4,6 @@ import s from './ResultBlockList.module.scss';
 import CarsStore from '../../../store/carsStore';
 import {observer} from "mobx-react-lite";
 import UiStore from "../../../store/uiStore";
-import ChangeFormStore from "../../../store/changeFormStore";
 
 const ResultBlockList = observer(() => {
 

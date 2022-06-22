@@ -9,6 +9,7 @@ import {styled} from "@mui/material/styles";
 import {tooltipClasses, Zoom} from "@mui/material";
 import reservedImg from '../../../images/zarezervirovan_1.svg'
 import CarsStore from "../../../store/carsStore";
+import UiStore from "../../../store/uiStore";
 
 const CustomTooltip = styled(({className, ...props}) => (
     <Tooltip {...props} classes={{popper: className}}/>
@@ -84,28 +85,31 @@ const ResultBlockListItem = ({
 
     return (
         <div {...props}
-             className={reserved == '0' ? [s.resultBlockListItem].join(' ') : [s.resultBlockListItem, s.disabled].join(' ')}
+             className={reserved === '0' ? [s.resultBlockListItem].join(' ') : [s.resultBlockListItem, s.disabled].join(' ')}
              data-car-id={car_id}
              data-model={model}
              data-complectation={complectation} data-years={years}
              data-engine={engine} data-power={power} data-fueltype={fueltype}
              data-drive_type_id={drive_type_id}
              data-transmission_type={transmission_type} data-price={price} data-location={location}
-             // onClick={(e) => {
-             //     let dataStop = e.target['attributes']['data-stop']
-             //     if (dataStop){
-             //        e.preventDefault()
-             //     }else{
-             //         window.location.href = `car-card?car_id=${car_id}`
-             //     }
-             // }}
+             onClick={(e) => {
+                 let dataStop = e.target['attributes']['data-stop']
+                 if (dataStop){
+                    e.preventDefault()
+                 }else{
+                     // window.location.href = `car-card?car_id=${car_id}`
+                     UiStore.setPage('car_card')
+                     UiStore.setCarId(car_id)
+
+                 }
+             }}
         >
 
             <div className={s.img}>
                 <img data-att={'link_img'} src={'https://stock.mitsubishi.by/' + image} alt="car"/>
                 {/*<img src={image} alt="car"/>*/}
 
-                {reserved == '1'
+                {reserved === '1'
                     ? <img style={{position: "absolute", left: 0, width: '100%',zIndex:1111111}} src={reservedImg} alt="reserved"/>
                     : false
                 }
@@ -211,7 +215,7 @@ const ResultBlockListItem = ({
                         <span>{CarsStore.getRegionPrice() === 'price' ? 'BYN' : 'RUB'} </span></p>
                     <div>
                         {
-                            price2 && price != price2
+                            price2 && price !== price2
                                 ? <p>
                                     <span>{price2 ? price2.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : ''}</span>
                                     <span>{price2 ? 'BYN' : ''}</span>

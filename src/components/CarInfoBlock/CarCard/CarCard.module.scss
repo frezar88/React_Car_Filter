@@ -1,0 +1,131 @@
+.car_card {
+  position: sticky;
+  top: 0;
+  max-width: 550px;
+  min-width: 420px;
+  width: 100%;
+  padding: 20px;
+  background: var(--car_card-background);
+  color: black;
+
+  .car_name {
+    font-family: Fonts !important;
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px !important;
+    color: var(--prime-black);
+    margin-bottom: 20px;
+    font-weight: bold;
+    span:first-child{
+      font-family: Fonts !important;
+      color: #000;
+    }
+    //span:last-child{
+    //  color: var(--prime-gray);
+    //}
+  }
+
+  .complectation{
+    font-family: Fonts !important;
+    margin-bottom: 20px;
+    color: gray;
+    font-size: 22px !important;
+  }
+  .year {
+    font-family: Fonts !important;
+    font-size: 15px !important;
+    color: black;
+    margin-bottom: 20px;
+  }
+
+  .features {
+    margin-bottom: 20px;
+    ul {
+      li {
+        font-family: Fonts !important;
+        margin: 5px 0;
+        position: relative;
+        font-size: 15px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        &:before {
+          font-family: Iconfont !important;
+          font-size: 25px;
+          color: var(--prime-gray);
+        }
+
+        &:nth-child(1):before {
+          content: "\f156";
+        }
+
+        &:nth-child(2):before {
+          content:"\f15c" ;
+        }
+
+        &:nth-child(3):before {
+          content: "\f144";
+        }
+
+        &:nth-child(4):before {
+          content:"\f161" ;
+        }
+      }
+    }
+  }
+  .price{
+
+    margin-bottom: 20px !important;
+    h5{
+      font-family: Fonts !important;
+      font-weight: bold;
+      font-size: 22px !important;
+      color: var(--prime-black);
+    }
+  }
+  .button{
+
+    margin-bottom: 20px;
+    button{
+      font-family: Fonts !important;
+      width: 100%;
+      color: #fff;
+      background: var(--prime-color);
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 10px 0;
+      font-size: 16px;
+    }
+  }
+  .location{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 15px;
+    color: var(--card-color-gray);
+    font-family: Fonts !important;
+    &:before{
+      content: "\f12b";
+      font-family: Iconfont !important;
+      font-size: 18px;
+    }
+  }
+}
+
+
+@media (max-width: 1024px){
+  .car_card {
+    margin-top: 20px;
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    max-width: unset;
+    min-width: unset;
+    width: 100%;
+    padding: 20px;
+    background: var(--car_card-background);
+    color: black;
+  }
+}
