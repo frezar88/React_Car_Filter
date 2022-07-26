@@ -54,6 +54,7 @@ const ResultBlockList = observer(() => {
                                              transmission_type={item.transmission_type}
                                              years={item.years} promo={item.promo} reserved={item.reserved}
                                              vin={item.vin} modification={item.modification}
+                                             regionPrice={regionPrice}
                         />
                     )
             }

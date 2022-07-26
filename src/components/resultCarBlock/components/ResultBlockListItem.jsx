@@ -23,6 +23,7 @@ const CustomTooltip = styled(({className, ...props}) => (
 });
 
 const ResultBlockListItem = ({
+                                 regionPrice,
                                  body,
                                  car_id,
                                  color,
@@ -48,6 +49,7 @@ const ResultBlockListItem = ({
                              }) => {
 
     const setDataForModal = (e) => {
+
         const modal = document.querySelector('.modal-car ')
         const html = document.querySelector('body')
         const btnSendModel = document.querySelector('.modal-car .modal-car__content .modal-form-send')
@@ -81,7 +83,7 @@ const ResultBlockListItem = ({
         content['style'].display = 'block'
 
     }
-
+    console.log(regionPrice)
     return (
         <div {...props}
              className={reserved == '0' ? [s.resultBlockListItem].join(' ') : [s.resultBlockListItem, s.disabled].join(' ')}
@@ -102,8 +104,9 @@ const ResultBlockListItem = ({
         >
 
             <div className={s.img}>
-                <img data-att={'link_img'} src={'https://stock.mitsubishi.by/' + image} alt="car"/>
-                {/*<img src={image} alt="car"/>*/}
+                {/*<img data-att={'link_img'} src={'https://stock.mitsubishi.by/' + image} alt="car"/>*/}
+                <img data-att={'link_img'} src={image} alt="car"/>
+
 
                 {reserved == '1'
                     ? <img style={{position: "absolute", left: 0, width: '100%',zIndex:1111111}} src={reservedImg} alt="reserved"/>
@@ -143,8 +146,8 @@ const ResultBlockListItem = ({
                                                         width: '100%',
                                                         cursor: 'pointer'
                                                     }}
-                                                         src={'https://stock.mitsubishi.by/' + promo_img} alt={promo_name}
-                                                        // src={promo_img} alt={promo_name}
+                                                         // src={'https://stock.mitsubishi.by/' + promo_img} alt={promo_name}
+                                                        src={promo_img} alt={promo_name}
                                                     />
 
                                                 </CustomTooltip>
@@ -211,7 +214,7 @@ const ResultBlockListItem = ({
                         <span>{CarsStore.getRegionPrice() === 'price' ? 'BYN' : 'RUB'} </span></p>
                     <div>
                         {
-                            price2 && price != price2
+                            price2 && price != price2 && regionPrice !== 'price-rus'
                                 ? <p>
                                     <span>{price2 ? price2.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : ''}</span>
                                     <span>{price2 ? 'BYN' : ''}</span>
