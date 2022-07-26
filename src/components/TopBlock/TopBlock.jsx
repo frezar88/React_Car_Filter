@@ -15,8 +15,9 @@ const TopBlock = () => {
             <div className={s.card}>
                 <h3>{carsInfo.brand}  {carsInfo.model}</h3>
                 <p>
-                    {carsInfo.years}
+                    {carsInfo.years+ ' год выпуска'}
                     <span className={s.dot}></span>
+                    {carsInfo.millage+' км'}
                     {carsInfo.complectation}
                     {
                         carsInfo.modification

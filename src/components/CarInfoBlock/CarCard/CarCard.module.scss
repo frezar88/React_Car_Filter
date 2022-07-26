@@ -35,7 +35,10 @@
     font-family: Fonts !important;
     font-size: 15px !important;
     color: black;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
 
   .features {
@@ -128,4 +131,11 @@
     background: var(--car_card-background);
     color: black;
   }
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: black;
+  border-radius: 50%;
 }
