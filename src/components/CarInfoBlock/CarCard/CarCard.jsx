@@ -21,7 +21,7 @@ const CarCard = () => {
             </div>
             <div className={s.features}>
                 <ul>
-                    <li><b>Двигатель:</b> {carData.engine} , {carData.power} л.с., {carData.fueltype}</li>
+                    <li><b>Двигатель:</b> {carData.volume} л., {carData.power} л.с., {carData.fueltype}</li>
                     <li><b>Кпп:</b> {carData['transmission_type'] +' ('+carData['transmission_name']+')'}</li>
                     <li><b>Кузов:</b> {carData.body}</li>
                     <li><b>Привод:</b> {carData['drive_type_id']}</li>

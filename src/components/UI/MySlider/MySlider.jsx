@@ -21,9 +21,9 @@ const MySlider = ({data = [1, 1, 1, 1, 1], infiniteLoop, emulateTouch}) => {
                     CarInfoStore.getCarInfo()['images']
                         ?
                         CarInfoStore.getCarInfo()['images']['img'].map((e,index) =>
-                        <div key={index}>
+                        <div  key={index}>
                             <img
-                                style={{transform:'scale(0.7)'}}
+                                style={{transform:'scale(1)',width:'100%',maxHeight:'700px',objectFit: 'contain'}}
                                 // src={`https://stock.aps.by${e}`}
                                 // src={e}
                                 src={imgError ? noPhoto : 'https://stock.aps.by/' + e.path} alt="#"
