@@ -6,12 +6,17 @@ import CarInfoStore from "../../../store/CarInfoStore";
 
 const CarCard = () => {
     const [carData]=useState(CarInfoStore.getCarInfo())
+
+    let millage = String(carData['millage']).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")
+
     return (
         <div className={s.car_card}>
             <div>
                 <h5 className={s.car_name}><span>{carData.brand} {carData.model}</span> </h5>
                 <p className={s.complectation}> {carData.complectation}</p>
-                <p className={s.year}>{carData.years +' год выпуска'}   <span className={s.dot}></span> {carData['millage']} км</p>
+                <p className={s.year}>{carData.years +' год выпуска'}   <span className={s.dot}></span>
+                    {millage} км
+                </p>
                 <p style={{marginBottom:'20px'}}><span style={{color:'gray',}}>цвет кузова:</span> {carData['color']}</p>
             </div>
             <div className={s.features}>
@@ -30,6 +35,7 @@ const CarCard = () => {
             </div>
             <div className={s.location}>
                 <p>{carData.location}</p>
+
             </div>
 
         </div>

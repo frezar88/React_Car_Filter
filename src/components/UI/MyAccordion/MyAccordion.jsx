@@ -23,7 +23,7 @@ const MyAccordion = ({name,value}) => {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
             >
-                <MyTypography style={{fontSize:17,padding:'10px 0'}}>{name && name !=='null'?name:'запросите данные'}</MyTypography>
+                <MyTypography style={{fontSize:17,padding:'10px 0'}}>{name && name !=='null'?name:'Данные предоставляются по запросу'}</MyTypography>
             </AccordionSummary>
             <AccordionDetails  >
                 <MyTypography component={'div'}>
@@ -43,3 +43,8 @@ const MyAccordion = ({name,value}) => {
 };
 
 export default MyAccordion;
+
+
+
+
+

@@ -14,10 +14,10 @@ const TopBlock = () => {
             <MyButton onClick={backPage} arrow={true} className={s.button}>К СПИСКУ АВТОМОБИЛЕЙ</MyButton>
             <div className={s.card}>
                 <h3>{carsInfo.brand}  {carsInfo.model}</h3>
-                <p>
+                <p style={{display:'flex',gap:'8px'}}>
                     {carsInfo.years+ ' год выпуска'}
                     <span className={s.dot}></span>
-                    {carsInfo.millage+' км'}
+                    {String(carsInfo['millage']).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")+' км'}
                     {carsInfo.complectation}
                     {
                         carsInfo.modification
@@ -29,7 +29,7 @@ const TopBlock = () => {
                     }
 
                 </p>
-                <p><span>цвет кузова: </span>{carsInfo.color}</p>
+                {/*<p><span>цвет кузова: </span>{carsInfo.color}</p>*/}
 
             </div>
 
