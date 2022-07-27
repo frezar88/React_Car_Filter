@@ -24,6 +24,7 @@ const CustomTooltip = styled(({className, ...props}) => (
 });
 
 const ResultBlockListItem = ({
+                                 brand,
                                  regionPrice,
                                  body,
                                  car_id,
@@ -51,7 +52,7 @@ const ResultBlockListItem = ({
     const [imgError, setImgError] = useState(false)
 
     // const imgPath ='https://stock.aps.by/' +JSON.parse(image)?.img.filter((item) => item.category === 'Внешний вид' && item['main_photo']===true)[0].path
-    const imgPath =JSON.parse(image)?.img.filter((item) => item.category === 'Внешний вид' && item['main_photo']===true)[0].path
+    const imgPath = JSON.parse(image)?.img.filter((item) => item.category === 'Внешний вид' && item['main_photo'] === true)[0].path
 
     const setDataForModal = (e) => {
 
@@ -98,20 +99,20 @@ const ResultBlockListItem = ({
              data-engine={engine} data-power={power} data-fueltype={fueltype}
              data-drive_type_id={drive_type_id}
              data-transmission_type={transmission_type} data-price={price} data-location={location}
-            onClick={(e) => {
-                let dataStop = e.target['attributes']['data-stop']
-                if (dataStop){
-                   e.preventDefault()
-                }else{
-                    window.location.href = `car-card?car_id=${car_id}`
-                }
-            }}
+             onClick={(e) => {
+                 let dataStop = e.target['attributes']['data-stop']
+                 if (dataStop) {
+                     e.preventDefault()
+                 } else {
+                     window.location.href = `car-card?car_id=${car_id}`
+                 }
+             }}
         >
 
-            <div style={{position:'relative'}} className={s.img}>
+            <div style={{position: 'relative'}} className={s.img}>
                 {/*<img data-att={'link_img'} src={'https://stock.mitsubishi.by/' + image} alt="car"/>*/}
                 {/*<img data-att={'link_img'} src={image} alt="car"/>*/}
-                <b style={{position:'absolute',top:0}}>{vin}</b>
+                <b style={{position: 'absolute', top: 0}}>{vin}</b>
                 <img
                     // onError={(e) => {
                     //     if (e.type === 'error') {
@@ -181,7 +182,7 @@ const ResultBlockListItem = ({
                     className={s.carName}>
                     <div
                         className={s.car_name}>
-                        <p>{model} {modification ? modification : ''}</p>
+                        <p>{brand} {model} {modification ? modification : ''}</p>
                         <p>{complectation}</p>
                     </div>
                     <div>
