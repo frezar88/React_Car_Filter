@@ -1,9 +1,7 @@
 import {$host} from "./index";
 
 
-export const axiosGetStartedFilter = async (data) => {
-    return await $host.post('car-in-stock/react-filters', data)
-}
+
 
 export const axiosGetCars = async (data =
                                   {

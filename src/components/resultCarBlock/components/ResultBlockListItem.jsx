@@ -49,6 +49,10 @@ const ResultBlockListItem = ({
                                  ...props
                              }) => {
     const [imgError, setImgError] = useState(false)
+
+    // const imgPath ='https://stock.aps.by/' +JSON.parse(image)?.img.filter((item) => item.category === 'Внешний вид' && item['main_photo']===true)[0].path
+    const imgPath =JSON.parse(image)?.img.filter((item) => item.category === 'Внешний вид' && item['main_photo']===true)[0].path
+
     const setDataForModal = (e) => {
 
         const modal = document.querySelector('.modal-car ')
@@ -94,33 +98,33 @@ const ResultBlockListItem = ({
              data-engine={engine} data-power={power} data-fueltype={fueltype}
              data-drive_type_id={drive_type_id}
              data-transmission_type={transmission_type} data-price={price} data-location={location}
-             // onClick={(e) => {
-             //     let dataStop = e.target['attributes']['data-stop']
-             //     if (dataStop){
-             //        e.preventDefault()
-             //     }else{
-             //         window.location.href = `car-card?car_id=${car_id}`
-             //     }
-             // }}
+            onClick={(e) => {
+                let dataStop = e.target['attributes']['data-stop']
+                if (dataStop){
+                   e.preventDefault()
+                }else{
+                    window.location.href = `car-card?car_id=${car_id}`
+                }
+            }}
         >
 
-            <div className={s.img}>
+            <div style={{position:'relative'}} className={s.img}>
                 {/*<img data-att={'link_img'} src={'https://stock.mitsubishi.by/' + image} alt="car"/>*/}
                 {/*<img data-att={'link_img'} src={image} alt="car"/>*/}
-                {vin}
+                <b style={{position:'absolute',top:0}}>{vin}</b>
                 <img
-                    onError={(e) => {
-                        if (e.type === 'error') {
-                            setImgError(true)
-                        }
-                    }}
-                    src={imgError ? no_img : '/img/' + image} alt="#"
-                    data-att={'link_img'} />
-
+                    // onError={(e) => {
+                    //     if (e.type === 'error') {
+                    //         setImgError(true)
+                    //     }
+                    // }}
+                    src={imgError ? no_img : imgPath} alt="#"
+                    data-att={'link_img'}/>
 
 
                 {reserved == '1'
-                    ? <img style={{position: "absolute", left: 0, width: '100%',zIndex:1111111}} src={reservedImg} alt="reserved"/>
+                    ? <img style={{position: "absolute", left: 0, width: '100%', zIndex: 1111111}} src={reservedImg}
+                           alt="reserved"/>
                     : false
                 }
 
@@ -157,8 +161,8 @@ const ResultBlockListItem = ({
                                                         width: '100%',
                                                         cursor: 'pointer'
                                                     }}
-                                                         // src={'https://stock.mitsubishi.by/' + promo_img} alt={promo_name}
-                                                        src={promo_img} alt={promo_name}
+                                                        // src={'https://stock.mitsubishi.by/' + promo_img} alt={promo_name}
+                                                         src={promo_img} alt={promo_name}
                                                     />
 
                                                 </CustomTooltip>
@@ -174,10 +178,10 @@ const ResultBlockListItem = ({
             </div>
             <div className={s.wrapper}>
                 <div
-                     className={s.carName}>
+                    className={s.carName}>
                     <div
-                         className={s.car_name}>
-                        <p>{model} {modification?modification:''}</p>
+                        className={s.car_name}>
+                        <p>{model} {modification ? modification : ''}</p>
                         <p>{complectation}</p>
                     </div>
                     <div>
