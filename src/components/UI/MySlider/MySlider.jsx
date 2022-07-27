@@ -6,6 +6,7 @@ import noPhoto from '../../../img/no-photo.png'
 
 const MySlider = ({data = [1, 1, 1, 1, 1], infiniteLoop, emulateTouch}) => {
     const [imgError, setImgError] = useState(false)
+    console.log(CarInfoStore.getCarInfo()['images']['img'])
     return (
         <div>
             <Carousel
@@ -17,15 +18,15 @@ const MySlider = ({data = [1, 1, 1, 1, 1], infiniteLoop, emulateTouch}) => {
                 emulateTouch={emulateTouch}
                 infiniteLoop={infiniteLoop}>
                 {
-                    CarInfoStore.getCarInfo()['image']
+                    CarInfoStore.getCarInfo()['images']
                         ?
-                    CarInfoStore.getCarInfo()['image'].split().map((e,index) =>
+                        CarInfoStore.getCarInfo()['images']['img'].map((e,index) =>
                         <div key={index}>
                             <img
                                 style={{transform:'scale(0.7)'}}
                                 // src={`https://stock.aps.by${e}`}
                                 // src={e}
-                                src={imgError ? noPhoto : '/img/' + e} alt="#"
+                                src={imgError ? noPhoto : 'https://stock.aps.by/' + e.path} alt="#"
                                 onError={(e) => {
                                     if (e.type === 'error') {
                                         setImgError(true)
