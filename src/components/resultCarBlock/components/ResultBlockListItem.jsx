@@ -47,6 +47,9 @@ const ResultBlockListItem = ({
                                  vin,
                                  modification,
                                  reserved,
+                                 equipment,
+                                 facelifting,
+                                 generation,
                                  ...props
                              }) => {
     const [imgError, setImgError] = useState(false)
@@ -114,11 +117,12 @@ const ResultBlockListItem = ({
                 {/*<img data-att={'link_img'} src={image} alt="car"/>*/}
                 <b style={{position: 'absolute', top: 0}}>{vin}</b>
                 <img
-                    // onError={(e) => {
-                    //     if (e.type === 'error') {
-                    //         setImgError(true)
-                    //     }
-                    // }}
+                    style={{width:'100%',}}
+                    onError={(e) => {
+                        if (e.type === 'error') {
+                            setImgError(true)
+                        }
+                    }}
                     src={imgError ? no_img : imgPath} alt="#"
                     data-att={'link_img'}/>
 
@@ -191,14 +195,15 @@ const ResultBlockListItem = ({
                     </div>
                 </div>
                 <div className={s.countOptions}>
-                    <p>Количество опций: <span>35</span></p>
+                    {/*<p>Количество опций: <span>35</span></p>*/}
+                    <p>{generation || generation!=null?<span>{generation}</span>:''} {equipment || equipment!=null?<span>{equipment}</span>:''} {facelifting || facelifting!=null?<span>{facelifting}</span>:''}</p>
                 </div>
                 <div className={s.features}>
                     <ul>
                         <li>
                             <div>
-                                <p>{engine} </p>
-                                <p>{power}л.с</p>
+                                <p>{engine.length===1?engine+'.0':engine} л</p>
+                                <p>{power} л.с</p>
                                 <p>{fueltype}</p>
                             </div>
 
