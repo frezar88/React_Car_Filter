@@ -55,7 +55,7 @@ const ResultBlockListItem = ({
     const [imgError, setImgError] = useState(false)
 
     // const imgPath ='https://stock.aps.by/' +JSON.parse(image)?.img.filter((item) => item.category === 'Внешний вид' && item['main_photo']===true)[0].path
-    const imgPath = JSON.parse(image)?.img.filter((item) => item.category === 'Внешний вид' && item['main_photo'] === true)[0].path
+    // const imgPath = JSON.parse(image)?.img.filter((item) => item.category === 'Внешний вид' && item['main_photo'] === true)[0].path
 
     const setDataForModal = (e) => {
 
@@ -102,29 +102,29 @@ const ResultBlockListItem = ({
              data-engine={engine} data-power={power} data-fueltype={fueltype}
              data-drive_type_id={drive_type_id}
              data-transmission_type={transmission_type} data-price={price} data-location={location}
-             onClick={(e) => {
-                 let dataStop = e.target['attributes']['data-stop']
-                 if (dataStop) {
-                     e.preventDefault()
-                 } else {
-                     window.location.href = `car-card?car_id=${car_id}`
-                 }
-             }}
+             // onClick={(e) => {
+             //     let dataStop = e.target['attributes']['data-stop']
+             //     if (dataStop) {
+             //         e.preventDefault()
+             //     } else {
+             //         window.location.href = `car-card?car_id=${car_id}`
+             //     }
+             // }}
         >
 
             <div style={{position: 'relative'}} className={s.img}>
-                {/*<img data-att={'link_img'} src={'https://stock.mitsubishi.by/' + image} alt="car"/>*/}
-                {/*<img data-att={'link_img'} src={image} alt="car"/>*/}
+                {/*<img data-att={'link_img'} src={'https://stock.aps.by/' + image} alt="car"/>*/}
+                <img data-att={'link_img'} src={image} alt="car"/>
                 <b style={{position: 'absolute', top: 0}}>{vin}</b>
-                <img
-                    style={{width:'100%',}}
-                    onError={(e) => {
-                        if (e.type === 'error') {
-                            setImgError(true)
-                        }
-                    }}
-                    src={imgError ? no_img : imgPath} alt="#"
-                    data-att={'link_img'}/>
+                {/*<img*/}
+                {/*    style={{width:'100%',}}*/}
+                {/*    onError={(e) => {*/}
+                {/*        if (e.type === 'error') {*/}
+                {/*            setImgError(true)*/}
+                {/*        }*/}
+                {/*    }}*/}
+                {/*    src={imgError ? no_img : imgPath} alt="#"*/}
+                {/*    data-att={'link_img'}/>*/}
 
 
                 {reserved == '1'
@@ -186,7 +186,7 @@ const ResultBlockListItem = ({
                     className={s.carName}>
                     <div
                         className={s.car_name}>
-                        <p>{brand} {model} {modification ? modification : ''}</p>
+                        <p>{model} {modification ? modification : ''}</p>
                         <p>{complectation}</p>
                     </div>
                     <div>
@@ -195,14 +195,14 @@ const ResultBlockListItem = ({
                     </div>
                 </div>
                 <div className={s.countOptions}>
-                    {/*<p>Количество опций: <span>35</span></p>*/}
-                    <p>{generation || generation!=null?<span>{generation}</span>:''} {equipment || equipment!=null?<span>{equipment}</span>:''} {facelifting || facelifting!=null?<span>{facelifting}</span>:''}</p>
+                    <p>Количество опций: <span>35</span></p>
+                    {/*<p>{generation || generation!=null?<span>{generation}</span>:''} {equipment || equipment!=null?<span>{equipment}</span>:''} {facelifting || facelifting!=null?<span>{facelifting}</span>:''}</p>*/}
                 </div>
                 <div className={s.features}>
                     <ul>
                         <li>
                             <div>
-                                <p>{engine.length===1?engine+'.0':engine} л</p>
+                                <p>{engine.length===1?engine+'.0 ':engine} {engine.length >=5?'':'л'}</p>
                                 <p>{power} л.с</p>
                                 <p>{fueltype}</p>
                             </div>

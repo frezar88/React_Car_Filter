@@ -2,7 +2,7 @@
   background: var(--prime-white);
   transition: .3s;
   user-select: none;
-  cursor: pointer;
+  //cursor: pointer;
 
   //&:hover {
   //  box-shadow: var(--box-shadow-resultBlockList-item);
@@ -106,19 +106,19 @@
 
       span {
         position: relative;
-        //color: var(--prime-color);
-        //font-weight: bold;
-        &:nth-child(1):after, &:nth-child(2):after{
-          content: '';
-          display: block;
-          width: 1px;
-          border-radius: 15px;
-          height: 12px;
-          background-color: gray;
-          position: absolute;
-          top: 0;
-          right: -7px;
-        }
+        color: var(--prime-color);
+        font-weight: bold;
+        //&:nth-child(1):after, &:nth-child(2):after{
+        //  content: '';
+        //  display: block;
+        //  width: 1px;
+        //  border-radius: 15px;
+        //  height: 12px;
+        //  background-color: gray;
+        //  position: absolute;
+        //  top: 0;
+        //  right: -7px;
+        //}
       }
     }
   }

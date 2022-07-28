@@ -3,12 +3,12 @@
 
 .App {
   //mitsu
-  --prime-color: #ed1c24;
+  //--prime-color: #ed1c24;
   //lada
   //--prime-color: #e37639;
   //--------
   //renault
-  //--prime-color: #ffcc33;
+  --prime-color: #ffcc33;
   --backgroundBody:#d7d7d7;
   --prime-background:#e3e3e3;
 
@@ -42,9 +42,9 @@
     //padding: 20px 15px;
     //padding:100px 15px;
     //stock.aps.by
-    padding: 25px 15px;
+    //padding: 25px 15px;
     //renault
-    //padding:150px 15px;
+    padding:150px 15px;
     box-sizing: border-box;
   }
   p+p{
@@ -54,19 +54,19 @@
 
 //
 ////renault
-//@media (max-width: 768px){
-//  .App{
-//    .wrapper{
-//      padding: 90px 15px !important;
-//    }
-//  }
-//}
-
-//stock.aps.by
-@media (max-width: 1199px){
+@media (max-width: 768px){
   .App{
     .wrapper{
-      padding: 80px 15px !important;
+      padding: 90px 15px !important;
     }
   }
 }
+
+//stock.aps.by
+//@media (max-width: 1199px){
+//  .App{
+//    .wrapper{
+//      padding: 80px 15px !important;
+//    }
+//  }
+//}
