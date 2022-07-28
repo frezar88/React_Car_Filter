@@ -34,7 +34,7 @@ const MyTabs = () => {
         setValue(newValue);
     };
     return (
-        <div>
+        <div style={{marginTop:'30px'}}>
             <Box sx={{width: '100%', typography: 'body1'}}>
                 <TabContext value={value}>
                     <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
