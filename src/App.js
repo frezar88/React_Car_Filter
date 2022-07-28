@@ -27,6 +27,7 @@ const App = observer(() => {
         let value = e.target.attributes['name'].value
         let checked = e.target.checked
 
+
         switch (type) {
             case 'promo':
                 action('setChangePromo', 'getChangePromo', checked, value)
