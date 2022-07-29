@@ -115,7 +115,7 @@ const ResultBlockListItem = ({
             <div style={{position: 'relative'}} className={s.img}>
                 {/*<img data-att={'link_img'} src={'https://stock.aps.by/' + image} alt="car"/>*/}
                 <img data-att={'link_img'} src={image} alt="car"/>
-                <b style={{position: 'absolute', top: 0}}>{vin}</b>
+                {/*<b style={{position: 'absolute', top: 0}}>{vin}</b>*/}
                 {/*<img*/}
                 {/*    style={{width:'100%',}}*/}
                 {/*    onError={(e) => {*/}
