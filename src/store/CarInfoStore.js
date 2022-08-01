@@ -3,9 +3,15 @@ import {makeAutoObservable} from "mobx";
 class CarInfoStore {
     _accord_data = []
     _car_info = []
+    _modification_data = []
 
     constructor() {
         makeAutoObservable(this)
+    }
+
+    setModificationData(data) {
+        const modification = data['modification_package']['opt']
+        this._modification_data = modification
     }
 
     setAccordData(data) {
@@ -15,8 +21,8 @@ class CarInfoStore {
         versionOptions.forEach(el => {
             this.getAccordNameForSetAccordData(el, tempObj)
         })
-        for ( let key in tempObj){
-            tempArr.push({name:key,value:tempObj[key]})
+        for (let key in tempObj) {
+            tempArr.push({name: key, value: tempObj[key]})
         }
         this._accord_data = tempArr
     }
@@ -30,14 +36,20 @@ class CarInfoStore {
         }
     }
 
+
     getAccordData() {
         return this._accord_data
     }
 
-    setCarInfo(data){
+    getModificationData() {
+        return this._modification_data
+    }
+
+    setCarInfo(data) {
         this._car_info = data
     }
-    getCarInfo(){
+
+    getCarInfo() {
         return this._car_info
     }
 }

@@ -6,7 +6,7 @@ import noPhoto from '../../../img/no-photo.png'
 
 const MySlider = ({data = [1, 1, 1, 1, 1], infiniteLoop, emulateTouch}) => {
     const [imgError, setImgError] = useState(false)
-    console.log(CarInfoStore.getCarInfo()['images']['img'])
+    // console.log(CarInfoStore.getCarInfo()['images']['img'])
     return (
         <div>
             <Carousel

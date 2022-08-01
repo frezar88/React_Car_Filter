@@ -16,6 +16,7 @@ const App = observer(() => {
         axiosGetCarInfo(car_id).then((data) => {
             CarInfoStore.setCarInfo(data.data['car'])
             CarInfoStore.setAccordData(data.data['car'])
+            CarInfoStore.setModificationData(data.data['car'])
             UiStore.setSpinnerState(false)
         })
     }, [])

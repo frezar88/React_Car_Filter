@@ -7,8 +7,36 @@ import CarInfoStore from "../../../store/CarInfoStore";
 const CarCard = () => {
 
     const [carData] = useState(CarInfoStore.getCarInfo())
-
+    console.log(useState(CarInfoStore.getCarInfo()['complectation']))
     let millage = String(carData['millage']).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")
+
+    const setDataForModal = (e) => {
+
+        const modal = document.querySelector('.modal-car ')
+        const html = document.querySelector('body')
+        const btnSendModel = document.querySelector('.modal-car .modal-car__content .modal-form-send')
+        btnSendModel.setAttribute('model', carData['brand'])
+        btnSendModel.setAttribute('complectation', carData['model'])
+        btnSendModel.setAttribute('years', carData["years"])
+        btnSendModel.setAttribute('engine', carData["volume"])
+        btnSendModel.setAttribute('power', carData["power"])
+        btnSendModel.setAttribute('fueltype', carData["fueltype"])
+        btnSendModel.setAttribute('drive_type_id', carData["drive_type_id"])
+        btnSendModel.setAttribute('transmission_type', carData["transmission_type"])
+        btnSendModel.setAttribute('price', carData["price"])
+        btnSendModel.setAttribute('location', carData["location"])
+        btnSendModel.setAttribute('vin', carData["vin"])
+
+        html.style.overflow = 'hidden'
+        modal.classList.add('active')
+
+        let content = document.querySelector('.modal-car__content')
+        let contentSuccess = document.querySelector('.modal-car__content-success')
+        contentSuccess['style'].display = 'none'
+
+        content['style'].display = 'block'
+
+    }
 
     return (
         <div className={s.car_card}>
@@ -43,7 +71,7 @@ const CarCard = () => {
                 <h5>{carData.price ? String(carData.price).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : ''} BYN</h5>
             </div>
             <div className={s.button}>
-                <MyButton>зарезервировать</MyButton>
+                <MyButton data-stop={'stop'} onClick={setDataForModal} >зарезервировать</MyButton>
             </div>
             <div className={s.location}>
                 <p>{carData.location}</p>
