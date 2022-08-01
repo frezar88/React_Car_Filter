@@ -231,8 +231,14 @@ const ResultBlockListItem = ({
                     </ul>
                 </div>
                 <div className={s.priceBlock}>
-                    <p><span>{price.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")}</span>
-                        <span>{CarsStore.getRegionPrice() === 'price' ? 'BYN' : 'RUB'} </span></p>
+                    <p><span style={{fontSize:price =='0'?'16px':''}}>{price !='0'? price.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1"):'Цена и наличие по запросу'}</span>
+                        {
+                            price !='0'
+                            ?
+                                <span>{CarsStore.getRegionPrice() === 'price' ? 'BYN' : ' RUB'} </span>
+                            :''
+                        }
+                    </p>
                     <div>
                         {
                             price2 && price != price2 && regionPrice !== 'price-rus'
