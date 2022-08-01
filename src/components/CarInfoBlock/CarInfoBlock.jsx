@@ -12,7 +12,7 @@ const CarInfoBlock = () => {
                 <MyTabs/>
 
             </div>
-            {/*<MyTabs2/>*/}
+
             <CarCard/>
 
         </div>

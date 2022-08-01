@@ -4,6 +4,7 @@ class CarInfoStore {
     _accord_data = []
     _car_info = []
     _modification_data = []
+    _recommended_cars = []
 
     constructor() {
         makeAutoObservable(this)
@@ -12,6 +13,10 @@ class CarInfoStore {
     setModificationData(data) {
         const modification = data['modification_package']['opt']
         this._modification_data = modification
+    }
+
+    setRecommendedCars(data){
+        this._recommended_cars = data
     }
 
     setAccordData(data) {
@@ -36,6 +41,9 @@ class CarInfoStore {
         }
     }
 
+    getRecommendedCars(){
+        return this._recommended_cars
+    }
 
     getAccordData() {
         return this._accord_data

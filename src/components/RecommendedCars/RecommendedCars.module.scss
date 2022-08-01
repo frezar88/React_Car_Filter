@@ -1,0 +1,14 @@
+.block{
+    margin-top: 45px;
+    font-family: Fonts;
+    h3{
+        font-size: 15px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .list{
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
