@@ -32,3 +32,16 @@
     }
   }
 }
+
+@media (max-width: 480px){
+  .li_text{
+    font-size: 12px;
+  }
+}
+
+.acc{
+  .MuiAccordionDetails-root{
+    padding: 0 !important;
+  }
+}
+

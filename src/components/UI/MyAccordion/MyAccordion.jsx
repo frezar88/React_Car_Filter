@@ -25,7 +25,7 @@ const MyAccordion = observer(({name, value}) => {
         }
     }
     return (
-        <Accordion>
+        <Accordion className={s.acc}>
 
             <AccordionSummary
                 expandIcon={<MyExpandMoreIcon fontSize={"large"}/>}
@@ -58,11 +58,12 @@ const MyAccordion = observer(({name, value}) => {
                                             width: '100%',
                                             gap: '5px'
                                         }}>
-                                            <span style={{background: '#fff'}}>{el.key}</span> <span style={{
+                                            <span className={s.li_text} style={{background: '#fff'}}>{el.key}</span> <span style={{
                                             width: '100%',
                                             borderBottom: 'dashed 1px #80808059',
                                             transform: 'translateY(-7px)'
-                                        }}></span> <span style={{whiteSpace:'nowrap'}}>{el.value}</span>
+                                        }}></span>
+                                            <span className={s.li_text} style={{whiteSpace:'nowrap'}}>{el.value}</span>
                                         </span>
                                     </li>
                                 )

@@ -13,13 +13,19 @@ import RecommendedCars from "./components/RecommendedCars/RecommendedCars";
 const App = observer(() => {
     useEffect(() => {
         const url = new URL(window.location.href)
-        const car_id = url.searchParams.get('car_id')
-        axiosGetCarInfo(car_id).then((data) => {
+        const uid = url.searchParams.get('uid')
+        axiosGetCarInfo(uid).then((data) => {
+            if(!data.data['car']){
+                window.location.href = '/new-filter';
+            }
+
             CarInfoStore.setCarInfo(data.data['car'])
             CarInfoStore.setAccordData(data.data['car'])
             CarInfoStore.setModificationData(data.data['car'])
             UiStore.setSpinnerState(false)
-        })
+        }).finally(
+
+        )
         axiosAllCars().then((data)=>{
             CarInfoStore.setRecommendedCars(data.data['cars'])
         })

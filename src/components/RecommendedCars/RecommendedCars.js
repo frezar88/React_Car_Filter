@@ -2,8 +2,9 @@ import React from 'react';
 import s from './RecommendedCars.module.scss'
 import CarInfoStore from "../../store/CarInfoStore";
 import RecommendedItem from "./item/RecommendedItem";
+import {observer} from "mobx-react-lite";
 
-const RecommendedCars = () => {
+const RecommendedCars = observer (() => {
     let carBody = CarInfoStore.getCarInfo().body
     let carPrice = CarInfoStore.getCarInfo().price
     let percent = CarInfoStore.getCarInfo().price / 100 * 30
@@ -14,7 +15,6 @@ const RecommendedCars = () => {
         item.body === carBody && (item.price >= minPrice && item.price <= maxPrice) && item['car_id'] != carId
 
     )
-    console.log(allCars)
     return (
         <>
             {
@@ -54,6 +54,6 @@ const RecommendedCars = () => {
         </>
 
     );
-};
+});
 
 export default RecommendedCars;

@@ -4,6 +4,7 @@
     user-select: none;
     cursor: pointer;
     border: solid 1px #4444445e;
+    border-radius: 5px;
 
 
     //&:hover {
@@ -106,11 +107,13 @@
             display: flex;
             gap:14px ;
 
-            span {
+            span.item_sep  {
                 position: relative;
-                //color: var(--prime-color);
-                //font-weight: bold;
+
+                font-weight: normal;
+                color: #444444;
                 &:nth-child(1):after, &:nth-child(2):after{
+
                     content: '';
                     display: block;
                     width: 1px;

@@ -10,7 +10,6 @@ const CarInfoBlock = () => {
             <div>
                 <MySlider emulateTouch={true} infiniteLoop={true}/>
                 <MyTabs/>
-
             </div>
 
             <CarCard/>

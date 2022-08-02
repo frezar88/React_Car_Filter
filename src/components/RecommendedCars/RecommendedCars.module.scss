@@ -10,5 +10,32 @@
         margin-top: 20px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 10px;
+    }
+
+}
+
+@media (max-width:1100px ){
+    .block{
+        .list{
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+}
+
+@media (max-width:900px ){
+    .block{
+        .list{
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+
+@media (max-width:600px ){
+    .block{
+        margin-top: 20px;
+        .list{
+            grid-template-columns: 1fr;
+        }
     }
 }
