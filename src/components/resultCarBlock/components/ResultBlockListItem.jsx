@@ -50,6 +50,7 @@ const ResultBlockListItem = ({
                                  equipment,
                                  facelifting,
                                  generation,
+                                 uid,
                                  ...props
                              }) => {
     const [imgError, setImgError] = useState(false)
@@ -62,8 +63,8 @@ const ResultBlockListItem = ({
         const modal = document.querySelector('.modal-car ')
         const html = document.querySelector('body')
         const btnSendModel = document.querySelector('.modal-car .modal-car__content .modal-form-send')
-        btnSendModel.setAttribute('model', model)
-        btnSendModel.setAttribute('complectation', complectation)
+        btnSendModel.setAttribute('model', brand)
+        btnSendModel.setAttribute('complectation', model)
         btnSendModel.setAttribute('years', years)
         btnSendModel.setAttribute('engine', engine)
         btnSendModel.setAttribute('power', power)
@@ -107,7 +108,7 @@ const ResultBlockListItem = ({
                  if (dataStop) {
                      e.preventDefault()
                  } else {
-                     window.location.href = `car-card?car_id=${car_id}`
+                     window.location.href = `car-card?uid=${uid}`
                  }
              }}
         >
@@ -117,7 +118,7 @@ const ResultBlockListItem = ({
                 {/*<img data-att={'link_img'} src={image} alt="car"/>*/}
                 <b style={{position: 'absolute', top: 0}}>{vin}</b>
                 <img
-                    style={{width:'100%',}}
+                    style={{width: '100%',}}
                     onError={(e) => {
                         if (e.type === 'error') {
                             setImgError(true)
@@ -198,9 +199,10 @@ const ResultBlockListItem = ({
                     {/*<p>Количество опций: <span>35</span></p>*/}
                     {/*<p>{generation || generation!=null?<span>{generation}</span>:''} {equipment || equipment!=null?<span>{equipment}</span>:''} {facelifting || facelifting!=null?<span>{facelifting}</span>:''}</p>*/}
                     <p>
-                        {generation ?  <span className={(equipment || equipment!=null) || facelifting ? s.item_sep:'' }>{generation}</span> :''}
-                        {equipment ?  <span className={facelifting ? s.item_sep:''}>{equipment}</span> :''}
-                        {facelifting ?  <span >{facelifting}</span> :''}
+                        {generation ? <span
+                            className={(equipment || equipment != null) || facelifting ? s.item_sep : ''}>{generation}</span> : ''}
+                        {equipment ? <span className={facelifting ? s.item_sep : ''}>{equipment}</span> : ''}
+                        {facelifting ? <span>{facelifting}</span> : ''}
 
 
                     </p>
@@ -209,7 +211,7 @@ const ResultBlockListItem = ({
                     <ul>
                         <li>
                             <div>
-                                <p>{engine.length===1?engine+'.0':engine} л</p>
+                                <p>{engine.length === 1 ? engine + '.0' : engine} л</p>
                                 <p>{power} л.с</p>
                                 <p>{fueltype}</p>
                             </div>

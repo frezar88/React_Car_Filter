@@ -56,6 +56,7 @@ const ResultBlockList = observer(() => {
                                              vin={item.vin} modification={item.modification}
                                              regionPrice={regionPrice} generation={item.generation}
                                              facelifting={item.facelifting} equipment={item.equipment}
+                                             uid={item.UID}
                         />
                     )
             }
