@@ -124,7 +124,7 @@ const ResultBlockListItem = ({
                             setImgError(true)
                         }
                     }}
-                    src={imgError ? no_img : imgPath} alt="#"
+                    src={imgError || imgPath==null  ? no_img : imgPath} alt="#"
                     data-att={'link_img'}/>
 
 
@@ -241,7 +241,7 @@ const ResultBlockListItem = ({
                 </div>
                 <div className={s.priceBlock}>
                     <p><span>{price.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")}</span>
-                        <span>{CarsStore.getRegionPrice() === 'price' ? 'BYN' : 'RUB'} </span></p>
+                        <span>{CarsStore.getRegionPrice() === 'price' ? ' BYN' : ' RUB'} </span></p>
                     <div>
                         {
                             price2 && price != price2 && regionPrice !== 'price-rus'
