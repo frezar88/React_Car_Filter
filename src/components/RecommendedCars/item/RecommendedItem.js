@@ -22,34 +22,35 @@ const CustomTooltip = styled(({className, ...props}) => (
 });
 
 const RecommendedItem = ({
-                                 brand,
-                                 regionPrice,
-                                 body,
-                                 car_id,
-                                 color,
-                                 complectation,
-                                 drive_type_id,
-                                 engine,
-                                 fueltype,
-                                 image,
-                                 location,
-                                 model,
-                                 power,
-                                 price,
-                                 price2,
-                                 ru_price,
-                                 seat_count,
-                                 transmission_type,
-                                 years,
-                                 promo,
-                                 vin,
-                                 modification,
-                                 reserved,
-                                 equipment,
-                                 facelifting,
-                                 generation,
-                                 ...props
-                             }) => {
+                             brand,
+                             regionPrice,
+                             body,
+                             car_id,
+                             color,
+                             complectation,
+                             drive_type_id,
+                             engine,
+                             fueltype,
+                             image,
+                             location,
+                             model,
+                             power,
+                             price,
+                             price2,
+                             ru_price,
+                             seat_count,
+                             transmission_type,
+                             years,
+                             promo,
+                             vin,
+                             modification,
+                             reserved,
+                             equipment,
+                             facelifting,
+                             uid,
+                             generation,
+                             ...props
+                         }) => {
     const [imgError, setImgError] = useState(false)
 
 
@@ -105,7 +106,7 @@ const RecommendedItem = ({
                  if (dataStop) {
                      e.preventDefault()
                  } else {
-                     window.location.href = `car-card?car_id=${car_id}`
+                     window.location.href = `car-card?uid=${uid}`
                  }
              }}
         >
@@ -115,13 +116,13 @@ const RecommendedItem = ({
                 {/*<img data-att={'link_img'} src={image} alt="car"/>*/}
                 <b style={{position: 'absolute', top: 0}}>{vin}</b>
                 <img
-                    style={{width:'100%',}}
+                    style={{width: '100%',}}
                     onError={(e) => {
                         if (e.type === 'error') {
                             setImgError(true)
                         }
                     }}
-                    src={imgError ? no_img :'https://stock.aps.by/' + imgPath} alt="#"
+                    src={imgError ? no_img : 'https://stock.aps.by/' + imgPath} alt="#"
                     data-att={'link_img'}/>
 
 
@@ -195,16 +196,17 @@ const RecommendedItem = ({
                 <div className={s.countOptions}>
                     {/*<p>Количество опций: <span>35</span></p>*/}
                     <p>
-                        {generation ?  <span className={(equipment || equipment!=null) || facelifting ? s.item_sep:'' }>{generation}</span> :''}
-                        {equipment ?  <span className={facelifting ? s.item_sep:''}>{equipment}</span> :''}
-                        {facelifting ?  <span >{facelifting}</span> :''}
+                        {generation ? <span
+                            className={(equipment || equipment != null) || facelifting ? s.item_sep : ''}>{generation}</span> : ''}
+                        {equipment ? <span className={facelifting ? s.item_sep : ''}>{equipment}</span> : ''}
+                        {facelifting ? <span>{facelifting}</span> : ''}
                     </p>
                 </div>
                 <div className={s.features}>
                     <ul>
                         <li>
                             <div>
-                                <p>{engine.length===1?engine+'.0':engine} л</p>
+                                <p>{engine.length === 1 ? engine + '.0' : engine} л</p>
                                 <p>{power} л.с</p>
                                 <p>{fueltype}</p>
                             </div>

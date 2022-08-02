@@ -41,6 +41,7 @@ const RecommendedCars = observer (() => {
                                             vin={item.vin} modification={item.modification}
                                             regionPrice={1111} generation={item.generation}
                                             facelifting={item.facelifting} equipment={item.equipment}
+                                            uid={item['UID']}
                                         />
                                     )
                                     : ''
