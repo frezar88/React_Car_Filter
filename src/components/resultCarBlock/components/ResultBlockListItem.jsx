@@ -124,7 +124,7 @@ const ResultBlockListItem = ({
                             setImgError(true)
                         }
                     }}
-                    src={imgError || imgPath==null  ? no_img : imgPath} alt="#"
+                    src={imgError || imgPath==null  ? no_img : 'https://stock.aps.by/'+ imgPath} alt="#"
                     data-att={'link_img'}/>
 
 
