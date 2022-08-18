@@ -1,5 +1,35 @@
 .userPrice{
+  background: var(--car_card-background);
+  margin-top: 20px;
   &__wrapper{
-
+  padding: 20px;
+    display: grid;
+    gap: 5px;
+    .div_cont{
+      display: grid;
+      gap: 5px;
+      label{
+        font-size: 15px;
+        font-weight: 600;
+      }
+      input{
+        padding:7px 10px;
+        font-size: 15px;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          display: none;
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        &:focus{
+          outline: none;
+        }
+      }
+    }
   }
+}
+
+.disabled{
+  pointer-events: none;
+  opacity: 0.4;
 }

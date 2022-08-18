@@ -18,8 +18,7 @@
   --wrapper-max-width:1520px;
   --box-shadow-resultBlockList-item:4px 5px 20px 1px #0000004a;
 
-  font-family: Fonts;
-  min-height: calc(100vh - 300px);
+  font-family: Fonts, serif;
   box-sizing: border-box;
   font-weight: normal;
   color: var(--prime-black);
@@ -46,6 +45,6 @@
 
 @media (max-width:1200px){
   .App{
-    padding:70px 15px 20px;
+    padding:70px 0px 20px;
   }
 }

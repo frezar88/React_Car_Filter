@@ -56,45 +56,45 @@ const RecommendedItem = ({
 
     const imgPath = JSON.parse(image)?.img.filter((item) => item.category === 'Внешний вид' && item['main_photo'] === true)[0].path
 
-    const setDataForModal = (e) => {
-
-        const modal = document.querySelector('.modal-car ')
-        const html = document.querySelector('body')
-        const btnSendModel = document.querySelector('.modal-car .modal-car__content .modal-form-send')
-        btnSendModel.setAttribute('model', model)
-        btnSendModel.setAttribute('complectation', complectation)
-        btnSendModel.setAttribute('years', years)
-        btnSendModel.setAttribute('engine', engine)
-        btnSendModel.setAttribute('power', power)
-        btnSendModel.setAttribute('fueltype', fueltype)
-        btnSendModel.setAttribute('drive_type_id', drive_type_id)
-        btnSendModel.setAttribute('transmission_type', transmission_type)
-        btnSendModel.setAttribute('price', price)
-        btnSendModel.setAttribute('location', location)
-        btnSendModel.setAttribute('vin', vin)
-        if (promo.length) {
-            let arrPromo = []
-            promo.forEach(({promo_name}) => {
-                arrPromo.push(promo_name)
-            })
-            btnSendModel.setAttribute('promo', arrPromo.join(' '))
-        } else {
-            btnSendModel.removeAttribute('promo')
-        }
-        html.style.overflow = 'hidden'
-        modal.classList.add('active')
-
-        let content = document.querySelector('.modal-car__content')
-        let contentSuccess = document.querySelector('.modal-car__content-success')
-        contentSuccess['style'].display = 'none'
-
-        content['style'].display = 'block'
-
-    }
+    // const setDataForModal = () => {
+    //
+    //     const modal = document.querySelector('.modal-car ')
+    //     const html = document.querySelector('body')
+    //     const btnSendModel = document.querySelector('.modal-car .modal-car__content .modal-form-send')
+    //     btnSendModel.setAttribute('model', model)
+    //     btnSendModel.setAttribute('complectation', complectation)
+    //     btnSendModel.setAttribute('years', years)
+    //     btnSendModel.setAttribute('engine', engine)
+    //     btnSendModel.setAttribute('power', power)
+    //     btnSendModel.setAttribute('fueltype', fueltype)
+    //     btnSendModel.setAttribute('drive_type_id', drive_type_id)
+    //     btnSendModel.setAttribute('transmission_type', transmission_type)
+    //     btnSendModel.setAttribute('price', price)
+    //     btnSendModel.setAttribute('location', location)
+    //     btnSendModel.setAttribute('vin', vin)
+    //     if (promo.length) {
+    //         let arrPromo = []
+    //         promo.forEach(({promo_name}) => {
+    //             arrPromo.push(promo_name)
+    //         })
+    //         btnSendModel.setAttribute('promo', arrPromo.join(' '))
+    //     } else {
+    //         btnSendModel.removeAttribute('promo')
+    //     }
+    //     html.style.overflow = 'hidden'
+    //     modal.classList.add('active')
+    //
+    //     let content = document.querySelector('.modal-car__content')
+    //     let contentSuccess = document.querySelector('.modal-car__content-success')
+    //     contentSuccess['style'].display = 'none'
+    //
+    //     content['style'].display = 'block'
+    //
+    // }
 
     return (
         <div {...props}
-             className={reserved == '0' ? [s.resultBlockListItem].join(' ') : [s.resultBlockListItem, s.disabled].join(' ')}
+             className={reserved === '0' ? [s.resultBlockListItem].join(' ') : [s.resultBlockListItem, s.disabled].join(' ')}
              data-car-id={car_id}
              data-model={model}
              data-complectation={complectation} data-years={years}
@@ -126,7 +126,7 @@ const RecommendedItem = ({
                     data-att={'link_img'}/>
 
 
-                {reserved == '1'
+                {reserved === '1'
                     ? <img style={{position: "absolute", left: 0, width: '100%', zIndex: 1111111}} src={reservedImg}
                            alt="reserved"/>
                     : false
@@ -239,7 +239,7 @@ const RecommendedItem = ({
                         <span>{'BYN'} </span></p>
                     <div>
                         {
-                            price2 && price != price2 && regionPrice !== 'price-rus'
+                            price2 && price !== price2 && regionPrice !== 'price-rus'
                                 ? <p>
                                     <span>{price2 ? price2.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : ''}</span>
                                     <span>{price2 ? 'BYN' : ''}</span>

@@ -12,7 +12,7 @@ const RecommendedCars = observer (() => {
     let maxPrice = carPrice + percent
     let minPrice = carPrice - percent
     let allCars = CarInfoStore.getRecommendedCars().filter((item) =>
-        item.body === carBody && (item.price >= minPrice && item.price <= maxPrice) && item['car_id'] != carId
+        item.body === carBody && (item.price >= minPrice && item.price <= maxPrice) && item['car_id'] !== carId
 
     )
     return (

@@ -4,11 +4,11 @@ import MySlider from "../UI/MySlider/MySlider";
 import CarCard from "./CarCard/CarCard";
 import MyTabs from "../UI/MyTabs/MyTabs";
 
-const CarInfoBlock = () => {
+const CarInfoBlock = ({setShowFullScreen}) => {
     return (
         <div className={s.car_info_block}>
             <div>
-                <MySlider emulateTouch={true} infiniteLoop={true}/>
+                <MySlider setShowFullScreen={setShowFullScreen} emulateTouch={true} infiniteLoop={true}/>
                 <MyTabs/>
             </div>
 

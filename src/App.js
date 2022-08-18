@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './App.module.scss'
 import TopBlock from "./components/TopBlock/TopBlock";
 import CarInfoBlock from "./components/CarInfoBlock/CarInfoBlock";
@@ -9,13 +9,15 @@ import Spinner from "./components/UI/MySpinner/Spinner";
 import {observer} from "mobx-react-lite";
 import MapCars from "./components/MapCars/MapCars";
 import RecommendedCars from "./components/RecommendedCars/RecommendedCars";
+import FullScreenSlider from "./components/UI/FullScreenSlider/FullScreenSlider";
 
 const App = observer(() => {
+    const [showFullScreen, setShowFullScreen] = useState(false)
     useEffect(() => {
         const url = new URL(window.location.href)
         const uid = url.searchParams.get('uid')
         axiosGetCarInfo(uid).then((data) => {
-            if(!data.data['car']){
+            if (!data.data['car']) {
                 window.location.href = '/new-filter';
             }
 
@@ -26,7 +28,7 @@ const App = observer(() => {
         }).finally(
 
         )
-        axiosAllCars().then((data)=>{
+        axiosAllCars().then((data) => {
             CarInfoStore.setRecommendedCars(data.data['cars'])
         })
     }, [])
@@ -38,8 +40,14 @@ const App = observer(() => {
                     UiStore.getSpinnerState()
                         ? <Spinner/>
                         : <>
+                            {
+                                showFullScreen
+                                    ? <FullScreenSlider setShowFullScreen={setShowFullScreen} emulateTouch={true} infiniteLoop={true}/>
+                                    : ''
+                            }
+
                             <TopBlock/>
-                            <CarInfoBlock/>
+                            <CarInfoBlock setShowFullScreen={setShowFullScreen}/>
                             <RecommendedCars/>
                             <MapCars/>
                         </>
