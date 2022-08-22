@@ -9,8 +9,6 @@ import UiStore from "./store/uiStore";
 import {observer} from "mobx-react-lite";
 
 
-!
-
 
 const App = observer(() => {
     useEffect(() => {
