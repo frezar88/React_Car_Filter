@@ -64,3 +64,43 @@
   border-radius: 50%;
 
 }
+
+@media (max-width: 768px){
+  .top_block {
+    margin: 0 0 0px 0;
+    display: grid;
+    padding: 5px 10px;
+    color: black !important;
+
+    .button {
+      color: var(--prime-black);
+      font-weight: bold;
+      font-size: 12px;
+
+      &:hover {
+        color: var(--prime-color);
+      }
+    }
+
+    .card {
+      padding: 10px 20px;
+      font-size: 15px !important;
+      color: black;
+
+      h3 {
+        font-size: 16px !important;
+        .dot {
+          width: 7px;
+          height: 7px;
+          background: black;
+          border-radius: 50%;
+        }
+      }
+
+      p {
+        .dot {
+        }
+      }
+    }
+  }
+}

@@ -47,6 +47,7 @@ const App = observer(() => {
                             }
                             <TopBlock/>
                             <CarInfoBlock setShowFullScreen={setShowFullScreen}/>
+
                             <RecommendedCars/>
                             <MapCars/>
                         </>

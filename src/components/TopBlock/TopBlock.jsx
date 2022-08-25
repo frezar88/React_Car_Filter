@@ -14,23 +14,18 @@ const TopBlock = () => {
         <div className={s.top_block}>
             <MyButton onClick={backPage} arrow={true} className={s.button}>К СПИСКУ АВТОМОБИЛЕЙ</MyButton>
             <div className={s.card}>
-                <h3> <span></span>{carsInfo.brand}  {carsInfo.model}  <span className={s.dot}></span> {}</h3>
+                <h3>{carsInfo.brand}  {carsInfo.model}  <span className={s.dot}></span> <span style={{color:'#818181'}}>{carsInfo.years}</span></h3>
                 <p style={{display:'flex',gap:'8px'}}>
-                    {carsInfo.years+ ' год выпуска'}
-                    <span className={s.dot}></span>
-                    {String(carsInfo['millage']).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")+' км'}
+                    {carsInfo.generation}
+                    {carsInfo.facelifting ||carsInfo.modification ?  <span className={s.dot}></span>:''}
+                    {carsInfo.facelifting?carsInfo.facelifting:''}
+                    {carsInfo.facelifting && carsInfo.modification ? <span className={s.dot}></span>:''}
+                    {carsInfo.modification?'модификация:':''} {carsInfo.modification}
+                    {/*{String(carsInfo['millage']).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")+' км'}*/}
                     {carsInfo.complectation}
-                    {
-                        carsInfo.modification
-                            ? <>
-                                <span className={s.dot}></span>
-                                {carsInfo.modification}
-                            </>
-                            : ''
-                    }
-
                 </p>
-                {/*<p><span>цвет кузова: </span>{carsInfo.color}</p>*/}
+                <p><span style={{color:'#818181'}}>цвет кузова: </span>{carsInfo.color}</p>
+                <p><span style={{color:'#818181'}}>цвет салона: </span>{carsInfo.color}</p>
 
             </div>
 

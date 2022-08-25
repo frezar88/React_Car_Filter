@@ -9,10 +9,18 @@ const CarInfoBlock = ({setShowFullScreen}) => {
         <div className={s.car_info_block}>
             <div>
                 <MySlider setShowFullScreen={setShowFullScreen} emulateTouch={true} infiniteLoop={true}/>
-                <MyTabs/>
+                <div className={s.tabs_desk}>
+                    <MyTabs/>
+                </div>
+
+            </div>
+            <div style={{display:'grid'}}>
+                <div className={s.tabs_mob}>
+                    <MyTabs/>
+                </div>
+                <CarCard/>
             </div>
 
-            <CarCard/>
 
         </div>
     );

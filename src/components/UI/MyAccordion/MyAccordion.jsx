@@ -54,7 +54,7 @@ const MyAccordion = observer(({name, value}) => {
                                     <li style={{
                                         fontFamily: 'Fonts',
                                         width: '100%',
-                                        display:el['value'] ? 'flex':'none'
+                                        display:el['value'] ? 'flex':'flex'
                                     }} key={index}>
                                         <span style={{
                                             display: 'flex',
