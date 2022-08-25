@@ -4,7 +4,6 @@ import s from './ResultBlockList.module.scss';
 import CarsStore from '../../../store/carsStore';
 import {observer} from "mobx-react-lite";
 import UiStore from "../../../store/uiStore";
-import ChangeFormStore from "../../../store/changeFormStore";
 
 const ResultBlockList = observer(() => {
 
@@ -56,7 +55,7 @@ const ResultBlockList = observer(() => {
                                              vin={item.vin} modification={item.modification}
                                              regionPrice={regionPrice} generation={item.generation}
                                              facelifting={item.facelifting} equipment={item.equipment}
-                                             uid={item.UID}
+                                             uid={item.UID} millage={item.millage} transmission_name={item.transmission_name}
                         />
                     )
             }

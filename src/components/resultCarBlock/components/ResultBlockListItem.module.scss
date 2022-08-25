@@ -13,7 +13,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 20px;
+    margin: 0;
     position: relative;
 
 
@@ -31,7 +31,7 @@
   .carName {
     div:nth-child(1) {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
 
       p:nth-child(1) {
@@ -65,12 +65,13 @@
           align-items: center;
 
           &:after {
-            width: 1px;
             content: "";
-            right: 0;
-            border-radius: 15px;
-            height: 12px;
-            background-color: gray;
+            left: 10px;
+            border-radius: 50%;
+            bottom: calc(50% - 6px);
+            width: 7px;
+            height: 7px;
+            background-color: #818181;
             display: block;
           }
         }
@@ -80,16 +81,16 @@
           align-items: center;
           grid-gap: 5px;
 
-          &:before {
-            content: "";
-            left: 10px;
-            border-radius: 50%;
-            bottom: calc(50% - 6px);
-            width: 10px;
-            height: 10px;
-            background-color: #3da700;
-            display: block;
-          }
+          //&:before {
+          //  content: "";
+          //  left: 10px;
+          //  border-radius: 50%;
+          //  bottom: calc(50% - 6px);
+          //  width: 7px;
+          //  height: 7px;
+          //  background-color: #818181;
+          //  display: block;
+          //}
         }
       }
     }
@@ -102,7 +103,7 @@
       font-size: 13px;
       color: var(--prime-gray);
       display: flex;
-      gap:14px ;
+      gap:5px ;
 
       span{
         font-weight: normal;
@@ -111,17 +112,20 @@
       span.item_sep {
         font-weight: normal;
         position: relative;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        gap: 5px;
         //color: var(--prime-color);
         &:nth-child(1):after, &:nth-child(2):after{
-          content: '';
+          content: "";
+          left: 10px;
+          border-radius: 50%;
+          box-sizing: border-box;
+          width: 7px;
+          height: 7px;
+          background-color: #818181;
           display: block;
-          width: 1px;
-          border-radius: 15px;
-          height: 12px;
-          background-color: gray;
-          position: absolute;
-          top: 0;
-          right: -7px;
         }
       }
     }
@@ -154,16 +158,17 @@
             &:nth-child(2) {
               position: relative;
               display: flex;
-              align-items: center;
+              align-items: baseline;
               grid-gap: 5px;
 
               &:before, &:after {
                 content: "";
-                left: 0;
-                border-radius: 15px;
-                width: 2px;
-                height: 11px;
-                background-color: var(--prime-gray);
+                left: 10px;
+                border-radius: 50%;
+                bottom: calc(50% - 6px);
+                width: 7px;
+                height: 7px;
+                background-color: #818181;
                 display: block;
               }
             }

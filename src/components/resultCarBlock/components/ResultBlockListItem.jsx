@@ -24,6 +24,7 @@ const CustomTooltip = styled(({className, ...props}) => (
 });
 
 const ResultBlockListItem = ({
+                                 transmission_name,
                                  brand,
                                  regionPrice,
                                  body,
@@ -50,6 +51,7 @@ const ResultBlockListItem = ({
                                  equipment,
                                  facelifting,
                                  generation,
+                                 millage,
                                  uid,
                                  ...props
                              }) => {
@@ -58,45 +60,45 @@ const ResultBlockListItem = ({
     // const imgPath ='https://stock.aps.by/' +JSON.parse(image)?.img.filter((item) => item.category === 'Внешний вид' && item['main_photo']===true)[0].path
     const imgPath = JSON.parse(image)?.img.filter((item) => item.category === 'Внешний вид' && item['main_photo'] === true)[0].path
 
-    const setDataForModal = (e) => {
-
-        const modal = document.querySelector('.modal-car ')
-        const html = document.querySelector('body')
-        const btnSendModel = document.querySelector('.modal-car .modal-car__content .modal-form-send')
-        btnSendModel.setAttribute('model', brand)
-        btnSendModel.setAttribute('complectation', model)
-        btnSendModel.setAttribute('years', years)
-        btnSendModel.setAttribute('engine', engine)
-        btnSendModel.setAttribute('power', power)
-        btnSendModel.setAttribute('fueltype', fueltype)
-        btnSendModel.setAttribute('drive_type_id', drive_type_id)
-        btnSendModel.setAttribute('transmission_type', transmission_type)
-        btnSendModel.setAttribute('price', price)
-        btnSendModel.setAttribute('location', location)
-        btnSendModel.setAttribute('vin', vin)
-        if (promo.length) {
-            let arrPromo = []
-            promo.forEach(({promo_name}) => {
-                arrPromo.push(promo_name)
-            })
-            btnSendModel.setAttribute('promo', arrPromo.join(' '))
-        } else {
-            btnSendModel.removeAttribute('promo')
-        }
-        html.style.overflow = 'hidden'
-        modal.classList.add('active')
-
-        let content = document.querySelector('.modal-car__content')
-        let contentSuccess = document.querySelector('.modal-car__content-success')
-        contentSuccess['style'].display = 'none'
-
-        content['style'].display = 'block'
-
-    }
+    // const setDataForModal = (e) => {
+    //
+    //     const modal = document.querySelector('.modal-car ')
+    //     const html = document.querySelector('body')
+    //     const btnSendModel = document.querySelector('.modal-car .modal-car__content .modal-form-send')
+    //     btnSendModel.setAttribute('model', brand)
+    //     btnSendModel.setAttribute('complectation', model)
+    //     btnSendModel.setAttribute('years', years)
+    //     btnSendModel.setAttribute('engine', engine)
+    //     btnSendModel.setAttribute('power', power)
+    //     btnSendModel.setAttribute('fueltype', fueltype)
+    //     btnSendModel.setAttribute('drive_type_id', drive_type_id)
+    //     btnSendModel.setAttribute('transmission_type', transmission_type)
+    //     btnSendModel.setAttribute('price', price)
+    //     btnSendModel.setAttribute('location', location)
+    //     btnSendModel.setAttribute('vin', vin)
+    //     if (promo.length) {
+    //         let arrPromo = []
+    //         promo.forEach(({promo_name}) => {
+    //             arrPromo.push(promo_name)
+    //         })
+    //         btnSendModel.setAttribute('promo', arrPromo.join(' '))
+    //     } else {
+    //         btnSendModel.removeAttribute('promo')
+    //     }
+    //     html.style.overflow = 'hidden'
+    //     modal.classList.add('active')
+    //
+    //     let content = document.querySelector('.modal-car__content')
+    //     let contentSuccess = document.querySelector('.modal-car__content-success')
+    //     contentSuccess['style'].display = 'none'
+    //
+    //     content['style'].display = 'block'
+    //
+    // }
 
     return (
         <div {...props}
-             className={reserved == '0' ? [s.resultBlockListItem].join(' ') : [s.resultBlockListItem, s.disabled].join(' ')}
+             className={reserved === '0' ? [s.resultBlockListItem].join(' ') : [s.resultBlockListItem, s.disabled].join(' ')}
              data-car-id={car_id}
              data-model={model}
              data-complectation={complectation} data-years={years}
@@ -124,11 +126,11 @@ const ResultBlockListItem = ({
                             setImgError(true)
                         }
                     }}
-                    src={imgError || imgPath==null  ? no_img : 'https://stock.aps.by/'+ imgPath} alt="#"
+                    src={imgError || imgPath == null ? no_img : 'https://stock.aps.by/' + imgPath} alt="#"
                     data-att={'link_img'}/>
 
 
-                {reserved == '1'
+                {reserved === '1'
                     ? <img style={{position: "absolute", left: 0, width: '100%', zIndex: 1111111}} src={reservedImg}
                            alt="reserved"/>
                     : false
@@ -188,11 +190,22 @@ const ResultBlockListItem = ({
                     <div
                         className={s.car_name}>
                         <p>{brand} {model} {modification ? modification : ''}</p>
-                        <p>{complectation}</p>
+                        <p style={{
+                            color: '#808080',
+                            fontWeight: 'bold',
+                            display: "grid",
+                            gap: 5,
+                            fontSize: 15
+                        }}>
+                            <span>{years} г.</span>
+                            <span style={{paddingLeft: 5}}>{millage.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")} км</span>
+                        </p>
+
+
                     </div>
                     <div>
-                        <p>{years}г.</p>
-                        <p>В наличии</p>
+                        {modification ? <p>{modification}</p> : ''}
+                        {complectation ? <p>{complectation}</p> : ''}
                     </div>
                 </div>
                 <div className={s.countOptions}>
@@ -211,7 +224,7 @@ const ResultBlockListItem = ({
                     <ul>
                         <li>
                             <div>
-                                <p>{engine.length === 1 ? engine + '.0' : engine} л</p>
+                                <p>{engine.length === 1 ? engine + '.0' : engine} </p>
                                 <p>{power} л.с</p>
                                 <p>{fueltype}</p>
                             </div>
@@ -220,6 +233,7 @@ const ResultBlockListItem = ({
                         <li>
                             <div>
                                 <p>{transmission_type}</p>
+                                <p>{transmission_name}</p>
                             </div>
 
                         </li>
@@ -244,7 +258,7 @@ const ResultBlockListItem = ({
                         <span>{CarsStore.getRegionPrice() === 'price' ? ' BYN' : ' RUB'} </span></p>
                     <div>
                         {
-                            price2 && price != price2 && regionPrice !== 'price-rus'
+                            price2 && price !== price2 && regionPrice !== 'price-rus'
                                 ? <p>
                                     <span>{price2 ? price2.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : ''}</span>
                                     <span>{price2 ? 'BYN' : ''}</span>
@@ -260,7 +274,8 @@ const ResultBlockListItem = ({
                     <p>{location}</p>
                 </div>
                 <div className={s.btnMore}>
-                    <MyButton data-stop={'stop'} onClick={setDataForModal}>Запросить предложение</MyButton>
+                    {/*<MyButton data-stop={'stop'} onClick={setDataForModal}>Подробнее</MyButton>*/}
+                    <MyButton>Подробнее</MyButton>
                 </div>
             </div>
 
