@@ -17,7 +17,7 @@ const MyTabList = styled(TabList)({
 });
 
 const MyCustomTab = styled(Tab)({
-    fontSize:15,
+    fontSize: 15,
     width: 'unset',
     fontWeight: 'bold',
     fontFamily: 'Fonts',
@@ -34,11 +34,11 @@ const MyTabs = () => {
         setValue(newValue);
     };
     return (
-        <div style={{marginTop:'30px'}}>
+        <div style={{marginTop: '30px'}}>
             <Box sx={{width: '100%', typography: 'body1'}}>
                 <TabContext value={value}>
                     <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
-                        <MyTabList   onChange={handleChange} aria-label="lab API tabs example">
+                        <MyTabList onChange={handleChange} aria-label="lab API tabs example">
                             {/*<MyCustomTab*/}
                             {/*    variant="scrollable"*/}
                             {/*    scrollButtons="auto"*/}
@@ -60,8 +60,8 @@ const MyTabs = () => {
                     {/*</TabPanel>*/}
                     <TabPanel style={{padding: 0}} value="2">
                         {
-                            CarInfoStore.getModificationData().map((el,index) =>
-                                <MyAccordion key={index} name={el['category']} value={el}/>
+                            CarInfoStore.getModificationData().map((el, index) =>
+                                <MyAccordion key={index} name={el['category']} value={el['category_options']}/>
                             )
                         }
                     </TabPanel>

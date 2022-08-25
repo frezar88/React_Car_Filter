@@ -8,7 +8,7 @@ import UserPrice from "../UserPrice/UserPrice";
 const CarCard = () => {
 
     const [carData] = useState(CarInfoStore.getCarInfo())
-    console.log(useState(CarInfoStore.getCarInfo()['complectation']))
+
     let millage = String(carData['millage']).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")
 
     const setDataForModal = (e) => {

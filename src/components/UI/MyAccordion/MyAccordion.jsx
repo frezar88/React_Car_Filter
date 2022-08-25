@@ -20,9 +20,12 @@ const MyTypography = styled(Typography)({
 const MyAccordion = observer(({name, value}) => {
     let arr = []
     for (const key in value) {
-        if (key !== 'category') {
-            arr.push({key: key, value: value[key]})
+        for (const x in value[key]){
+            if (x !== 'category' && x !== 'sort') {
+                arr.push({key: x, value: value[key][x]})
+            }
         }
+
     }
     return (
         <Accordion className={s.acc}>
@@ -35,7 +38,7 @@ const MyAccordion = observer(({name, value}) => {
             >
                 <MyTypography style={{
                     fontSize: 17,
-                    margin:'0 !important',
+                    margin: '0 !important',
                     padding: '5px 0',
                 }}>{name && name !== 'null' ? name : 'Данные предоставляются по запросу'}
                 </MyTypography>
@@ -47,6 +50,7 @@ const MyAccordion = observer(({name, value}) => {
                             arr[0]
                                 ?
                                 arr.map((el, index) =>
+
                                     <li style={{
                                         fontFamily: 'Fonts',
                                         width: '100%',
@@ -58,7 +62,7 @@ const MyAccordion = observer(({name, value}) => {
                                             width: '100%',
                                             gap: '5px'
                                         }}>
-                                            <span className={s.li_text} style={{background: '#fff'}}>{el.key}</span> <span style={{
+                                            <span className={s.li_text} style={{background: '#fff',whiteSpace:"nowrap"}}>{el.key}</span> <span style={{
                                             width: '100%',
                                             borderBottom: 'dashed 1px #80808059',
                                             transform: 'translateY(-7px)'
@@ -69,8 +73,6 @@ const MyAccordion = observer(({name, value}) => {
                                 )
                                 : ''
                         }
-
-
                     </ul>
                 </MyTypography>
             </AccordionDetails>

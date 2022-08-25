@@ -12,6 +12,8 @@ class CarInfoStore {
 
     setModificationData(data) {
         const modification = data['modification_package']['opt']
+
+        console.log(modification)
         this._modification_data = modification
     }
 

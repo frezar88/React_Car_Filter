@@ -45,14 +45,12 @@ const App = observer(() => {
                                     ? <FullScreenSlider setShowFullScreen={setShowFullScreen} emulateTouch={true} infiniteLoop={true}/>
                                     : ''
                             }
-
                             <TopBlock/>
                             <CarInfoBlock setShowFullScreen={setShowFullScreen}/>
                             <RecommendedCars/>
                             <MapCars/>
                         </>
                 }
-
             </div>
         </div>
     );

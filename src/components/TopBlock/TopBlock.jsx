@@ -7,13 +7,14 @@ import CarInfoStore from "../../store/CarInfoStore";
 const TopBlock = () => {
     const [carsInfo] = useState(CarInfoStore.getCarInfo())
     const backPage = () => {
-        window.history.back()
+        // window.history.back()
+        window.location.href = '/new-filter'
     }
     return (
         <div className={s.top_block}>
             <MyButton onClick={backPage} arrow={true} className={s.button}>К СПИСКУ АВТОМОБИЛЕЙ</MyButton>
             <div className={s.card}>
-                <h3>{carsInfo.brand}  {carsInfo.model}</h3>
+                <h3> <span></span>{carsInfo.brand}  {carsInfo.model}  <span className={s.dot}></span> {}</h3>
                 <p style={{display:'flex',gap:'8px'}}>
                     {carsInfo.years+ ' год выпуска'}
                     <span className={s.dot}></span>
