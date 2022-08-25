@@ -31,7 +31,7 @@ const MyCustomTab = styled(Tab)({
 
 
 const MyTabs = () => {
-    console.log(CarInfoStore.getModificationData())
+
     const [value, setValue] = React.useState(CarInfoStore.getCarInfo()['base_options'].length ? '1' : '2');
 
     const handleChange = (event, newValue) => {
@@ -63,11 +63,11 @@ const MyTabs = () => {
                     {/*    </ul>*/}
                     {/*</TabPanel>*/}
                     <TabPanel style={{padding: 0}} value="2">
-                        {
-                            CarInfoStore.getModificationData().map((el, index) =>
-                                <MyAccordion key={index} name={el['category']} value={el}/>
-                            )
-                        }
+                        {/*{*/}
+                        {/*    CarInfoStore.getModificationData().map((el, index) =>*/}
+                        {/*        <MyAccordion key={index} name={el['category']} value={el}/>*/}
+                        {/*    )*/}
+                        {/*}*/}
                     </TabPanel>
                 </TabContext>
             </Box>
