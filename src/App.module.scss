@@ -22,7 +22,7 @@
   --wrapper-max-width:1520px;
   --box-shadow-resultBlockList-item:4px 5px 20px 1px #0000004a;
 
-  font-family: Fonts;
+  font-family: Fonts !important;
   min-height: calc(100vh - 300px);
   box-sizing: border-box;
   font-weight: normal;
@@ -46,6 +46,7 @@
     //renault
     //padding:150px 15px;
     box-sizing: border-box;
+    font-family: Fonts !important;
   }
   p+p{
     margin-top: 0;

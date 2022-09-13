@@ -4,28 +4,33 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     padding-bottom: 20px;
+    font-family: Fonts !important;
 }
 
 @media (max-width: 1380px) {
     .resultBlockList {
         grid-template-columns: repeat(2, 1fr);
+        font-family: Fonts !important;
     }
 }
 
 @media (max-width: 950px) {
     .resultBlockList {
         grid-template-columns: repeat(2, 1fr);
+        font-family: Fonts !important;
     }
 }
 
 @media (max-width: 900px) {
     .resultBlockList {
+        font-family: Fonts !important;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 15px;
     }
 }
 @media (max-width: 630px) {
     .resultBlockList {
+        font-family: Fonts !important;
         grid-template-columns: repeat(1, 1fr);
     }
 }

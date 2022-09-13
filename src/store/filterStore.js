@@ -5,13 +5,16 @@ class FilterStore {
         'promo': new Set(),
         'brand': new Set(),
         'model': new Set(),
-        'year': new Set(),
+        'year':  {min: 0, max: 100},
+        'power_engine':  {min: 0, max: 100},
         'transmission_type': new Set(),
         'drive_type_id': new Set(),
         'body': new Set(),
         'location': new Set(),
         'color': new Set(),
         'price': {min: 0, max: 100},
+        'class': new Set(),
+        'fuel_type': new Set(),
         complectation: []
     }
     _countPromo = {};
@@ -34,7 +37,25 @@ class FilterStore {
     getStartedPromo() {
         return [...this._startedFilters.promo].sort((a, b) => a.localeCompare(b))
     }
+//----------class---------
 
+    setStartedClass(data) {
+        this._startedFilters.class.add(data)
+    }
+
+    getStartedClass() {
+        return [...this._startedFilters.class].sort((a, b) => a.localeCompare(b))
+    }
+
+//----------fuel_type---------
+
+    setStartedFuelType(data) {
+        this._startedFilters.fuel_type.add(data)
+    }
+
+    getStartedFuelType() {
+        return [...this._startedFilters.fuel_type].sort((a, b) => a.localeCompare(b))
+    }
 //---------brand--------
 
     setStartedBrand(data) {
@@ -55,13 +76,22 @@ class FilterStore {
         return [...this._startedFilters.model].sort((a, b) => a.localeCompare(b))
     }
 
-//---------year---------
     setStartedYear(data) {
-        this._startedFilters.year.add(data)
+        this._startedFilters.year = data
     }
 
     getStartedYear() {
-        return [...this._startedFilters.year].sort((a, b) => a - b)
+
+        return this._startedFilters.year
+    }
+
+    setStartedPowerEngine(data) {
+        this._startedFilters.power_engine = data
+    }
+
+    getStartedPowerEngine() {
+
+        return this._startedFilters.power_engine
     }
 
 //---------transmission_type----------
@@ -115,7 +145,7 @@ class FilterStore {
     }
 
     getStartedComplectations() {
-        return [...this._startedFilters.complectation].sort((a,b)=> Object.keys(a)[0].localeCompare(Object.keys(b)[0]))
+        return [...this._startedFilters.complectation].sort((a, b) => Object.keys(a)[0].localeCompare(Object.keys(b)[0]))
     }
 
 // --------price----------
@@ -125,6 +155,7 @@ class FilterStore {
     }
 
     getStartedPrice() {
+
         return this._startedFilters.price
     }
 

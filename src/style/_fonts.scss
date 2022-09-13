@@ -1,13 +1,19 @@
 @font-face {
   font-family: "Fonts";
   font-weight: normal;
-  src:   url('../fonts/monserat.ttf')
+  src:   url('../fonts/NissanBrand-300.woff2')
   format("woff2");
 }
 @font-face {
   font-family: "Fonts";
   font-weight: bold;
-  src:   url('../fonts/renault.woff2')
+  src:   url('../fonts/NissanBrand-400.woff2')
+  format("woff2");
+}
+@font-face {
+  font-family: "Fonts";
+  font-weight: 1000;
+  src:   url('../fonts/NissanBrand-700.woff2')
   format("woff2");
 }
 //@font-face {

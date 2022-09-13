@@ -54,9 +54,9 @@ class CarsStore {
     }
 
     createActualCarList() {
+        console.log()
         if (ChangeFormStore.getChangeBrand().length
             || ChangeFormStore.getChangeModel().length
-            || ChangeFormStore.getChangeYear().length
             || ChangeFormStore.getChangeTransmission().length
             || ChangeFormStore.getChangeDrive().length
             || ChangeFormStore.getChangeBody().length
@@ -65,19 +65,29 @@ class CarsStore {
             || ChangeFormStore.getChangePromo().length
             || ChangeFormStore.getChangePrice().min
             || ChangeFormStore.getChangePrice().max
+            || ChangeFormStore.getChangeYear().min
+            || ChangeFormStore.getChangeYear().max
+            || ChangeFormStore.getChangePowerEngine().min
+            || ChangeFormStore.getChangePowerEngine().max
             || ChangeFormStore.getChangeComplectation().length
+            ||  ChangeFormStore.getChangeClass().length
         ) {
             let actualCars = this.getCats()
                 .filter(item => ChangeFormStore.getChangePrice().min ? ChangeFormStore.getChangePrice().min <= item.price : item)
                 .filter(item => ChangeFormStore.getChangePrice().max ? ChangeFormStore.getChangePrice().max >= item.price : item)
+                .filter(item => ChangeFormStore.getChangeYear().min ? ChangeFormStore.getChangeYear().min <= item.years : item)
+                .filter(item => ChangeFormStore.getChangeYear().max ? ChangeFormStore.getChangeYear().max >= item.years : item)
+                .filter(item => ChangeFormStore.getChangePowerEngine().min ? ChangeFormStore.getChangePowerEngine().min <= item.power : item)
+                .filter(item => ChangeFormStore.getChangePowerEngine().max ? ChangeFormStore.getChangePowerEngine().max >= item.power : item)
                 .filter(item => ChangeFormStore.getChangeBrand().length ? ChangeFormStore.getChangeBrand().includes(item.brand) : item)
                 .filter(item => ChangeFormStore.getChangeModel().length ? ChangeFormStore.getChangeModel().includes(item.model) : item)
-                .filter(item => ChangeFormStore.getChangeYear().length ? ChangeFormStore.getChangeYear().includes(item.years) : item)
                 .filter(item => ChangeFormStore.getChangeTransmission().length ? ChangeFormStore.getChangeTransmission().includes(item['transmission_type']) : item)
                 .filter(item => ChangeFormStore.getChangeDrive().length ? ChangeFormStore.getChangeDrive().includes(item['drive_type_id']) : item)
                 .filter(item => ChangeFormStore.getChangeBody().length ? ChangeFormStore.getChangeBody().includes(item.body) : item)
                 .filter(item => ChangeFormStore.getChangeLocation().length ? ChangeFormStore.getChangeLocation().includes(item.location) : item)
                 .filter(item => ChangeFormStore.getChangeColor().length ? ChangeFormStore.getChangeColor().includes(item.color) : item)
+                .filter(item => ChangeFormStore.getChangeClass().length ? ChangeFormStore.getChangeClass().includes(item.class_car) : item)
+                .filter(item => ChangeFormStore.getChangeFuelType().length ? ChangeFormStore.getChangeFuelType().includes(item.fueltype) : item)
                 .filter(item => ChangeFormStore.getChangeComplectation().length ? ChangeFormStore.getChangeComplectation().includes(item.complectation) : item)
                 .filter(item => ChangeFormStore.getChangePromo().length
                     ? item.promo ? item.promo.find(item2 => ChangeFormStore.getChangePromo().includes(item2['promo_name'])) : false
@@ -103,6 +113,8 @@ class CarsStore {
 
     bruteForceAnArray(data) {
         this.collectStartedPrice(data)
+        this.collectStartedYear(data)
+        this.collectStartedPowerEngine(data)
         let obj = {}
         let arr = []
         data.data['cars'].forEach(({
@@ -115,12 +127,16 @@ class CarsStore {
                                        body,
                                        location,
                                        color,
-                                       complectation
+                                       complectation,
+                                       class_car,
+                                       fueltype,
                                    }) => {
             this.collectStartedPromoAndCountPromo(promo)
             this.collectStartedBrands(brand)
+            this.collectStartedClass(class_car)
             this.collectStartedModels(model)
-            this.collectStartedYear(years)
+            this.collectStartedFuelType(fueltype)
+            // this.collectStartedYear(years)
             this.collectStartedTransmission(transmission_type)
             this.collectStartedDrive(drive_type_id)
             this.collectStartedBody(body)
@@ -166,6 +182,20 @@ class CarsStore {
         }
     }
 
+//----------class----------
+    collectStartedClass(class_car) {
+        if (class_car) {
+            FilterStore.setStartedClass(class_car)
+        }
+    }
+
+//----------FuelType----------
+    collectStartedFuelType(getStartedFuelType) {
+        if (getStartedFuelType) {
+            FilterStore.setStartedFuelType(getStartedFuelType)
+        }
+    }
+
 
 //---------model---------
     collectStartedModels(model) {
@@ -176,10 +206,24 @@ class CarsStore {
 
 
 //---------year---------
-    collectStartedYear(years) {
-        if (years) {
-            FilterStore.setStartedYear(years)
-        }
+    collectStartedYear(data) {
+        let sortedArrToGetMinMaxYear = data.data['cars'].sort((a, b) => a.years - b.years)
+        FilterStore.setStartedYear(
+            {
+                min: sortedArrToGetMinMaxYear[0].years,
+                max: sortedArrToGetMinMaxYear[sortedArrToGetMinMaxYear.length - 1].years
+            })
+    }
+
+//-----------power_engine-----------
+//---------year---------
+    collectStartedPowerEngine(data) {
+        let sortedArrToGetMinMaxPower = data.data['cars'].sort((a, b) => a.power - b.power)
+        FilterStore.setStartedPowerEngine(
+            {
+                min: sortedArrToGetMinMaxPower[0].power,
+                max: sortedArrToGetMinMaxPower[sortedArrToGetMinMaxPower.length - 1].power
+            })
     }
 
 

@@ -4,8 +4,9 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import s from './AccordionBlock.module.scss'
 
 const AccordionBlock = ({children,name,id,open,...props}) => {
+
     return (
-        <Accordion {...props}  defaultExpanded={open} >
+        <Accordion {...props}   defaultExpanded={open} >
             <AccordionSummary
                 expandIcon={<ExpandMoreIcon fontSize={'medium'} className={s.arrowAccord}  />}
                 aria-controls={`${id}-content`}

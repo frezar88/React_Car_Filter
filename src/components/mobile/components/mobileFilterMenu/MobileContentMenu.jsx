@@ -62,22 +62,22 @@ const MobileContentMenu = observer(() => {
                 </AccordionBlock>
 
 
-                <AccordionBlock open={false} name={'Год'}>
-                    <div className={s.accordContainer}>
-                        {
-                            FilterStore.getStartedYear().map((el) =>
-                                <FormControlLabel
-                                    key={el}
-                                    control={<CustomizedCheckbox
-                                        disabled={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualYear(), '1')}
-                                        data-name={'year'} name={el}/>}
-                                    label={<Typography
-                                        className={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualYear())}>{el}</Typography>}
-                                />
-                            )
-                        }
-                    </div>
-                </AccordionBlock>
+                {/*<AccordionBlock open={false} name={'Год'}>*/}
+                {/*    <div className={s.accordContainer}>*/}
+                {/*        {*/}
+                {/*            FilterStore.getStartedYear().map((el) =>*/}
+                {/*                <FormControlLabel*/}
+                {/*                    key={el}*/}
+                {/*                    control={<CustomizedCheckbox*/}
+                {/*                        disabled={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualYear(), '1')}*/}
+                {/*                        data-name={'year'} name={el}/>}*/}
+                {/*                    label={<Typography*/}
+                {/*                        className={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualYear())}>{el}</Typography>}*/}
+                {/*                />*/}
+                {/*            )*/}
+                {/*        }*/}
+                {/*    </div>*/}
+                {/*</AccordionBlock>*/}
                 <AccordionBlock open={false} name={'КПП'}>
                     <div className={s.accordContainer}>
                         {

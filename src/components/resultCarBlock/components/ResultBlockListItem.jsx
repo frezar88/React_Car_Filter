@@ -189,16 +189,18 @@ const ResultBlockListItem = ({
                     className={s.carName}>
                     <div
                         className={s.car_name}>
-                        <p>{brand} {model} {modification ? modification : ''}</p>
+                        <p style={{fontWeight:"1000"}}>{brand} {model} </p>
                         <p style={{
-                            color: '#808080',
-                            fontWeight: 'bold',
+                            color: '#000',
+                            fontWeight: '1000',
                             display: "grid",
                             gap: 5,
-                            fontSize: 15
+                            fontSize: 13,
+                            justifyContent:'flex-end',
+                            fontFamily:'Fonts !important',
                         }}>
-                            <span>{years} г.</span>
-                            <span style={{paddingLeft: 5}}>{millage.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")} км</span>
+                            <span className={s.span1} style={{textAlign:'end', fontFamily:'Fonts'}}>{years} </span>
+                            <span className={s.span2} style={{textAlign:'end', fontFamily:'Fonts'}}>{millage.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")} км</span>
                         </p>
 
 

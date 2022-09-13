@@ -12,8 +12,10 @@ class ActualStoreCar {
         'body': new Set(),
         'location': new Set(),
         'color': new Set(),
-        'price':{min:0,max:0},
-        'complectation':[]
+        'price': {min: 0, max: 0},
+        'complectation': [],
+        'class_car':new Set(),
+        'fuel_type':new Set(),
 
     }
 
@@ -38,9 +40,12 @@ class ActualStoreCar {
                                                       drive_type_id,
                                                       body,
                                                       location,
-                                                      color
+                                                      color,
+                                                      class_car,
+                                                      fueltype
                                                   }) => {
                 this.setActualModel(model)
+                this.setActualClass(class_car)
                 this.setActualBrand(brand)
                 this.setActualYear(years)
                 this.setActualTransmission(transmission_type)
@@ -48,15 +53,16 @@ class ActualStoreCar {
                 this.setActualBody(body)
                 this.setActualLocation(location)
                 this.setActualColor(color)
+                this.setActualFuelType(fueltype)
                 if (promo.length) {
                     promo.forEach(el => {
                         this.setActualPromo(el['promo_name'])
                     })
                 }
             })
-            if(!rangeInputs){
+            if (!rangeInputs) {
                 let SortArray = CarsStore.getActualCarList().sort((a, b) => a.price - b.price)
-                this.setActualPrice({min: SortArray[0].price ,max: SortArray[SortArray.length - 1].price})
+                this.setActualPrice({min: SortArray[0].price, max: SortArray[SortArray.length - 1].price})
             }
 
 
@@ -70,6 +76,19 @@ class ActualStoreCar {
 
     getActualBrand() {
         return [...this._actualFilters.brand]
+    }
+    getActualClass() {
+        return [...this._actualFilters.class_car]
+    }
+    setActualClass(data) {
+        this._actualFilters.class_car.add(data)
+    }
+
+    getActualFuelType() {
+        return [...this._actualFilters.fuel_type]
+    }
+    setActualFuelType(data) {
+        this._actualFilters.fuel_type.add(data)
     }
 
     setActualModel(data) {

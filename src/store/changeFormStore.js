@@ -5,14 +5,17 @@ class ChangeFormStore {
         'promo': [],
         'brand': [],
         'model': [],
-        'year': [],
+        'year': {min: 0, max: 0},
+        'power_engine': {min: 0, max: 0},
         'transmission_type': [],
         'drive_type_id': [],
         'body': [],
         'location': [],
         'color': [],
         'price': {min: 0, max: 0},
-        'complectation': []
+        'complectation': [],
+        'class_car':[],
+        'fuel_type':[]
     }
 
 
@@ -34,6 +37,15 @@ class ChangeFormStore {
 
     getChangePrice() {
         return this._changeData.price
+    }
+
+// ---------class----------
+    setChangeClass(data) {
+        this._changeData.class_car = data
+    }
+
+    getChangeClass() {
+        return this._changeData.class_car
     }
 
 //----------promo----------
@@ -70,6 +82,15 @@ class ChangeFormStore {
 
     getChangeYear() {
         return this._changeData.year
+    }
+
+    //----------power_engine----------
+    setChangePowerEngine(data) {
+        this._changeData.power_engine = data
+    }
+
+    getChangePowerEngine() {
+        return this._changeData.power_engine
     }
 
 //----------transmission_type----------
@@ -115,6 +136,14 @@ class ChangeFormStore {
 
     getChangeColor() {
         return this._changeData.color
+    }
+//----------fuel_type----------
+    setChangeFuelType(data) {
+        this._changeData.fuel_type = data
+    }
+
+    getChangeFuelType() {
+        return this._changeData.fuel_type
     }
 
 //--------complectation-----

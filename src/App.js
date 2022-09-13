@@ -32,6 +32,7 @@ const App = observer(() => {
                 action('setChangePromo', 'getChangePromo', checked, value)
                 break
             case 'brand':
+
                 action('setChangeBrand', 'getChangeBrand', checked, value)
                 break
             case 'model':
@@ -47,9 +48,9 @@ const App = observer(() => {
                     action('setChangeModel', 'getChangeModel', checked, value, 'model')
                 }
                 break
-            case 'year':
-                action('setChangeYear', 'getChangeYear', checked, value)
-                break
+            // case 'year':
+            //     action('setChangeYear', 'getChangeYear', checked, value)
+            //     break
             case 'transmission_type':
                 action('setChangeTransmission', 'getChangeTransmission', checked, value)
                 break
@@ -68,14 +69,20 @@ const App = observer(() => {
             case 'complectation':
                 action('setChangeComplectation', 'getChangeComplectation', checked, value)
                 break
+            case 'class_car':
+                action('setChangeClass', 'getChangeClass', checked, value)
+                break
+            case 'fuel_type':
+                action('setChangeFuelType', 'getChangeFuelType', checked, value)
+                break
             default:
                 break
         }
 
-        ActualStoreFilters.takeActualCarList()
+        // ActualStoreFilters.takeActualCarList()
 
         UiStore.setArrayCountSlice(27)
-
+        console.log(ChangeFormStore.getChangeBrand())
     }
     return (
         <div className={s.App}>

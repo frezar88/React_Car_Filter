@@ -75,12 +75,12 @@ const Sliders = styled(Slider)(({theme}) => ({
 }));
 
 
-const RangeSlider = observer(() => {
-    const [value, setValue] = useState([+FilterStore.getStartedPrice().min, +FilterStore.getStartedPrice().max])
+const RangeSliderPower = observer(() => {
+    const [value, setValue] = useState([+FilterStore.getStartedPowerEngine().min, +FilterStore.getStartedPowerEngine().max])
 
-    const setPriceValue = () => {
+    const setYearValue = () => {
 
-        ChangeFormStore.setChangePrice({...ChangeFormStore.getChangePrice(), min: +value[0], max: +value[1]})
+        ChangeFormStore.setChangePowerEngine({...ChangeFormStore.setChangePowerEngine(), min: +value[0], max: +value[1]})
 
 
         // ActualStoreFilters.takeActualCarList('1')
@@ -88,7 +88,7 @@ const RangeSlider = observer(() => {
 
     useEffect(() => {
         const handler = setTimeout(() => {
-            setPriceValue()
+            setYearValue()
         }, 500)
         return () => {
             clearTimeout(handler)
@@ -119,20 +119,20 @@ const RangeSlider = observer(() => {
                 // disabled={ActualStoreFilters.getActualPrice().min == ActualStoreFilters.getActualPrice().max}
                 valueLabelDisplay="off"
                 min={
-                    Number(FilterStore.getStartedPrice().min)
+                    Number(FilterStore.getStartedPowerEngine().min)
                 }
                 max={
-                    Number(FilterStore.getStartedPrice().max)
+                    Number(FilterStore.getStartedPowerEngine().max)
                 }
 
                 defaultValue={
-                    [
-                        ActualStoreFilters.getActualPrice().min && ActualStoreFilters.getActualPrice().min !== 0
-                            ? Number(ActualStoreFilters.getActualPrice().min)
-                            : Number(FilterStore.getStartedPrice().min),
-                        ActualStoreFilters.getActualPrice().max && ActualStoreFilters.getActualPrice().max !== 0
-                            ? Number(ActualStoreFilters.getActualPrice().max)
-                            : Number(FilterStore.getStartedPrice().max),
+                    [FilterStore.getStartedPowerEngine().min?FilterStore.getStartedPowerEngine().min:0,FilterStore.getStartedPowerEngine().max?FilterStore.getStartedPowerEngine().max:1
+                        // ActualStoreFilters.getActualPrice().min && ActualStoreFilters.getActualPrice().min !== 0
+                        //     ? Number(ActualStoreFilters.getActualPrice().min)
+                        //     : Number(FilterStore.getStartedPrice().min),
+                        // ActualStoreFilters.getActualPrice().max && ActualStoreFilters.getActualPrice().max !== 0
+                        //     ? Number(ActualStoreFilters.getActualPrice().max)
+                        //     : Number(FilterStore.getStartedPrice().max),
                     ]
                 }
                 onChange={handleChange}
@@ -141,4 +141,4 @@ const RangeSlider = observer(() => {
     );
 });
 
-export default RangeSlider;
+export default RangeSliderPower;

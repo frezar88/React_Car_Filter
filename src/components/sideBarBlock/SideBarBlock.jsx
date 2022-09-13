@@ -10,6 +10,8 @@ import FilterStore from "../../store/filterStore";
 import ActualStoreFilters from "../../store/actualStoreFilters";
 import {giveClassNameActiveOrDisabled} from "../../const";
 import RangeSlider from "../UI/MyInputRange";
+import RangeSliderYear from "../UI/MyInputRangeYear";
+import RangeSliderPower from "../UI/MyInputRangePowerEngine";
 import ChangeFormStore from "../../store/changeFormStore";
 
 
@@ -40,60 +42,40 @@ const SideBarBlock = observer(() => {
                     :
                     false
                 }
-
-                <AccordionBlock open={true} name={'Модель'}>
+                {/*ChangeFormStore.getChangeBrand()*/}
+                <AccordionBlock  open={true} name={'Модель'}>
                     <div className={s.accordContainer}>
                         {
-                            FilterStore.getStartedModel().map((el) =>
+                            FilterStore.getStartedClass().map((el) =>
                                 <FormControlLabel
                                     key={el}
                                     control={<CustomizedCheckbox
-                                        disabled={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualModel(), '1')}
-                                        data-name={'model'} name={el}/>}
+                                        disabled={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualClass(), '1')}
+                                        data-name={'class_car'} name={el}/>}
                                     label={<Typography
-                                        className={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualModel())}> {el}</Typography>}
+                                        className={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualClass())}>{el}</Typography>}
                                 />
                             )
                         }
                     </div>
                 </AccordionBlock>
-                {
-                    FilterStore.getStartedComplectations().filter(item => ChangeFormStore.getChangeModel().includes(Object.keys(item).join())).length
-                        ?       <AccordionBlock
-                            className={s.complectaion}
-                            style={{display: 'grid'}}
-                            open={true}
-                            name={'Комплектация'}
-                            id={'price'}
-                        >
-                            {
-                                FilterStore.getStartedComplectations()
-                                    .filter(item => ChangeFormStore.getChangeModel().includes(Object.keys(item).join()))
-                                    .map((item, index) =>
-                                        <div
-                                            key={index}
-                                            className={s.complectaions__block}
-                                        >
-                                            <h3 className={s.title_complectation}>{Object.keys(item)}</h3>
-                                            {
-                                                item[Object.keys(item)].map((el, index) =>
-                                                    <div key={index} style={{display: 'grid'}}>
-                                                        <FormControlLabel
-                                                            control={<CustomizedCheckbox data-name={'complectation'}
-                                                                                         name={el}/>}
-                                                            label={<Typography>{el} </Typography>}
-                                                        />
-                                                    </div>
-                                                )
-                                            }
-                                        </div>
-                                    )
-                            }
-                        </AccordionBlock>
-                        :''
-                }
 
-
+                {/*<AccordionBlock open={true} name={'Модель'}>*/}
+                {/*    <div className={s.accordContainer}>*/}
+                {/*        {*/}
+                {/*            FilterStore.getStartedModel().map((el) =>*/}
+                {/*                <FormControlLabel*/}
+                {/*                    key={el}*/}
+                {/*                    control={<CustomizedCheckbox*/}
+                {/*                        disabled={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualModel(), '1')}*/}
+                {/*                        data-name={'model'} name={el}/>}*/}
+                {/*                    label={<Typography*/}
+                {/*                        className={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualModel())}> {el}</Typography>}*/}
+                {/*                />*/}
+                {/*            )*/}
+                {/*        }*/}
+                {/*    </div>*/}
+                {/*</AccordionBlock>*/}
                 <AccordionBlock open={true} name={'Цена'}
                                 id={'price'}>
                     {
@@ -102,11 +84,34 @@ const SideBarBlock = observer(() => {
                             : false
                     }
                 </AccordionBlock>
-
-
                 <AccordionBlock open={true} name={'Год'}>
+                    {
+                        FilterStore.getStartedYear()["min"]
+                            ? <RangeSliderYear/>
+                            : false
+                    }
+                </AccordionBlock>
+                <AccordionBlock open={true} name={'Мощность'}>
+                    {
+                        FilterStore.getStartedPowerEngine()["min"]
+                            ? <RangeSliderPower/>
+                            : false
+                    }
+                </AccordionBlock>
+                <AccordionBlock open={true} name={'Топливо'}>
                     <div className={s.accordContainer}>
-                        <RangeSlider/>
+                        {
+                            FilterStore.getStartedFuelType().map((el) =>
+                                <FormControlLabel
+                                    key={el}
+                                    control={<CustomizedCheckbox
+                                        disabled={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualFuelType(), '1')}
+                                        data-name={'fuel_type'} name={el}/>}
+                                    label={<Typography
+                                        className={giveClassNameActiveOrDisabled(el, ActualStoreFilters.getActualFuelType())}>{el}</Typography>}
+                                />
+                            )
+                        }
                     </div>
                 </AccordionBlock>
                 <AccordionBlock open={true} name={'КПП'}>
@@ -141,6 +146,7 @@ const SideBarBlock = observer(() => {
                         }
                     </div>
                 </AccordionBlock>
+
                 <AccordionBlock open={true} name={'Кузов'}>
                     <div className={s.accordContainer}>
                         {
