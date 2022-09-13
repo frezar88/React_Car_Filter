@@ -24,8 +24,8 @@ const TopBlock = () => {
                     {/*{String(carsInfo['millage']).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")+' км'}*/}
                     {carsInfo.complectation}
                 </p>
-                <p><span style={{color:'#818181'}}>цвет кузова: </span>{carsInfo.color}</p>
-                <p><span style={{color:'#818181'}}>цвет салона: </span>{carsInfo.color}</p>
+                {/*<p><span style={{color:'#818181'}}>цвет кузова: </span>{carsInfo.color}</p>*/}
+                {/*<p><span style={{color:'#818181'}}>цвет салона: </span>{carsInfo.color}</p>*/}
 
             </div>
 
