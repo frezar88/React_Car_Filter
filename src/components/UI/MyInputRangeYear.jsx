@@ -105,13 +105,13 @@ const RangeSliderYear = observer(() => {
             <div className={s.priceContainer} style={{}}>
                 <MyInputText
                     value={value[0]}
-                    name={'Минимальная цена'}
+                    name={'Минимальный год'}
                     onInput={(e) => setValue(e.target.value)}
                 />
 
                 <MyInputText
                     value={value[1]}
-                    name={'Максимальная цена'}
+                    name={'Максимальный год'}
                     onInput={(e) => setValue(e.target.value)}
                 />
             </div>

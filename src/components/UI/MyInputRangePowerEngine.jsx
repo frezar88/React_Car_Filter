@@ -105,13 +105,13 @@ const RangeSliderPower = observer(() => {
             <div className={s.priceContainer} style={{}}>
                 <MyInputText
                     value={value[0]}
-                    name={'Минимальная цена'}
+                    name={'Минимальная мощность'}
                     onInput={(e) => setValue(e.target.value)}
                 />
 
                 <MyInputText
                     value={value[1]}
-                    name={'Максимальная цена'}
+                    name={'Максимальная мощность'}
                     onInput={(e) => setValue(e.target.value)}
                 />
             </div>
