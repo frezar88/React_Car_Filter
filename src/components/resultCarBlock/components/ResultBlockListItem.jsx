@@ -102,14 +102,14 @@ const ResultBlockListItem = ({
              data-engine={engine} data-power={power} data-fueltype={fueltype}
              data-drive_type_id={drive_type_id}
              data-transmission_type={transmission_type} data-price={price} data-location={location}
-             // onClick={(e) => {
-             //     let dataStop = e.target['attributes']['data-stop']
-             //     if (dataStop) {
-             //         e.preventDefault()
-             //     } else {
-             //         window.location.href = `car-card?car_id=${car_id}`
-             //     }
-             // }}
+            // onClick={(e) => {
+            //     let dataStop = e.target['attributes']['data-stop']
+            //     if (dataStop) {
+            //         e.preventDefault()
+            //     } else {
+            //         window.location.href = `car-card?car_id=${car_id}`
+            //     }
+            // }}
         >
 
             <div style={{position: 'relative'}} className={s.img}>
@@ -202,7 +202,7 @@ const ResultBlockListItem = ({
                     <ul>
                         <li>
                             <div>
-                                <p>{engine.length===1?engine+'.0 ':engine} {engine.length >=5?'':'л'}</p>
+                                <p>{engine.length === 1 ? engine + '.0 ' : engine} {engine.length >= 5 ? '' : 'л'}</p>
                                 <p>{power} л.с</p>
                                 <p>{fueltype}</p>
                             </div>
@@ -230,13 +230,17 @@ const ResultBlockListItem = ({
                         </li>
                     </ul>
                 </div>
-                <div className={s.priceBlock}>
-                    <p><span style={{fontSize:price =='0'?'16px':''}}>{price !='0'? price.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1"):'Цена и наличие по запросу'}</span>
+                <div className={s.priceBlock} style={{ display: model === 'Новый Koleos' ? 'none' : 'flex'}}>
+                    <p><span
+                        style={{
+                            fontSize: price == '0' ? '16px' : '',
+
+                        }}>{price != '0' ? price.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : 'Цена и наличие по запросу'}</span>
                         {
-                            price !='0'
-                            ?
+                            price != '0'
+                                ?
                                 <span>{CarsStore.getRegionPrice() === 'price' ? 'BYN' : ' RUB'} </span>
-                            :''
+                                : ''
                         }
                     </p>
                     <div>
@@ -257,7 +261,9 @@ const ResultBlockListItem = ({
                     <p>{location}</p>
                 </div>
                 <div className={s.btnMore}>
-                    <MyButton data-stop={'stop'} onClick={setDataForModal}>Запросить предложение</MyButton>
+                    <MyButton data-stop={'stop'}
+
+                              onClick={setDataForModal}>Запросить предложение'</MyButton>
                 </div>
             </div>
 
