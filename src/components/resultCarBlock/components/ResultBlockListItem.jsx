@@ -215,6 +215,7 @@ const ResultBlockListItem = ({
                     {/*<p>{generation || generation!=null?<span>{generation}</span>:''} {equipment || equipment!=null?<span>{equipment}</span>:''} {facelifting || facelifting!=null?<span>{facelifting}</span>:''}</p>*/}
                     <p>
                         {generation ? <span
+                            // className={(equipment || equipment != null) || facelifting ? s.item_sep : ''}>{generation}</span> : ''}
                             className={(equipment || equipment != null) || facelifting ? s.item_sep : ''}>{generation}</span> : ''}
                         {equipment ? <span className={facelifting ? s.item_sep : ''}>{equipment}</span> : ''}
                         {facelifting ? <span>{facelifting}</span> : ''}
