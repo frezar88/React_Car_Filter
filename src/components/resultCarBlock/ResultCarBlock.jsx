@@ -7,11 +7,14 @@ import CarsStore from '../../store/carsStore'
 import Spinner from "../UI/Spinner";
 import MobileBlock from "../mobile/MobileBlock";
 import UiStore from "../../store/uiStore";
+import CountBlockMobile from "../sideBarBlock/components/CountBlockMobile";
+
 
 const ResultCarBlock = observer(() => {
     return (
         <div className={s.resultCarBlock}>
             <MobileBlock/>
+            <CountBlockMobile/>
             <SortBarBlock/>
             {
                 CarsStore.CarsList.length
