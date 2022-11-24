@@ -58,6 +58,9 @@
         //color: var(--prime-gray);
         color: #000;
         font-family: Fonts !important;
+        span:last-child{
+          font-weight: normal;
+        }
       }
     }
 
