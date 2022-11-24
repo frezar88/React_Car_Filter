@@ -12,9 +12,14 @@ const TopBlock = () => {
     }
     return (
         <div className={s.top_block}>
-            <MyButton onClick={backPage} arrow={true} className={s.button}>К СПИСКУ АВТОМОБИЛЕЙ</MyButton>
+            {/*<MyButton onClick={backPage} arrow={true} className={s.button}>К СПИСКУ АВТОМОБИЛЕЙ</MyButton>*/}
             <div className={s.card}>
-                <h3>{carsInfo.brand}  {carsInfo.model}  <span className={s.dot}></span> <span style={{color:'#818181'}}>{carsInfo.years}</span></h3>
+                <h3>{carsInfo.brand}  {carsInfo.model}
+                    <span className={s.dot}></span>
+                    <span style={{color:'#818181'}}>{carsInfo.years} </span>
+                    <span className={s.dot}></span>
+                    <span style={{color:'#818181'}}>{String(carsInfo['millage']).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")+' км'} </span>
+                </h3>
                 <p style={{display:'flex',gap:'8px'}}>
                     {carsInfo.generation}
                     {carsInfo.facelifting ||carsInfo.modification ?  <span className={s.dot}></span>:''}

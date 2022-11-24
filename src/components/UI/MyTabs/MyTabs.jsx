@@ -34,7 +34,6 @@ const MyTabs = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-    console.log(CarInfoStore.getCarInfo()['options_package']['opt'])
     return (
         <div style={{marginTop: '30px'}}>
             <Box sx={{width: '100%', typography: 'body1'}}>
