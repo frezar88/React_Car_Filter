@@ -136,7 +136,30 @@
     //padding: 20px;
     //background: var(--car_card-background);
     color: black;
+    ul{
+      li{
+        font-size: 12px !important;
+        &:before{
+          font-size: 20px !important;
+        }
+      }
+    }
   }
+  .location{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px !important;
+    color: var(--card-color-gray);
+    font-family: Fonts !important;
+    &:before{
+      content: "\f12b";
+      font-family: Iconfont !important;
+      font-size: 18px;
+    }
+  }
+
 }
 
 .dot {
@@ -145,3 +168,4 @@
   background: black;
   border-radius: 50%;
 }
+

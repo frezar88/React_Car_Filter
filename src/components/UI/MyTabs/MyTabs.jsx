@@ -9,6 +9,7 @@ import {styled} from "@mui/material";
 import {PRIMARY_BLACK, PRIMARY_COLOR} from "../../../const";
 import MyAccordion from "../MyAccordion/MyAccordion";
 import CarInfoStore from "../../../store/CarInfoStore";
+import MyAccordionBaseOptions from "../MyAccordion/MyAccordionBaseOptions";
 
 const MyTabList = styled(TabList)({
     '.MuiTabs-indicator': {
@@ -33,27 +34,31 @@ const MyTabs = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    console.log(CarInfoStore.getCarInfo()['options_package']['opt'])
     return (
         <div style={{marginTop: '30px'}}>
             <Box sx={{width: '100%', typography: 'body1'}}>
-                <TabContext value={value}>
+                <TabContext value={value} style={{fontSize:'200px !important'}}>
                     <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
                         <MyTabList onChange={handleChange} aria-label="lab API tabs example">
                             <MyCustomTab
                                 variant="scrollable"
                                 scrollButtons="auto"
                                 aria-label="scrollable auto tabs example"
-                                style={{pointerEvents: CarInfoStore.getCarInfo()['base_options'].length ? 'all' : 'none',
-                               color:!CarInfoStore.getCarInfo()['base_options'].length ? 'gray':''}}
+                                style={{pointerEvents: CarInfoStore.getCarInfo()['options_package']['opt'].length ? 'all' : 'none',
+                               color:!CarInfoStore.getCarInfo()['options_package']['opt'].length ? 'gray':''}}
                                 className={s.menu_button} label="Ключевые опции" value="1"/>
                             <MyCustomTab className={s.menu_button} label="Технические характеристики" value="2"/>
                         </MyTabList>
                     </Box>
                     <TabPanel style={{padding: '5px 0'}} value="1">
                         <ul className={s.list}>
+
+
                             {
-                                CarInfoStore.getCarInfo()['base_options'].map(({option_name}, index) =>
-                                    <li style={{fontFamily:'Fonts'}} key={index}>{option_name}</li>
+                                CarInfoStore.getCarInfo()['options_package']['opt'].map((el, index) =>
+                                    <MyAccordionBaseOptions key={index} name={el['options_package']} value={el['options']}/>
+
                                 )
                             }
                         </ul>

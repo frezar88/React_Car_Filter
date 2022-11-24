@@ -66,7 +66,8 @@ const CarCard = () => {
                 <div className={s.features}>
                     <ul>
                         <li>
-                            <b>Двигатель:</b> {String(carData.volume).length === 1 ? carData.volume + '.0' : carData.volume}, {carData.power} л.с., {carData.fueltype}
+                            {/*<b>Двигатель:</b> {String(carData.volume).length === 1 ? carData.volume + '.0' : carData.volume}, {carData.power} л.с., {carData.fueltype}*/}
+                            <b>Двигатель:</b> {String(carData.volume).length === 1 ? carData.volume + '.0' : carData.volume}, {carData.power} л.с.
                         </li>
                         <li><b>Кпп:</b> {carData['transmission_type'] + ' (' + carData['transmission_name'] + ')'}</li>
                         <li><b>Кузов:</b> {carData.body}</li>

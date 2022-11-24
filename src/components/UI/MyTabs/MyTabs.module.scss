@@ -2,6 +2,7 @@
   color: var(--prime-black);
   margin-right: 20px !important;
 
+
 }
 
 .list {
@@ -30,6 +31,18 @@
     div{
       margin-bottom: 0px !important;
     }
+  }
+}
+
+
+@media (max-width: 1024px){
+  .menu_button {
+    font-size: 14px !important;
+
+
+  }
+  .my_typo{
+    font-size:14px !important;
   }
 }
 

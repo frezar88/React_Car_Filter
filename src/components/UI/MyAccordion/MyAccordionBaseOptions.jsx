@@ -1,0 +1,91 @@
+import React from 'react';
+import {Accordion, AccordionDetails, AccordionSummary, styled, Typography} from "@mui/material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {PRIMARY_BLACK, PRIMARY_COLOR} from "../../../const";
+import s from "../MyTabs/MyTabs.module.scss";
+import {observer} from "mobx-react-lite";
+
+const MyExpandMoreIcon = styled(ExpandMoreIcon)({
+    color: PRIMARY_COLOR
+
+
+});
+
+const MyTypography = styled(Typography)({
+    color: PRIMARY_BLACK,
+    fontFamily: 'Fonts'
+
+});
+
+const MyAccordionBaseOptions = observer(({name, value}) => {
+    let arr = []
+    for (const key in value) {
+        for (const x in value[key]){
+            if (x !== 'category' && x !== 'sort') {
+                arr.push({key: x, value: value[key][x]})
+            }
+        }
+
+    }
+    return (
+        <Accordion className={s.acc}>
+
+            <AccordionSummary
+                expandIcon={<MyExpandMoreIcon fontSize={"large"}/>}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                className={s.summary}
+            >
+                <MyTypography class={s.my_typo} style={{
+
+                    margin: '0 !important',
+                    padding: '5px 0',
+                }}>{name && name !== 'null' ? name : 'Данные предоставляются по запросу'}
+                </MyTypography>
+            </AccordionSummary>
+            <AccordionDetails>
+                <MyTypography component={'div'}>
+                    <ul className={s.list}>
+                        {
+                            arr[0]
+                                ?
+                                arr.map((el, index) =>
+
+                                    <li style={{
+                                        fontFamily: 'Fonts',
+                                        width: '100%',
+                                        display:el['value'] ? 'flex':'flex'
+                                    }} key={index}>
+                                        <span style={{
+                                            display: 'flex',
+                                            justifyContent: 'space-between',
+                                            width: '100%',
+                                            gap: '5px'
+                                        }}>
+                                            <span className={s.li_text} style={{background: '#fff',whiteSpace:"nowrap"}}>{el.value}</span>
+                                            <span style={{
+                                            width: '100%',
+                                            // borderBottom: 'dashed 1px #80808059',
+                                            transform: 'translateY(-7px)'
+                                        }}></span>
+                                            {/*<span className={s.li_text} style={{whiteSpace:'nowrap'}}>{el.value}</span>*/}
+                                        </span>
+                                    </li>
+                                )
+                                : ''
+                        }
+                    </ul>
+                </MyTypography>
+            </AccordionDetails>
+        </Accordion>
+
+
+    );
+});
+
+export default MyAccordionBaseOptions;
+
+
+
+
+
