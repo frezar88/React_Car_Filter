@@ -11,6 +11,12 @@
   .span1,.span2{
     font-family: Fonts !important;
   }
+  .span2{
+    position: absolute;
+    bottom: -20px;
+    width: 90px;
+    right: 0;
+  }
 
   .img {
     display: flex;
@@ -24,8 +30,8 @@
 
     img {
       width: 100%;
-      max-height:209.55px;
-      object-fit:cover;
+      //max-height:209.55px;
+      //object-fit:cover;
       font-family: Fonts !important;
     }
   }
@@ -119,7 +125,7 @@
   }
 
   .countOptions {
-    margin-top: 10px;
+    margin-top: 0px;
     font-family: Fonts !important;
 
     p {
@@ -129,6 +135,7 @@
       display: flex;
       gap:5px ;
       font-family: Fonts !important;
+      margin-bottom: 20px;
 
       span{
         font-weight: normal;
@@ -254,7 +261,7 @@
 
   .priceBlock {
     font-family: Fonts !important;
-    margin-top: 25px;
+    margin-top: 20px;
     display: flex;
     align-items: center;
     grid-gap: 10px;

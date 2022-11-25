@@ -194,10 +194,11 @@ const ResultBlockListItem = ({
                             color: '#000',
                             fontWeight: '1000',
                             display: "grid",
-                            gap: 5,
+                            gap: 0,
                             fontSize: 13,
                             justifyContent:'flex-end',
                             fontFamily:'Fonts !important',
+                            position:'relative'
                         }}>
                             <span className={s.span1} style={{textAlign:'end', fontFamily:'Fonts'}}>{years} </span>
                             <span className={s.span2} style={{textAlign:'end', fontFamily:'Fonts'}}>{millage.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")} км</span>
@@ -262,9 +263,9 @@ const ResultBlockListItem = ({
                     <div>
                         {
                             price2 && price !== price2 && regionPrice !== 'price-rus'
-                                ? <p>
-                                    <span>{price2 ? price2.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : ''}</span>
-                                    <span>{price2 ? 'BYN' : ''}</span>
+                                ? <p >
+                                    <span style={{"color":"grey"}}>{price2 ? price2.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : ''}</span>
+                                    <span style={{"color":"grey"}}>{price2 ? 'BYN' : ''}</span>
                                 </p>
                                 : ''
                         }
