@@ -56,6 +56,8 @@ const ResultBlockList = observer(() => {
                                              regionPrice={regionPrice} generation={item.generation}
                                              facelifting={item.facelifting} equipment={item.equipment}
                                              uid={item.UID} millage={item.millage} transmission_name={item.transmission_name}
+                                             turbo={item['engine_turbo']}
+
                         />
                     )
             }

@@ -53,12 +53,13 @@ const ResultBlockListItem = ({
                                  generation,
                                  millage,
                                  uid,
+                                 turbo,
                                  ...props
                              }) => {
     const [imgError, setImgError] = useState(false)
 
     // const imgPath ='https://stock.aps.by/' +JSON.parse(image)?.img.filter((item) => item.category === 'Внешний вид' && item['main_photo']===true)[0].path
-    const imgPath = JSON.parse(image)?.img.filter((item) => item.category === 'Внешний вид' && item['main_photo'] === true)[0].path
+    const imgPath = JSON.parse(image)?.img.filter((item) => item.category === 'Внешний вид' && item['main_photo'] === true)[0]?.path
 
     // const setDataForModal = (e) => {
     //
@@ -189,19 +190,22 @@ const ResultBlockListItem = ({
                     className={s.carName}>
                     <div
                         className={s.car_name}>
-                        <p style={{fontWeight:"1000"}}>{brand} {model} </p>
+                        <p style={{fontWeight: "1000"}}>{brand} {model} </p>
                         <p style={{
                             color: '#000',
                             fontWeight: '1000',
                             display: "grid",
                             gap: 0,
                             fontSize: 13,
-                            justifyContent:'flex-end',
-                            fontFamily:'Fonts !important',
-                            position:'relative'
+                            justifyContent: 'flex-end',
+                            fontFamily: 'Fonts !important',
+                            position: 'relative'
                         }}>
-                            <span className={s.span1} style={{textAlign:'end', fontFamily:'Fonts'}}>{years} </span>
-                            <span className={s.span2} style={{textAlign:'end', fontFamily:'Fonts'}}>{millage.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")} км</span>
+                            <span className={s.span1} style={{textAlign: 'end', fontFamily: 'Fonts'}}>{years} </span>
+                            <span className={s.span2} style={{
+                                textAlign: 'end',
+                                fontFamily: 'Fonts'
+                            }}>{millage.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")} км</span>
                         </p>
 
 
@@ -228,8 +232,8 @@ const ResultBlockListItem = ({
                     <ul>
                         <li>
                             <div>
-                                <p>{engine.length === 1 ? engine + '.0' : engine} </p>
-                                <p>{power} л.с</p>
+                                <p>{turbo ==='Нет'? engine.length === 1 ? engine + '.0' : engine:engine.length === 1 ? engine + '.0 '+'turbo' : engine+' '+turbo} </p>
+                                <p>{ power} л.с</p>
                                 <p>{fueltype}</p>
                             </div>
 
@@ -263,9 +267,10 @@ const ResultBlockListItem = ({
                     <div>
                         {
                             price2 && price !== price2 && regionPrice !== 'price-rus'
-                                ? <p >
-                                    <span style={{"color":"grey"}}>{price2 ? price2.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : ''}</span>
-                                    <span style={{"color":"grey"}}>{price2 ? 'BYN' : ''}</span>
+                                ? <p>
+                                    <span
+                                        style={{"color": "grey"}}>{price2 ? price2.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : ''}</span>
+                                    <span style={{"color": "grey"}}>{price2 ? 'BYN' : ''}</span>
                                 </p>
                                 : ''
                         }
