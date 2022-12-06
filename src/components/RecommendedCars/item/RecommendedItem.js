@@ -54,7 +54,7 @@ const RecommendedItem = ({
     const [imgError, setImgError] = useState(false)
 
 
-    const imgPath = JSON.parse(image)?.img.filter((item) => item.category === 'Внешний вид' && item['main_photo'] === true)[0].path
+    const imgPath = JSON.parse(image)?.img.filter((item) => item.category === 'Внешний вид' && item['main_photo'] === true)[0]?.path
 
     // const setDataForModal = () => {
     //
