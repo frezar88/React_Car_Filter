@@ -102,6 +102,7 @@ const ResultBlockListItem = ({
              data-engine={engine} data-power={power} data-fueltype={fueltype}
              data-drive_type_id={drive_type_id}
              data-transmission_type={transmission_type} data-price={price} data-location={location}
+
             // onClick={(e) => {
             //     let dataStop = e.target['attributes']['data-stop']
             //     if (dataStop) {

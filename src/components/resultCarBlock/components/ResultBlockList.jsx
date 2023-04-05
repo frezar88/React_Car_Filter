@@ -39,7 +39,7 @@ const ResultBlockList = observer(() => {
         <div className={s.resultBlockList}>
             {
                 CarsStore.CarsList
-                    .slice(0, UiStore.getArrayCountSlice())
+                    .slice(0, UiStore.getArrayCountSlice()).filter((item=>regionPrice==='price'? item.price >0:item))
                     .map((item) =>
                         <ResultBlockListItem key={item['car_id']}
                                              body={item.body} car_id={item.car_id}
