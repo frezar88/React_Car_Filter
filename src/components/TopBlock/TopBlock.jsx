@@ -18,7 +18,7 @@ const TopBlock = () => {
                     <span className={s.dot}></span>
                     <span style={{color:'#818181'}}>{carsInfo.years} </span>
                     <span className={s.dot}></span>
-                    <span style={{color:'#818181'}}>{String(carsInfo['millage']).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")+' км'} </span>
+                    <span style={{color:'#818181',whiteSpace:"nowrap"}}>{String(carsInfo['millage']).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1")+' км'} </span>
                 </h3>
                 <p style={{display:'flex',gap:'8px'}}>
                     {carsInfo.generation}
