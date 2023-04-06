@@ -13,9 +13,21 @@ import MyAccordionBaseOptions from "../MyAccordion/MyAccordionBaseOptions";
 
 const MyTabList = styled(TabList)({
     '.MuiTabs-indicator': {
-        background: PRIMARY_COLOR
-    }
+        background: PRIMARY_COLOR,
+        display:'none'
+    },
+    '.MuiTabs-flexContainer':{
+        overflow: 'auto'
+    },
+    '.MuiTabs-flexContainer::-webkit-scrollbar':{
+        width: '5px !important',
+        height: '5px',
+    },
+
+
+
 });
+
 
 const MyCustomTab = styled(Tab)({
     fontSize: 15,

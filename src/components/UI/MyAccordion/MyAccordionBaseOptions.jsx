@@ -62,12 +62,12 @@ const MyAccordionBaseOptions = observer(({name, value}) => {
                                             width: '100%',
                                             gap: '5px'
                                         }}>
-                                            <span className={s.li_text} style={{background: '#fff',whiteSpace:"nowrap"}}>{el.value}</span>
-                                            <span style={{
-                                            width: '100%',
-                                            // borderBottom: 'dashed 1px #80808059',
-                                            transform: 'translateY(-7px)'
-                                        }}></span>
+                                            <span className={s.li_text} style={{background: '#fff',width:'100%'}}>{el.value}</span>
+                                        {/*    <span style={{*/}
+                                        {/*    width: '100%',*/}
+                                        {/*    // borderBottom: 'dashed 1px #80808059',*/}
+                                        {/*    transform: 'translateY(-7px)'*/}
+                                        {/*}}></span>*/}
                                             {/*<span className={s.li_text} style={{whiteSpace:'nowrap'}}>{el.value}</span>*/}
                                         </span>
                                     </li>

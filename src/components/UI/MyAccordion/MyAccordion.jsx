@@ -37,7 +37,7 @@ const MyAccordion = observer(({name, value}) => {
                 className={s.summary}
             >
                 <MyTypography style={{
-                    fontSize: 17,
+                    fontSize: 14,
                     margin: '0 !important',
                     padding: '5px 0',
                 }}>{name && name !== 'null' ? name : 'Данные предоставляются по запросу'}
