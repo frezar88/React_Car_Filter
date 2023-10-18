@@ -1,8 +1,11 @@
-.countBlock{
+.countBlock {
+  display: none;
   border-bottom: solid 1px rgb(220, 220, 220);
   background: var(--prime-background);
-  div{
-    &:first-child{
+
+
+  div {
+    &:first-child {
       //display: grid;
       //grid-template-columns: 1fr;
       //align-items: center;
@@ -10,19 +13,22 @@
       grid-gap: 40px;
       //border-bottom: solid 1px rgb(220, 220, 220);
       //padding: 30px 10px 25px;
-      h6,h5{
+      h6, h5 {
         align-self: center;
         justify-self: center;
       }
-      h6{
-        color:  var(--prime-light-gray);
+
+      h6 {
+        color: var(--prime-light-gray);
         font-size: 14px;
       }
-      h5{
+
+      h5 {
         color: var(--prime-black);
         font-size: 20px;
       }
     }
+
     //&:last-child{
     //  display: grid;
     //  padding: 0 16px 20px;
@@ -37,5 +43,10 @@
     opacity: 0.6;
     color: var(--prime-light-gray);
   }
+}
 
+@media (max-width: 900px){
+  .countBlock{
+    display: block;
+  }
 }

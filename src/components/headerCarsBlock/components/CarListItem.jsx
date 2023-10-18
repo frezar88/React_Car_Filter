@@ -1,11 +1,11 @@
 import React from 'react';
 import s from './CarListItem.module.scss'
 
-const CarListItem = ({imgPath,carName}) => {
+const CarListItem = ({imgPath,carName,data}) => {
     return (
         <div className={s.carListItem}>
-            <img src="https://stock.mitsubishi.by/images/mitsubishi/000001986/ga_m11.png" alt="cars"/>
-            <h6>Обновлённый Outlander</h6>
+            <img src={ "https://stock.mitsubishi.by/"+ data.image}  alt="cars"/>
+            <h6>{data.model}</h6>
         </div>
     );
 };

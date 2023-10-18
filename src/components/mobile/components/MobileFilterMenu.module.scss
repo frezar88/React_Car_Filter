@@ -2,7 +2,7 @@ html{
   //overflow: hidden;
 }
 .mobileFilterMenu{
-
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -12,5 +12,10 @@ html{
   z-index: 1;
   padding: 80px 10px 100px;
   overflow: auto;
+}
+
+.active{
+  display: block;
+  z-index: 2000;
 }
 

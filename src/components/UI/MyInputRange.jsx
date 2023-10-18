@@ -1,16 +1,17 @@
 import * as React from 'react';
+import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import Slider from '@mui/material/Slider';
 import {styled} from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
 import Box from '@mui/material/Box';
-import {debounce, PRIME_COLOR} from "../../const";
+import {PRIME_COLOR} from "../../const";
 import FilterStore from "../../store/filterStore";
-import {useState} from "react";
 import s from "../sideBarBlock/SideBarBlock.module.scss";
 import MyInputText from "./MyInputText";
 import {observer} from "mobx-react-lite";
-import ResultStore from "../../store/resultStore";
+import ChangeFormStore from "../../store/changeFormStore";
+import ActualStoreFilters from "../../store/actualStoreFilters";
 
 function ValueLabelComponent(props) {
     const {children, value} = props;
@@ -75,27 +76,65 @@ const Sliders = styled(Slider)(({theme}) => ({
 
 
 const RangeSlider = observer(() => {
-    const [value, setValue] = useState([0, 0])
+    const [value, setValue] = useState([+FilterStore.getStartedPrice().min, +FilterStore.getStartedPrice().max])
+
+    const setPriceValue = () => {
+
+        ChangeFormStore.setChangePrice({...ChangeFormStore.getChangePrice(), min: +value[0], max: +value[1]})
+
+
+        ActualStoreFilters.takeActualCarList('1')
+    }
+
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setPriceValue()
+        }, 500)
+        return () => {
+            clearTimeout(handler)
+        }
+    }, [value])
+
 
     function handleChange(event, newValue) {
         setValue(newValue)
-        ResultStore.setPriceFilter(newValue)
     };
+
     return (
         <Box sx={{width: '100%', padding: '0 10px', boxSizing: 'border-box'}}>
             <div className={s.priceContainer} style={{}}>
                 <MyInputText
-                    value={value[0] ? String(value[0]).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : FilterStore.priceFilter[0]['options'].min ? FilterStore.priceFilter[0]['options'].min.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : FilterStore.priceFilter[0]['options'].min}
-                    name={'Минимальная цена'}/>
+                    value={value[0]}
+                    name={'Минимальная цена'}
+                    onInput={(e) => setValue(e.target.value)}
+                />
+
                 <MyInputText
-                    value={value[1] ? String(value[1]).replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : FilterStore.priceFilter[0]['options'].max ? FilterStore.priceFilter[0]['options'].min.replace(/(\d{1,3})(?=((\d{3})*)$)/g, " $1") : FilterStore.priceFilter[0]['options'].min}
-                    name={'Максимальная цена'}/>
+                    value={value[1]}
+                    name={'Максимальная цена'}
+                    onInput={(e) => setValue(e.target.value)}
+                />
             </div>
             <Sliders
-                getAriaLabel={(index) => (index === 0 ? 'Minimum price' : 'Maximum price')}
-                min={Number(FilterStore.priceFilter[0]['options'].min)}
-                max={Number(FilterStore.priceFilter[0]['options'].max)}
-                defaultValue={[Number(FilterStore.priceFilter[0]['options'].min), Number(FilterStore.priceFilter[0]['options'].max)]}
+                // disabled={ActualStoreFilters.getActualPrice().min == ActualStoreFilters.getActualPrice().max}
+                valueLabelDisplay="off"
+                min={
+                    Number(FilterStore.getStartedPrice().min)
+                }
+                max={
+                    Number(FilterStore.getStartedPrice().max)
+                }
+
+                defaultValue={
+                    [
+                        ActualStoreFilters.getActualPrice().min && ActualStoreFilters.getActualPrice().min !== 0
+                            ? Number(ActualStoreFilters.getActualPrice().min)
+                            : Number(FilterStore.getStartedPrice().min),
+                        ActualStoreFilters.getActualPrice().max && ActualStoreFilters.getActualPrice().max !== 0
+                            ? Number(ActualStoreFilters.getActualPrice().max)
+                            : Number(FilterStore.getStartedPrice().max),
+                    ]
+                }
                 onChange={handleChange}
             />
         </Box>

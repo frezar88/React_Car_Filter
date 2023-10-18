@@ -9,12 +9,10 @@ const MobileBlock = observer(() => {
 
     return (
         <div className={s.mobileBlock}>
-            <MobileShowFilter onClick={()=> UiStore.showMobileMenu()}/>
-            {
-                UiStore.MobileMenu.show
-                    ? <MobileFilterMenu/>
-                    : false
-            }
+            <MobileShowFilter onClick={() => UiStore.showMobileMenu()}/>
+
+            <MobileFilterMenu/>
+
 
         </div>
     );
