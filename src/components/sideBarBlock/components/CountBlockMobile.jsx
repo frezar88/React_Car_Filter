@@ -1,6 +1,5 @@
 import React from 'react';
-import s from './CountBlock.module.scss'
-import CarsStore from '../../../store/carsStore'
+import s from './CountBlockMobile.module.scss'
 import {observer} from "mobx-react-lite";
 import FilterStore from "../../../store/filterStore";
 import {FormControlLabel, Typography} from "@mui/material";
@@ -9,17 +8,13 @@ import {giveClassNameActiveOrDisabled} from "../../../const";
 import ActualStoreFilters from "../../../store/actualStoreFilters";
 import AccordionBlock from "../../UI/AccordionBlock";
 
-const CountBlock = observer(() => {
+const CountBlockMobile = observer(() => {
 
 
     return (
         <div className={s.countBlock}>
-            <div>
-                <h6 style={{textAlign:'center', padding:'20px 0 0',background:'#fff',margin:0}}>Найдено {CarsStore.CarsList.length} авто</h6>
-                {/*<h5>{'Авто в наличии'} </h5>*/}
-            </div>
-            <div>
-                <AccordionBlock open={true} style={{marginBottom: 20,boxShadow:'none'}} name={'Спецпредложение'}>
+           <div>
+                <AccordionBlock open={true} style={{boxShadow:'none'}} name={'Спецпредложение'}>
                     <div style={{display:'grid',gridGap:0}}>
                         {
                             FilterStore.getStartedPromo().map(el =>
@@ -41,4 +36,4 @@ const CountBlock = observer(() => {
     );
 });
 
-export default CountBlock;
+export default CountBlockMobile;

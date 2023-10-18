@@ -52,6 +52,7 @@ function BpCheckbox(props) {
         <Checkbox
             checkedIcon={<BpCheckedIcon/>}
             icon={<BpIcon/>}
+            inputProps={{'data-name':props['data-name']}}
             {...props}
         />
     );

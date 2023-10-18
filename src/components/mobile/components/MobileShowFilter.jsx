@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './MobileShowFilter.module.scss'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ResultStore from '../../../store/resultStore'
+import ResultStore from '../../../store/carsStore'
 import {observer} from "mobx-react-lite";
 
 const MobileShowFilter = observer(({...props}) => {

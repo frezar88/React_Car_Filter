@@ -32,9 +32,10 @@ const CustomTexField = styled(TextField)({
 });
 
 
-const MyInputText = ({name, value, }) => {
+const MyInputText = ({name, value,props}) => {
     return (
         <CustomTexField
+            {...props}
             size="small"
             fullWidth
             label={name}

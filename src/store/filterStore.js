@@ -1,86 +1,142 @@
 import {makeAutoObservable} from "mobx";
-import {axiosGetStartedFilter} from "../http/requests";
 
 class FilterStore {
-    _startedFilters = [];
-    _competeSet = [];
-    _filtersData = {
-        amount: 15000,
-        body: [],
-        color: [],
-        drive: [],
-        engine: {},
-        location: [],
-        model: {},
-        page: 0,
-        state: [],
-        transmission: [],
-        year: [],
-        price:[],
-    };
-
+    _startedFilters = {
+        'promo': new Set(),
+        'brand': new Set(),
+        'model': new Set(),
+        'year': new Set(),
+        'transmission_type': new Set(),
+        'drive_type_id': new Set(),
+        'body': new Set(),
+        'location': new Set(),
+        'color': new Set(),
+        'price': {min: 0, max: 100},
+        complectation: []
+    }
+    _countPromo = {};
 
     constructor() {
         makeAutoObservable(this)
     }
 
-    getStartedFilters() {
-        axiosGetStartedFilter(this._filtersData).then(data => {
-                this._startedFilters = data.data.data
-            }
-        )
-
-    }
-
-    setFiltersData(data) {
-        this._filtersData = {...this._filtersData,...data}
+    getAllStartedFilters() {
+        return this._startedFilters
     }
 
 
-    get FiltersData() {
-        return this._filtersData
+//----------promo---------
+
+    setStartedPromo(data) {
+        this._startedFilters.promo.add(data)
     }
 
-    setPrice(data){
-        this._filtersData = {...this._filtersData,price:data}
+    getStartedPromo() {
+        return [...this._startedFilters.promo].sort((a, b) => a.localeCompare(b))
     }
 
-    setCompleteSet(data){
-        this._competeSet = data
+//---------brand--------
+
+    setStartedBrand(data) {
+        this._startedFilters.brand.add(data)
     }
-    get CompleteSet(){
-        return this._competeSet
+
+    getStartedBrand() {
+        return [...this._startedFilters.brand].sort((a, b) => a.localeCompare(b))
+    }
+
+//---------model---------
+
+    setStartedModel(data) {
+        this._startedFilters.model.add(data)
+    }
+
+    getStartedModel() {
+        return [...this._startedFilters.model].sort((a, b) => a.localeCompare(b))
+    }
+
+//---------year---------
+    setStartedYear(data) {
+        this._startedFilters.year.add(data)
+    }
+
+    getStartedYear() {
+        return [...this._startedFilters.year].sort((a, b) => a - b)
+    }
+
+//---------transmission_type----------
+    setStartedTransmission(data) {
+        this._startedFilters.transmission_type.add(data)
+    }
+
+    getStartedTransmission() {
+        return [...this._startedFilters.transmission_type]
+    }
+
+//---------drive_type_id----------
+    setStartedDrive(data) {
+        this._startedFilters.drive_type_id.add(data)
+    }
+
+    getStartedDrive() {
+        return [...this._startedFilters.drive_type_id].sort((a, b) => a.localeCompare(b))
+    }
+
+//---------body----------
+    setStartedBody(data) {
+        this._startedFilters.body.add(data)
+    }
+
+    getStartedBody() {
+        return [...this._startedFilters.body].sort((a, b) => a.localeCompare(b))
+    }
+
+//---------location----------
+    setStartedLocation(data) {
+        this._startedFilters.location.add(data)
+    }
+
+    getStartedLocation() {
+        return [...this._startedFilters.location].sort((a, b) => a.localeCompare(b))
+    }
+
+//---------color----------
+    setStartedColor(data) {
+        this._startedFilters.color.add(data)
+    }
+
+    getStartedColor() {
+        return [...this._startedFilters.color].sort((a, b) => a.localeCompare(b))
+    }
+
+//--------complectaion--------
+    setStartedComplectation(data) {
+        this._startedFilters.complectation = data
+    }
+
+    getStartedComplectations() {
+        return [...this._startedFilters.complectation].sort((a,b)=> Object.keys(a)[0].localeCompare(Object.keys(b)[0]))
+    }
+
+// --------price----------
+
+    setStartedPrice(data) {
+        this._startedFilters.price = data
+    }
+
+    getStartedPrice() {
+        return this._startedFilters.price
     }
 
 
-    //------------parse data------------//
-    get modelFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'model')
+    setCountPromo(data) {
+        this._countPromo = data
     }
-    get yearFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'year')
+
+    getCountPromo() {
+        return this._countPromo
     }
-    get engineFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'engine')
-    }
-    get transmissionFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'transmission')
-    }
-    get driveFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'drive')
-    }
-    get bodyFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'body')
-    }
-    get locationsFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'location')
-    }
-    get colorFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'color')
-    }
-    get priceFilter(){
-        return this._startedFilters.filter((item)=>item.id === 'price')
-    }
+
 
 }
 
