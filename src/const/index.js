@@ -8,7 +8,7 @@ export const BRAND_NAME = 'Mitsubishi'
 // export const PRIME_COLOR = '#e37639'
 
 //-----renault
-export const PRIME_COLOR = '#ffcc33'
+export const PRIME_COLOR = '#222'
 
 
 
