@@ -202,7 +202,7 @@ const ResultBlockListItem = ({
                     <ul>
                         <li>
                             <div>
-                                <p>{engine.length===1?engine+'.0 ':engine} {engine.length >=5?'':'л'}</p>
+                                <p>{engine.length===1?engine+'.0 ':engine}</p>
                                 <p>{power} л.с</p>
                                 <p>{fueltype}</p>
                             </div>
